@@ -1,0 +1,5 @@
+alias gg="git grep";
+alias ll="ls -lah";
+alias diff="colordiff";
+alias j="jobs";
+

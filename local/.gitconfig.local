@@ -1,0 +1,48 @@
+[user]
+  name = Eric Turner
+  email = ericturnerdev@gmail.com
+[core]
+    editor = vim
+    pager = less -r
+
+[http]
+    sslVerify = false
+
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    ft = fetch
+    br = branch
+
+    #diff
+    df = diff
+    dfc = diff --cached
+    dfw = diff --color-words
+    dfwc = diff --color-words --cached
+
+    # log
+    l  = log --pretty=format:\"%h %ar\t(%an)\t: %s\" --date=short -20
+    lg  = log --pretty=format:\"%h %ar\t(%an)\t: %s\" --date=short -20 --graph
+    d = difftool
+
+#    wc  = watchanged
+#    ls  = log --stat
+#    lp  = log -p
+#    la  = log --pretty=\"format:%ad %h (%an): %s\" --date=short
+#    lr  = log origin
+#    log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
+#    log-all   = log --graph --all --color --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
+
+[branch "master"]
+    merge = refs/heads/master
+    remote = origin
+[diff]
+  tool = vimdiff
+[difftool "diffmerge"]
+  cmd = /usr/bin/diffmerge \"$LOCAL\" \"$REMOTE\"
+[merge]
+  tool = vimdiff
+[mergetool "diffmerge"]
+  trustExitCode = true
+  cmd = /usr/bin/diffmerge --merge --result=\"$MERGED\"\n        \"$LOCAL\" \"$BASE\" \"$REMOTE\"
