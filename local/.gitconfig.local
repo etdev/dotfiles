@@ -9,8 +9,6 @@
     sslVerify = false
 
 [alias]
-    co = checkout
-    ci = commit
     st = status
     ft = fetch
     br = branch
@@ -25,14 +23,6 @@
     l  = log --pretty=format:\"%h %ar\t(%an)\t: %s\" --date=short -20
     lg  = log --pretty=format:\"%h %ar\t(%an)\t: %s\" --date=short -20 --graph
     d = difftool
-
-#    wc  = watchanged
-#    ls  = log --stat
-#    lp  = log -p
-#    la  = log --pretty=\"format:%ad %h (%an): %s\" --date=short
-#    lr  = log origin
-#    log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
-#    log-all   = log --graph --all --color --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
 
 [branch "master"]
     merge = refs/heads/master

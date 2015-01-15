@@ -2,7 +2,6 @@ alias gg="git grep";
 alias ll="ls -lah";
 alias diff="colordiff";
 alias j="jobs";
-alias j2="jobs $2"
-alias j2="jobs $3"
-alias j2="jobs $4"
-
+alias fg2="fg $2"
+alias fg3="fg $3"
+alias fg4="fg $4"

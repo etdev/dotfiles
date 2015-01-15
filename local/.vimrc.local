@@ -1,0 +1,4 @@
+"Set strict backspace behavior
+set backspace=
+autocmd VimEnter * :HardTimeOn
+

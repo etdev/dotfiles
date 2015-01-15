@@ -1,4 +1,5 @@
-utomatically run ls after cd
+# Automatically run ls after cd
+
 function chpwd() {
     emulate -L zsh
             ls
