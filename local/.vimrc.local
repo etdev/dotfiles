@@ -1,8 +1,8 @@
 "Set strict backspace behavior
 set backspace=
 autocmd VimEnter * :HardTimeOn
+let g:hardtime_default_on = 1
 
 "Case-insensitive search
 set smartcase
 set ignorecase
-

@@ -1,0 +1,4 @@
+# Return to using b 
+unbind C-a
+set -g prefix C-b
+bind-key C-b last-pane
