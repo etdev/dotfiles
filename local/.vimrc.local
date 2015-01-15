@@ -2,3 +2,7 @@
 set backspace=
 autocmd VimEnter * :HardTimeOn
 
+"Case-insensitive search
+set smartcase
+set ignorecase
+
