@@ -4,3 +4,5 @@ function chpwd() {
     emulate -L zsh
             ls
 }
+
+export PATH="$HOME/.bin:$PATH"

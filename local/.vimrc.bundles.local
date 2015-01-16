@@ -1,1 +1,3 @@
 Plugin 'takac/vim-hardtime'
+Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'scrooloose/nerdcommenter'

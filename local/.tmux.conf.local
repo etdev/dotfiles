@@ -2,3 +2,7 @@
 unbind C-a
 set -g prefix C-b
 bind-key C-b last-pane
+
+# Mouse mode
+setw -g mode-mouse on
+setw -g mouse-select-pane on
