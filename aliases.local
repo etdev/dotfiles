@@ -1,9 +1,6 @@
 alias gg="git grep";
 alias diff="colordiff";
 alias j="jobs";
-alias fg2="fg $2"
-alias fg3="fg $3"
-alias fg4="fg $4"
-alias l='ls'
-alias ll='ls -al'
-alias lh='ls -Alh'
+alias l='ls $LS_OPTIONS'
+alias ll='ls -al $LS_OPTIONS'
+alias lh='ls -Alh $LS_OPTIONS'
