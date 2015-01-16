@@ -31,3 +31,6 @@
   prune = true
 [include]
   path = ~/.gitconfig.local
+[user]
+	name = Eric Turner
+	email = ericturnerdev@gmail.com
