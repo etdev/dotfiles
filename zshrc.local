@@ -5,4 +5,9 @@ function chpwd() {
             ls
 }
 
+#Set colored output for LS on linux
+case $(uname) in
+  'Linux')   LS_OPTIONS='--color=auto --group-directories-first' ;;
+esac
+
 export PATH="$HOME/.bin:$PATH"

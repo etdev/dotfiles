@@ -4,7 +4,6 @@ alias j="jobs";
 alias fg2="fg $2"
 alias fg3="fg $3"
 alias fg4="fg $4"
-alias ls='ls --color=auto'
-alias l='ls --color=auto'
-alias ll='ls -al --color=auto'
-alias lh='ls -Alh --color=auto'
+alias l='ls'
+alias ll='ls -al'
+alias lh='ls -Alh'
