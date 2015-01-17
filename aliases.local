@@ -2,5 +2,6 @@ alias gg="git grep";
 alias diff="colordiff";
 alias j="jobs";
 alias l='ls $LS_OPTIONS'
+alias ls='ls $LS_OPTIONS'
 alias ll='ls -al $LS_OPTIONS'
 alias lh='ls -Alh $LS_OPTIONS'
