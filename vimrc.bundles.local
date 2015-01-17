@@ -1,3 +1,4 @@
 Plugin 'takac/vim-hardtime'
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'mustache/vim-mustache-handlebars'
