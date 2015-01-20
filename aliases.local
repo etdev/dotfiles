@@ -6,3 +6,5 @@ alias ls='ls $LS_OPTIONS'
 alias ll='ls -al $LS_OPTIONS'
 alias lh='ls -Alh $LS_OPTIONS'
 alias tatt='tmux attach -t'
+alias tls='tmux ls'
+
