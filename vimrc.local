@@ -42,6 +42,11 @@ nnoremap <silent> {c-k} :TmuxNavigateUp<cr>
 nnoremap <silent> {c-l} :TmuxNavigateRight<cr>
 nnoremap <silent> {c-w} :TmuxNavigatePrevious<cr>
 
-"Closing a buffer but keeping its pane open
+" Closing a buffer won't close the pane if there are other buffers open
 nmap <leader>d :b#<bar>bd#<CR>
 
+" Switch quickly between buffers (matches tmux window switching)
+map <C-w>n :bnext<cr>
+map <C-w>p :bprevious<cr>
+" Re-map command to open new horizontal split, which we just overwrote (matches Ctrlp)
+map <C-w>x :new<cr>
