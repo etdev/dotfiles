@@ -50,3 +50,7 @@ map <C-w>n :bnext<cr>
 map <C-w>p :bprevious<cr>
 " Re-map command to open new horizontal split, which we just overwrote (matches Ctrlp)
 map <C-w>x :new<cr>
+
+" Set j,k to work within wrapped lines
+noremap  <buffer> <silent> k gk
+noremap  <buffer> <silent> j gj
