@@ -71,3 +71,6 @@ set number
 
 " Decrease hardtime cooldown
 let g:hardtime_timeout = 400
+
+" Set scrolloff to 5 lines min
+set scrolloff=5
