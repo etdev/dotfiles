@@ -44,6 +44,7 @@ nnoremap <silent> {c-w} :TmuxNavigatePrevious<cr>
 
 " Closing a buffer won't close the pane if there are other buffers open
 nmap <leader>d :b#<bar>bd#<CR>
+nnoremap <C-w>d :bd<cr>
 
 " Switch quickly between buffers (matches tmux window switching)
 map <C-w>n :bnext<cr>
@@ -54,3 +55,19 @@ map <C-w>x :new<cr>
 " Set j,k to work within wrapped lines
 noremap  <buffer> <silent> k gk
 noremap  <buffer> <silent> j gj
+
+" Re-color ag output when using :grep
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --color
+endif
+
+" Fix slow esc + O command
+:set noesckeys
+
+" Use hybrid relative-absolute line numbers
+set relativenumber 
+set number 
+
+" Decrease hardtime cooldown
+let g:hardtime_timeout = 400
