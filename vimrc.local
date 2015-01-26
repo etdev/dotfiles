@@ -65,12 +65,13 @@ endif
 " Fix slow esc + O command
 :set noesckeys
 
-" Use hybrid relative-absolute line numbers
-set relativenumber 
-set number 
-
 " Decrease hardtime cooldown
 let g:hardtime_timeout = 400
 
 " Set scrolloff to 5 lines min
 set scrolloff=5
+
+" Set colorscheme
+colorscheme solarized
+set background=dark
+let g:solarized_termcolors = 256
