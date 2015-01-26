@@ -1,3 +1,8 @@
+" Set colorscheme
+let g:solarized_termcolors = 256
+set background=dark
+colorscheme solarized
+
 "Set strict backspace behavior
 set backspace=
 autocmd VimEnter * :HardTimeOn
@@ -71,7 +76,3 @@ let g:hardtime_timeout = 400
 " Set scrolloff to 5 lines min
 set scrolloff=5
 
-" Set colorscheme
-colorscheme solarized
-set background=dark
-let g:solarized_termcolors = 256
