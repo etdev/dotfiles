@@ -1,8 +1,3 @@
-" Set colorscheme
-let g:solarized_termcolors = 256
-set background=dark
-colorscheme solarized
-
 "Set strict backspace behavior
 set backspace=
 autocmd VimEnter * :HardTimeOn
@@ -76,7 +71,13 @@ let g:hardtime_timeout = 400
 " Set scrolloff to 5 lines min
 set scrolloff=5
 
-"Enable use of patched fonts for Airline
+" Enable use of patched fonts for Airline
 let g:airline_powerline_fonts = 1
+" Set airline theme
+let g:airline_theme = "solarized"
 
+" Set colorscheme
+let g:solarized_termcolors = 256
+set background=dark
+colorscheme solarized
 
