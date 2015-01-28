@@ -55,6 +55,8 @@ map <C-w>x :new<cr>
 " Set j,k to work within wrapped lines
 noremap  <buffer> <silent> k gk
 noremap  <buffer> <silent> j gj
+noremap  <buffer> <silent> 0 g0
+noremap  <buffer> <silent> $ g$
 
 " Re-color ag output when using :grep
 if executable('ag')
@@ -66,10 +68,10 @@ endif
 :set noesckeys
 
 " Decrease hardtime cooldown
-let g:hardtime_timeout = 400
+let g:hardtime_timeout = 500
 
-" Set scrolloff to 5 lines min
-set scrolloff=5
+" Set scrolloff to 3 lines min
+set scrolloff=3
 
 " Enable use of patched fonts for Airline
 let g:airline_powerline_fonts = 1
@@ -83,8 +85,9 @@ colorscheme solarized
 
 " Leaders
 nmap <leader>c :%s/^\s*#.*$//g<CR>:%s/\(\n\)\n\+/\1/g<CR>:nohl<CR>gg
-nmap <leader>V :tabe ~/.vimrc<CR>
+nmap <leader>V :tabe ~/.vimrc.local<CR>
 map <Leader>i mmgg=G`m<CR>
+map <Leader>s :%s/\s\+$//<CR>
 
 " Don't append the comment prefix when hitting o/O on a comment line
 set formatoptions-=or
@@ -100,3 +103,8 @@ function! InsertTabWrapper()
   endif
 endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+
+" Persisted undo
+silent !mkdir ~/.vim/backups > /dev/null 2>&1
+set undodir=~/.vim/backups
+set undofile
