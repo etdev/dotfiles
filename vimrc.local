@@ -113,3 +113,6 @@ set undofile
 
 " Open ctags in new vertical split
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" Resize vim panes
+autocmd VimResized * wincmd =
