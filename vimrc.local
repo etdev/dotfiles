@@ -1,13 +1,18 @@
-"Set strict backspace behavior
+" Set colorscheme
+let g:solarized_termcolors = 256
+set background=dark
+colorscheme solarized
+
+" Set strict backspace behavior
 set backspace=
 autocmd VimEnter * :HardTimeOn
 let g:hardtime_default_on = 1
 
-"Case-insensitive search
+" Case-insensitive search
 set smartcase
 set ignorecase
 
-"Ctrlp
+" Ctrlp
   " PyMatcher for CtrlP
   if !has('python')
       echo 'In order to use pymatcher plugin, you need +python compiled vim'
@@ -36,11 +41,11 @@ set ignorecase
 " For tmux-navigator
 let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> {c-h} :TmuxNavigateLeft<cr>
-nnoremap <silent> {c-j} :TmuxNavigateDown<cr>
-nnoremap <silent> {c-k} :TmuxNavigateUp<cr>
-nnoremap <silent> {c-l} :TmuxNavigateRight<cr>
-nnoremap <silent> {c-w} :TmuxNavigatePrevious<cr>
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-w> :TmuxNavigatePrevious<cr>
 
 " Closing a buffer won't close the pane if there are other buffers open
 nmap <leader>d :b#<bar>bd#<CR>
@@ -49,6 +54,7 @@ nnoremap <C-w>d :bd<cr>
 " Switch quickly between buffers (matches tmux window switching)
 map <C-w>n :bnext<cr>
 map <C-w>p :bprevious<cr>
+
 " Re-map command to open new horizontal split, which we just overwrote (matches Ctrlp)
 map <C-w>x :new<cr>
 
@@ -75,13 +81,9 @@ set scrolloff=3
 
 " Enable use of patched fonts for Airline
 let g:airline_powerline_fonts = 1
+
 " Set airline theme
 let g:airline_theme = "solarized"
-
-" Set colorscheme
-let g:solarized_termcolors = 256
-set background=dark
-colorscheme solarized
 
 " Leaders
 nmap <leader>c :%s/^\s*#.*$//g<CR>:%s/\(\n\)\n\+/\1/g<CR>:nohl<CR>gg
@@ -108,3 +110,6 @@ inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 silent !mkdir ~/.vim/backups > /dev/null 2>&1
 set undodir=~/.vim/backups
 set undofile
+
+" Open ctags in new vertical split
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
