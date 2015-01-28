@@ -1,23 +1,11 @@
-# Source prezto
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+# Add $HOME/.bin to path
+export PATH="$HOME/.bin:$PATH"
 
 # Automatically run ls after cd
 function chpwd() {
     emulate -L zsh
             ls
 }
-
-# Add $HOME/.bin to path
-export PATH="$HOME/.bin:$PATH"
-
-# rbenv setup
-if [[ ! -d "${HOME}/.rbenv" ]]; then
-  export RBENV_ROOT=/usr/local/rbenv
-  export PATH="$RBENV_ROOT/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
 
 # Linux-only
   # Set colored output for LS on linux
@@ -38,4 +26,16 @@ PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_c
 # Set to English UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_us.UTF-8
+
+# Source prezto
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# rbenv setup
+if [[ ! -d "${HOME}/.rbenv" ]]; then
+  export RBENV_ROOT=/usr/local/rbenv
+  export PATH="$RBENV_ROOT/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
