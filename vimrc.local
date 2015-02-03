@@ -101,9 +101,11 @@ endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
 " Persisted undo
-silent !mkdir ~/.vim/backups > /dev/null 2>&1
-set undodir=~/.vim/backups
-set undofile
+if v:version > 702
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
 
 " Open ctags in new vertical split
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
