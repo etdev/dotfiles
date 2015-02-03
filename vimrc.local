@@ -58,12 +58,6 @@ map <C-w>p :bprevious<cr>
 " Re-map command to open new horizontal split, which we just overwrote (matches Ctrlp)
 map <C-w>x :new<cr>
 
-" Set j,k to work within wrapped lines
-noremap  <buffer> <silent> k gk
-noremap  <buffer> <silent> j gj
-noremap  <buffer> <silent> 0 g0
-noremap  <buffer> <silent> $ g$
-
 " Re-color ag output when using :grep
 if executable('ag')
   " Use Ag over Grep
@@ -77,7 +71,7 @@ endif
 let g:hardtime_timeout = 500
 
 " Set scrolloff to 3 lines min
-set scrolloff=3
+set scrolloff=5
 
 " Enable use of patched fonts for Airline
 let g:airline_powerline_fonts = 1
@@ -116,3 +110,17 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Resize vim panes
 autocmd VimResized * wincmd =
+
+" Set j,k to work within wrapped lines
+nnoremap j gj
+nnoremap k gk"
+nnoremap $ g$
+nnoremap ^ g^
+
+" Reverse mappings to get the original behavior
+nnoremap gj j
+nnoremap gk k"
+
+" Center jumped-to locations vertically on screen
+nnoremap n nzz
+nnoremap } }zz
