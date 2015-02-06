@@ -11,11 +11,12 @@ Set zsh as your login shell:
 Recommended
 -----------
 
-* [The silver searcher](https://github.com/ggreer/the_silver_searcher)
-* Vim 7.4+ compiled with python support
-* [Prezto](https://github.com/sorin-ionescu/prezto/tree/master/modules/prompt/external)
-* [Homebrew](http://brew.sh/) (OS X)
-* [iTerm 2](http://iterm2.com/) (OS X)
+* Install [The silver searcher](https://github.com/ggreer/the_silver_searcher)
+* Use [Vim version 7.4+](http://www.vim.org/download.php), ideally compiled with python support
+* Install [Prezto](https://github.com/sorin-ionescu/prezto/tree/master/modules/prompt/external) (in order to use included custom prompt)
+* Install [rbenv](https://github.com/sstephenson/rbenv) if you use Ruby
+* Install [Homebrew](http://brew.sh/) (OS X only)
+* Install [iTerm 2](http://iterm2.com/) (OS X only)
 
 Install
 -------
@@ -123,8 +124,12 @@ Shell aliases and scripts:
 * `bers` for `bundle exec rails server`
 * `berc` for `bundle exec rails console`
 * `berspec` for `bundle exec rspec`
+* Automatically run ``ls`` after ``cd``
+* Set sane values for LS_COLORS and zsh completion (for both Linux and OS X)
+* 
 
 Todo
 ---------
 * Automate prezto installation and replacing of prompt setup file
 * Add homebrew scripts for mac osx
+* Add iTerm2 settings, my custom color scheme etc.
