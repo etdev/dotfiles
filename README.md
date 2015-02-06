@@ -17,6 +17,7 @@ Recommended
 * Install [rbenv](https://github.com/sstephenson/rbenv) if you use Ruby
 * Install [Homebrew](http://brew.sh/) (OS X only)
 * Install [iTerm 2](http://iterm2.com/) (OS X only)
+* Install a [patched font](https://github.com/powerline/fonts) if you want the [vim-airline statusbar](https://github.com/bling/vim-airline) to look its best
 
 Install
 -------
@@ -66,22 +67,26 @@ What's included?
 [vim](http://www.vim.org/) configuration:
 
 * [Ctrl-P](https://github.com/kien/ctrlp.vim) for fuzzy file/buffer/tag finding.
+* Enable [Vim-hardtime](https://github.com/takac/vim-hardtime) and disable arrow keys to prevent the formation of bad habits
 * [Rails.vim](https://github.com/tpope/vim-rails) for enhanced navigation of
   Rails file structure via `gf` and `:A` (alternate), `:Rextract` partials,
   `:Rinvert` migrations, etc.
 * Run [RSpec](https://www.relishapp.com/rspec) specs from vim.
 * Set `<leader>` to a single space.
 * Switch between the last two files with space-space.
-* Syntax highlighting for CoffeeScript, Textile, Cucumber, Haml, Markdown, HTML, Sass, and
+* Syntax highlighting for CoffeeScript, Textile, Cucumber, Haml, Markdown, HTML, Sass, Handlebars, and
   HTML.
 * Use [Ag](https://github.com/ggreer/the_silver_searcher) instead of Grep when
   available.  Uses python when available to increase speed.
 * Use [Exuberant Ctags](http://ctags.sourceforge.net/) for tab completion.
-* Use [Solarized colorscheme](https://github.com/altercation/vim-colors-solarized).
+* Use [Solarized colorscheme](https://github.com/altercation/vim-colors-solarized) (I then set a dark background in iTerm)
 * Use [vim-mkdir](https://github.com/pbrisbin/vim-mkdir) for automatically
   creating non-existing directories before writing the buffer.
 * Use [Vundle](https://github.com/gmarik/Vundle.vim) to manage plugins.
 * Switch between vim/Tmux panes with ``<C-h>``,``<C-j>``,``<C-k>``,``<C-l>``, even within Tmux ([vim-tmux-navigator]https://github.com/christoomey/vim-tmux-navigator))
+* Use [vim-airline statusbar](https://github.com/bling/vim-airline)
+* Add[nerdcommenter](https://github.com/scrooloose/nerdcommenter) for quickly commenting/uncommenting
+* 
 
 [tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
 configuration:
@@ -132,4 +137,4 @@ Todo
 ---------
 * Automate prezto installation and replacing of prompt setup file
 * Add homebrew scripts for mac osx
-* Add iTerm2 settings, my custom color scheme etc.
+* Add iTerm2 settings, my custom color scheme, non-ugly icon, etc.
