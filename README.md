@@ -1,4 +1,4 @@
-thoughtbot dotfiles
+Eric Turner's dotfiles
 ===================
 
 Requirements
@@ -8,17 +8,21 @@ Set zsh as your login shell:
 
     chsh -s $(which zsh)
 
+Recommended
+-----------
+
+* [The silver searcher](https://github.com/ggreer/the_silver_searcher)
+* Vim 7.4+ compiled with python support
+* [Homebrew](http://brew.sh/) if you're using OS X.
+
 Install
 -------
 
 Clone onto your laptop:
 
-    git clone git://github.com/thoughtbot/dotfiles.git
+    git clone git://github.com/etdev/dotfiles.git
 
-(Or, [fork and keep your fork
-updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
-
-Install [rcm](https://github.com/thoughtbot/rcm):
+Install [rcm by thoughtbot](https://github.com/thoughtbot/rcm):
 
     brew tap thoughtbot/formulae
     brew install rcm
@@ -30,11 +34,6 @@ Install the dotfiles:
 This command will create symlinks for config files in your home directory.
 Setting the `RCRC` environment variable tells `rcup` to use standard
 configuration options:
-
-* Exclude the `README.md` and `LICENSE` files, which are part of
-  the `dotfiles` repository but do not need to be symlinked in.
-* Give precedence to personal overrides which by default are placed in
-  `~/dotfiles-local`
 
 You can safely run `rcup` multiple times to update:
 
@@ -58,86 +57,10 @@ Put your customizations in dotfiles appended with `.local`:
 * `~/.zshrc.local`
 * `~/.zsh/configs/*`
 
-For example, your `~/.aliases.local` might look like this:
-
-    # Productivity
-    alias todo='$EDITOR ~/.todo'
-
-Your `~/.gitconfig.local` might look like this:
-
-    [alias]
-      l = log --pretty=colored
-    [pretty]
-      colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
-    [user]
-      name = Dan Croak
-      email = dan@thoughtbot.com
-
-Your `~/.zshenv.local` might look like this:
-
-    # load pyenv if available
-    if which pyenv &>/dev/null ; then
-      eval "$(pyenv init -)"
-    fi
-
 To extend your `git` hooks, create executable scripts in
 `~/.git_template.local/hooks/*` files.
 
-Your `~/.zshrc.local` might look like this:
-
-    # recommended by brew doctor
-    export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
-Your `~/.vimrc.bundles.local` might look like this:
-
-    Plugin 'Lokaltog/vim-powerline'
-    Plugin 'stephenmckinney/vim-solarized-powerline'
-
-zsh Configurations
-------------------
-
-Additional zsh configuration can go under the `~/.zsh/configs` directory. This
-has two special subdirectories: `pre` for files that must be loaded first, and
-`post` for files that must be loaded last.
-
-For example, `~/.zsh/configs/pre/virtualenv` makes use of various shell
-features which may be affected by your settings, so load it first:
-
-    # Load the virtualenv wrapper
-    . /usr/local/bin/virtualenvwrapper.sh
-
-Setting a key binding can happen in `~/.zsh/configs/keys`:
-
-    # Grep anywhere with ^G
-    bindkey -s '^G' ' | grep '
-
-Some changes, like `chpwd`, must happen in `~/.zsh/configs/post/chpwd`:
-
-    # Show the entries in a directory whenever you cd in
-    function chpwd {
-      ls
-    }
-
-This directory is handy for combining dotfiles from multiple teams; one team
-can add the `virtualenv` file, another `keys`, and a third `chpwd`.
-
-The `~/.zshrc.local` is loaded after `~/.zsh/configs`.
-
-vim Configurations
-------------------
-
-Similarly to the zsh configuration directory as described above, vim
-automatically loads all files in the `~/.vim/plugin` directory. This does not
-have the same `pre` or `post` subdirectory support that our `zshrc` has.
-
-This is an example `~/.vim/plugin/c.vim`. It is loaded every time vim starts,
-regardless of the file name:
-
-    # Indent C programs according to BSD style(9)
-    set cinoptions=:0,t0,+4,(4
-    autocmd BufNewFile,BufRead *.[ch] setlocal sw=0 ts=8 noet
-
-What's in it?
+What's included?
 -------------
 
 [vim](http://www.vim.org/) configuration:
@@ -149,12 +72,12 @@ What's in it?
 * Run [RSpec](https://www.relishapp.com/rspec) specs from vim.
 * Set `<leader>` to a single space.
 * Switch between the last two files with space-space.
-* Syntax highlighting for CoffeeScript, Textile, Cucumber, Haml, Markdown, and
+* Syntax highlighting for CoffeeScript, Textile, Cucumber, Haml, Markdown, HTML, Sass, and
   HTML.
 * Use [Ag](https://github.com/ggreer/the_silver_searcher) instead of Grep when
   available.
 * Use [Exuberant Ctags](http://ctags.sourceforge.net/) for tab completion.
-* Use [GitHub color scheme](https://github.com/croaky/vim-colors-github).
+* Use [Solarized colorscheme](https://github.com/altercation/vim-colors-solarized).
 * Use [vim-mkdir](https://github.com/pbrisbin/vim-mkdir) for automatically
   creating non-existing directories before writing the buffer.
 * Use [Vundle](https://github.com/gmarik/Vundle.vim) to manage plugins.
@@ -164,24 +87,23 @@ configuration:
 
 * Improve color resolution.
 * Remove administrative debris (session name, hostname, time) in status bar.
-* Set prefix to `Ctrl+a` (like GNU screen).
 * Soften status bar color from harsh green to light gray.
 
 [git](http://git-scm.com/) configuration:
 
-* Adds a `create-branch` alias to create feature branches.
-* Adds a `delete-branch` alias to delete feature branches.
-* Adds a `merge-branch` alias to merge feature branches into master.
-* Adds an `up` alias to fetch and rebase `origin/master` into the feature
+* Add a `create-branch` alias to create feature branches.
+* Add a `delete-branch` alias to delete feature branches.
+* Add a `merge-branch` alias to merge feature branches into master.
+* Add an `up` alias to fetch and rebase `origin/master` into the feature
   branch. Use `git up -i` for interactive rebases.
-* Adds `post-{checkout,commit,merge}` hooks to re-index your ctags.
-* Adds `pre-commit` and `prepare-commit-msg` stubs that delegate to your local
+* Add `post-{checkout,commit,merge}` hooks to re-index your ctags.
+* Add `pre-commit` and `prepare-commit-msg` stubs that delegate to your local
   config.
 
 [Ruby](https://www.ruby-lang.org/en/) configuration:
 
 * Add trusted binstubs to the `PATH`.
-* Load rbenv into the shell, adding shims onto our `PATH`.
+* Load rbenv into the shell (if installed), adding shims onto our `PATH`.
 
 Shell aliases and scripts:
 
@@ -194,19 +116,3 @@ Shell aliases and scripts:
 * `rk` for `rake`.
 * `tat` to attach to tmux session named the same as the current directory.
 * `v` for `$VISUAL`.
-
-Credits
--------
-
-Thank you, [contributors](https://github.com/thoughtbot/dotfiles/contributors)!
-Also, thank you to Corey Haines, Gary Bernhardt, and others for sharing your
-dotfiles and other shell scripts from which we derived inspiration for items
-in this project.
-
-![thoughtbot](http://thoughtbot.com/images/tm/logo.png)
-
-Dotfiles is maintained by [thoughtbot, inc](http://thoughtbot.com/community)
-The names and logos for thoughtbot are trademarks of thoughtbot, inc.
-
-Dotfiles is © 2009-2014 thoughtbot, inc. It is free software and may be
-redistributed under the terms specified in the [LICENSE](LICENSE) file.
