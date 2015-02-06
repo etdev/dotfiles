@@ -49,8 +49,8 @@
 [http]
   sslVerify = false
 [user]
-  name = Eric Turner
-  mail = ericturnerdev@gmail.com
+	name = Eric Turner
+	email = ericturnerdev@gmail.com
 [branch "master"]
     merge = refs/heads/master
     remote = origin
