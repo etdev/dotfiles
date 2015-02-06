@@ -1,8 +1,3 @@
-# Source prezto
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
 # modify the prompt to contain git branch name if applicable
 git_prompt_info() {
   current_branch=$(git current-branch 2> /dev/null)
@@ -11,7 +6,7 @@ git_prompt_info() {
   fi
 }
 setopt promptsubst
-export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
+#export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
 
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
@@ -24,13 +19,6 @@ compinit
 for function in ~/.zsh/functions/*; do
   source $function
 done
-
-# makes color constants available
-autoload -U colors
-colors
-
-# enable colored output from ls, etc
-export CLICOLOR=1
 
 # history settings
 setopt hist_ignore_all_dups inc_append_history
@@ -104,6 +92,12 @@ _load_settings "$HOME/.zsh/configs"
 # Add $HOME/.bin to path
 export PATH="$HOME/.bin:$PATH"
 
+# Set prezto to "paradox" prompt
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+  prompt paradox
+fi
+
 # Linux-only
   # Set colored output for LS on linux
 case $(uname) in
@@ -111,7 +105,8 @@ case $(uname) in
     LS_OPTIONS='--color=auto' ;
     LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30';
     alias ls='ls --color=auto'
-    export LS_COLORS;;
+    export LS_COLORS;
+    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS};;
 esac
 
 # Automatically run ls after cd
@@ -120,13 +115,9 @@ function chpwd() {
             ls
 }
 
-
-# Set colored output for zsh completion
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
 # Fix colors
 autoload -U colors && colors
-PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
+#PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
 
 # Set to English UTF-8
 export LC_ALL=en_US.UTF-8
@@ -139,8 +130,3 @@ if [[ -d "${HOME}/.rbenv" ]]; then
   eval "$(rbenv init - 2>/dev/null)"
 fi
 
-# Set prezto to "agnoster" prompt
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-  prompt agnoster
-fi
