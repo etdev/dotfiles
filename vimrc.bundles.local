@@ -1,7 +1,0 @@
-Plugin 'takac/vim-hardtime'
-Plugin 'FelikZ/ctrlp-py-matcher'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'

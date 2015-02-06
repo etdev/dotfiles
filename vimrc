@@ -142,3 +142,132 @@ set diffopt+=vertical
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+" Set colorscheme
+let g:solarized_termcolors = 256
+set background=dark
+colorscheme solarized
+
+" Set strict backspace behavior
+set backspace=
+autocmd VimEnter * :HardTimeOn
+let g:hardtime_default_on = 1
+
+" Case-insensitive search
+set smartcase
+set ignorecase
+
+" Ctrlp
+  " PyMatcher for CtrlP
+  if !has('python')
+      echo 'In order to use pymatcher plugin, you need +python compiled vim'
+  else
+      let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+  endif
+
+  " Set delay to prevent extra search
+  let g:ctrlp_lazy_update = 350
+
+  " Do not clear filenames cache, to improve CtrlP startup
+  let g:ctrlp_clear_cache_on_exit = 0
+
+  " Undo Thoughtbot's setting
+  "let g:ctrlp_use_caching = 1
+
+  " Set no file limit, we are building a big project
+  let g:ctrlp_max_files = 0
+
+  " If ag is available use it as filename list generator instead of 'find'
+  if executable("ag")
+      set grepprg=ag\ --nogroup\ --nocolor
+      let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
+  endif
+
+" For tmux-navigator
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-w> :TmuxNavigatePrevious<cr>
+
+" Closing a buffer won't close the pane if there are other buffers open
+nmap <leader>d :b#<bar>bd#<CR>
+nnoremap <C-w>d :bd<cr>
+
+" Switch quickly between buffers (matches tmux window switching)
+map <C-w>n :bnext<cr>
+map <C-w>p :bprevious<cr>
+
+" Re-map command to open new horizontal split, which we just overwrote (matches Ctrlp)
+map <C-w>x :new<cr>
+
+" Re-color ag output when using :grep
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --color
+endif
+
+" Fix slow esc + O command
+:set noesckeys
+
+" Decrease hardtime cooldown
+let g:hardtime_timeout = 500
+
+" Set scrolloff to 3 lines min
+set scrolloff=5
+
+" Enable use of patched fonts for Airline
+let g:airline_powerline_fonts = 1
+
+" Set airline theme
+let g:airline_theme = "solarized"
+
+" Leaders
+nmap <leader>c :%s/^\s*#.*$//g<CR>:%s/\(\n\)\n\+/\1/g<CR>:nohl<CR>gg
+nmap <leader>V :tabe ~/.vimrc.local<CR>
+map <Leader>i mmgg=G`m<CR>
+map <Leader>s :%s/\s\+$//<CR>
+
+" Don't append the comment prefix when hitting o/O on a comment line
+set formatoptions-=or
+
+" Tab Completion
+set complete=.,w,t
+function! InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+
+" Persisted undo
+if v:version > 702
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
+
+" Open ctags in new vertical split
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" Resize vim panes
+autocmd VimResized * wincmd =
+
+" Set j,k to work within wrapped lines
+nnoremap j gj
+nnoremap k gk"
+nnoremap $ g$
+nnoremap ^ g^
+
+" Reverse mappings to get the original behavior
+nnoremap gj j
+nnoremap gk k"
+
+" Center jumped-to locations vertically on screen
+nnoremap n nzz
+nnoremap } }zz

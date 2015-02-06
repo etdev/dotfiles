@@ -29,10 +29,13 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/tComment'
-
-if filereadable(expand("~/.vimrc.bundles.local"))
-  source ~/.vimrc.bundles.local
-endif
+Plugin 'takac/vim-hardtime'
+Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
 
 call vundle#end()
 filetype on

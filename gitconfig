@@ -20,7 +20,22 @@
   rename-branch = !sh -c 'old=$(git current-branch) && git branch -m $old $1 && git push origin --set-upstream $1 && git push origin --delete $old' -
   st = status
   up = !git fetch origin && git rebase origin/master
+  ft = fetch
+  br = branch
+
+  #diff
+  df = diff
+  dfc = diff --cached
+  dfw = diff --color-words
+  dfwc = diff --color-words --cached
+
+  # log
+  l  = log --pretty=format:\"%h %ar\t(%an)\t: %s\" --date=short -20
+  lg  = log --pretty=format:\"%h %ar\t(%an)\t: %s\" --date=short -20 --graph
+  d = difftool
 [core]
+  editor = vim
+  pager = less -r
   excludesfile = ~/.gitignore
   autocrlf = input
 [merge]
@@ -31,6 +46,13 @@
   prune = true
 [include]
   path = ~/.gitconfig.local
+[http]
+  sslVerify = false
 [user]
-	name = Eric Turner
-	email = ericturnerdev@gmail.com
+  name = Eric Turner
+  mail = ericturnerdev@gmail.com
+[branch "master"]
+    merge = refs/heads/master
+    remote = origin
+[diff]
+  tool = vimdiff

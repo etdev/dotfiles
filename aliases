@@ -11,10 +11,22 @@ alias -g M='| less'
 alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
-alias v="$VISUAL"
+alias diff="colordiff";
+alias j="jobs";
+alias l="ls $LS_OPTIONS"
+alias ls="ls $LS_OPTIONS"
+alias ll="ls -al $LS_OPTIONS"
+alias lh="ls -Alh $LS_OPTIONS"
+alias tatt="tmux attach -t"
+alias tls="tmux ls"
+alias v="vim"
+alias bers="bundle exec rails server"
+alias berc="bundle exec rails console"
+alias berspec="bundle exec rspec"
 
 # git
 alias gci="git pull --rebase && rake && git push"
+alias gg="git grep";
 
 # Bundler
 alias b="bundle"
@@ -30,6 +42,3 @@ alias s="rspec"
 
 # Pretty print the path
 alias path="echo $PATH | tr -s ':' '\n'"
-
-# Include custom aliases
-[[ -f ~/.aliases.local ]] && source ~/.aliases.local

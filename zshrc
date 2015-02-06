@@ -96,5 +96,45 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+# Add $HOME/.bin to path
+export PATH="$HOME/.bin:$PATH"
+
+# Linux-only
+  # Set colored output for LS on linux
+case $(uname) in
+  'Linux')
+    LS_OPTIONS='--color=auto' ;
+    LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30';
+    alias ls='ls --color=auto'
+    export LS_COLORS;;
+esac
+
+# Automatically run ls after cd
+function chpwd() {
+    emulate -L zsh
+            ls
+}
+
+
+# Set colored output for zsh completion
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# Fix colors
+autoload -U colors && colors
+PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
+
+# Set to English UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_us.UTF-8
+
+# Source prezto
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# rbenv setup
+if [[ -d "${HOME}/.rbenv" ]]; then
+  export RBENV_ROOT=/usr/local/rbenv
+  export PATH="$RBENV_ROOT/bin:$PATH"
+  eval "$(rbenv init - 2>/dev/null)"
+fi
