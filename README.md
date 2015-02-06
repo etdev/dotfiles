@@ -1,7 +1,7 @@
 Eric Turner's dotfiles
 ===================
 
-Requirements
+Required
 ------------
 
 Set zsh as your login shell:
@@ -13,21 +13,20 @@ Recommended
 
 * [The silver searcher](https://github.com/ggreer/the_silver_searcher)
 * Vim 7.4+ compiled with python support
-* [Homebrew](http://brew.sh/) if you're using OS X.
+* [Prezto](https://github.com/sorin-ionescu/prezto/tree/master/modules/prompt/external)
+* [Homebrew](http://brew.sh/) (OS X)
+* [iTerm 2](http://iterm2.com/) (OS X)
 
 Install
 -------
 
-Clone onto your laptop:
+Clone the repo:
 
     git clone git://github.com/etdev/dotfiles.git
 
-Install [rcm by thoughtbot](https://github.com/thoughtbot/rcm):
+Install [rcm by thoughtbot](https://github.com/thoughtbot/rcm) (dotfile management scripts)
 
-    brew tap thoughtbot/formulae
-    brew install rcm
-
-Install the dotfiles:
+Install the dotfiles with rcm:
 
     env RCRC=$HOME/dotfiles/rcrc rcup
 
@@ -48,8 +47,8 @@ Put your customizations in dotfiles appended with `.local`:
 * `~/.git_template.local/*`
 * `~/.gitconfig.local`
 * `~/.gvimrc.local`
-* `~/.psqlrc.local` (we supply a blank `.psqlrc.local` to prevent `psql` from
-  throwing an error, but you should overwrite the file with your own copy)
+* `~/.psqlrc.local` (There's a blank `.psqlrc.local` supplied to prevent `psql` from
+  throwing an error, but you should overwrite the file with your own copy.)
 * `~/.tmux.conf.local`
 * `~/.vimrc.local`
 * `~/.vimrc.bundles.local`
@@ -75,12 +74,13 @@ What's included?
 * Syntax highlighting for CoffeeScript, Textile, Cucumber, Haml, Markdown, HTML, Sass, and
   HTML.
 * Use [Ag](https://github.com/ggreer/the_silver_searcher) instead of Grep when
-  available.
+  available.  Uses python when available to increase speed.
 * Use [Exuberant Ctags](http://ctags.sourceforge.net/) for tab completion.
 * Use [Solarized colorscheme](https://github.com/altercation/vim-colors-solarized).
 * Use [vim-mkdir](https://github.com/pbrisbin/vim-mkdir) for automatically
   creating non-existing directories before writing the buffer.
 * Use [Vundle](https://github.com/gmarik/Vundle.vim) to manage plugins.
+* Switch between vim/Tmux panes with ``<C-h>``,``<C-j>``,``<C-k>``,``<C-l>``, even within Tmux ([vim-tmux-navigator]https://github.com/christoomey/vim-tmux-navigator))
 
 [tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
 configuration:
@@ -99,6 +99,7 @@ configuration:
 * Add `post-{checkout,commit,merge}` hooks to re-index your ctags.
 * Add `pre-commit` and `prepare-commit-msg` stubs that delegate to your local
   config.
+* Add `gg` alias for ``git grep``
 
 [Ruby](https://www.ruby-lang.org/en/) configuration:
 
@@ -115,4 +116,15 @@ Shell aliases and scripts:
 * `replace foo bar **/*.rb` to find and replace within a given list of files.
 * `rk` for `rake`.
 * `tat` to attach to tmux session named the same as the current directory.
-* `v` for `$VISUAL`.
+* `tls` to view the list of open tmux sessions
+* `v` for `vim`.
+* `l` for `ls`
+* `j` for `jobs`
+* `bers` for `bundle exec rails server`
+* `berc` for `bundle exec rails console`
+* `berspec` for `bundle exec rspec`
+
+Todo
+---------
+* Automate prezto installation and replacing of prompt setup file
+* Add homebrew scripts for mac osx
