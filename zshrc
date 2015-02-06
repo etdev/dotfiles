@@ -6,7 +6,6 @@ git_prompt_info() {
   fi
 }
 setopt promptsubst
-#export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
 
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
@@ -38,8 +37,6 @@ unsetopt nomatch
 
 # vi mode
 bindkey -v
-bindkey "^F" vi-cmd-mode
-bindkey jj vi-cmd-mode
 
 # handy keybindings
 bindkey "^A" beginning-of-line
@@ -117,7 +114,6 @@ function chpwd() {
 
 # Fix colors
 autoload -U colors && colors
-
 # Set backup prompt for non-prezto users
 PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
 
