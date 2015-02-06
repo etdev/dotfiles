@@ -1,3 +1,8 @@
+# Source prezto
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
 # modify the prompt to contain git branch name if applicable
 git_prompt_info() {
   current_branch=$(git current-branch 2> /dev/null)
@@ -127,14 +132,15 @@ PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_c
 export LC_ALL=en_US.UTF-8
 export LANG=en_us.UTF-8
 
-# Source prezto
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
 # rbenv setup
 if [[ -d "${HOME}/.rbenv" ]]; then
   export RBENV_ROOT=/usr/local/rbenv
   export PATH="$RBENV_ROOT/bin:$PATH"
   eval "$(rbenv init - 2>/dev/null)"
+fi
+
+# Set prezto to "agnoster" prompt
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+  prompt agnoster
 fi
