@@ -92,10 +92,10 @@ _load_settings "$HOME/.zsh/configs"
 # Add $HOME/.bin to path
 export PATH="$HOME/.bin:$PATH"
 
-# Set prezto to "paradox" prompt
+# Source prezto and set to "agnoster" prompt (if installed)
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-  prompt paradox
+  prompt agnoster
 fi
 
 # Linux-only
@@ -117,7 +117,9 @@ function chpwd() {
 
 # Fix colors
 autoload -U colors && colors
-#PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
+
+# Set backup prompt for non-prezto users
+PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
 
 # Set to English UTF-8
 export LC_ALL=en_US.UTF-8
