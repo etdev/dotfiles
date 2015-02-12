@@ -150,8 +150,6 @@ colorscheme solarized
 
 " Set strict backspace behavior
 set backspace=
-"autocmd VimEnter * :HardTimeOn
-"let g:hardtime_default_on = 1
 
 " Case-insensitive search
 set smartcase
@@ -170,9 +168,6 @@ set ignorecase
 
   " Do not clear filenames cache, to improve CtrlP startup
   let g:ctrlp_clear_cache_on_exit = 0
-
-  " Undo Thoughtbot's setting
-  "let g:ctrlp_use_caching = 1
 
   " Set no file limit, we are building a big project
   let g:ctrlp_max_files = 0
@@ -210,7 +205,7 @@ if executable('ag')
 endif
 
 " Fix slow esc + O command
-:set noesckeys
+":set noesckeys
 
 " Decrease hardtime cooldown
 let g:hardtime_timeout = 500
@@ -253,21 +248,11 @@ if v:version > 702
 endif
 
 " Open ctags in new vertical split
-"map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Resize vim panes
 autocmd VimResized * wincmd =
 
 " Set j,k to work within wrapped lines
-nnoremap j gj
-nnoremap k gk"
 nnoremap $ g$
 nnoremap ^ g^
-
-" Reverse mappings to get the original behavior
-nnoremap gj j
-nnoremap gk k"
-
-" Center jumped-to locations vertically on screen
-nnoremap n nzz
-nnoremap } }zz
