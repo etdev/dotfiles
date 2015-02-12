@@ -207,9 +207,6 @@ endif
 " Fix slow esc + O command
 ":set noesckeys
 
-" Decrease hardtime cooldown
-let g:hardtime_timeout = 500
-
 " Set scrolloff to 3 lines min
 set scrolloff=5
 
@@ -253,6 +250,27 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " Resize vim panes
 autocmd VimResized * wincmd =
 
-" Set j,k to work within wrapped lines
-nnoremap $ g$
-nnoremap ^ g^
+" mapping to make movements operate on 1 screen line in wrap mode
+function! ScreenMovement(movement)
+   if &wrap
+      return "g" . a:movement
+   else
+      return a:movement
+   endif
+endfunction
+onoremap <silent> <expr> j ScreenMovement("j")
+onoremap <silent> <expr> k ScreenMovement("k")
+onoremap <silent> <expr> 0 ScreenMovement("0")
+onoremap <silent> <expr> ^ ScreenMovement("^")
+onoremap <silent> <expr> $ ScreenMovement("$")
+nnoremap <silent> <expr> j ScreenMovement("j")
+nnoremap <silent> <expr> k ScreenMovement("k")
+nnoremap <silent> <expr> 0 ScreenMovement("0")
+nnoremap <silent> <expr> ^ ScreenMovement("^")
+nnoremap <silent> <expr> $ ScreenMovement("$")
+
+" Fix delay when using capital O
+let &t_ti.="\e[?7727h"
+let &t_te.="\e[?7727l"
+noremap <Esc>O[ <Esc>
+noremap! <Esc>O[ <C-c>
