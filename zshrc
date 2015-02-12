@@ -35,9 +35,6 @@ setopt extendedglob
 # Allow [ or ] whereever you want
 unsetopt nomatch
 
-# vi mode
-bindkey -v
-
 # handy keybindings
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
@@ -128,3 +125,7 @@ if [[ -d "${HOME}/.rbenv" ]]; then
   eval "$(rbenv init - 2>/dev/null)"
 fi
 
+# vi mode
+bindkey -v
+set blink-matching-paren on
+export KEYTIMEOUT=1

@@ -150,8 +150,8 @@ colorscheme solarized
 
 " Set strict backspace behavior
 set backspace=
-autocmd VimEnter * :HardTimeOn
-let g:hardtime_default_on = 1
+"autocmd VimEnter * :HardTimeOn
+"let g:hardtime_default_on = 1
 
 " Case-insensitive search
 set smartcase
@@ -193,8 +193,8 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-w> :TmuxNavigatePrevious<cr>
 
 " Closing a buffer won't close the pane if there are other buffers open
-nmap <leader>d :b#<bar>bd#<CR>
-nnoremap <C-w>d :bd<cr>
+"nmap <leader>d :b#<bar>bd#<CR>
+"nnoremap <C-w>d :bd<cr>
 
 " Switch quickly between buffers (matches tmux window switching)
 map <C-w>n :bnext<cr>
@@ -253,7 +253,7 @@ if v:version > 702
 endif
 
 " Open ctags in new vertical split
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+"map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Resize vim panes
 autocmd VimResized * wincmd =
