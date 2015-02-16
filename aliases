@@ -20,6 +20,7 @@ alias lh="ls -Alh $LS_OPTIONS"
 alias tatt="tmux attach -t"
 alias tls="tmux ls"
 alias v="vim"
+alias bexec= "bundle exec "
 alias bers="bundle exec rails server"
 alias berc="bundle exec rails console"
 alias berspec="bundle exec rspec"
@@ -42,3 +43,4 @@ alias s="rspec"
 
 # Pretty print the path
 alias path="echo $PATH | tr -s ':' '\n'"
+
