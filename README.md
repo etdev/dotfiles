@@ -67,7 +67,6 @@ What's included?
 [vim](http://www.vim.org/) configuration:
 
 * [Ctrl-P](https://github.com/kien/ctrlp.vim) for fuzzy file/buffer/tag finding.
-* Enable [Vim-hardtime](https://github.com/takac/vim-hardtime) and disable arrow keys to prevent the formation of bad habits
 * [Rails.vim](https://github.com/tpope/vim-rails) for enhanced navigation of
   Rails file structure via `gf` and `:A` (alternate), `:Rextract` partials,
   `:Rinvert` migrations, etc.
@@ -86,7 +85,6 @@ What's included?
 * Switch between vim/Tmux panes with ``<C-h>``,``<C-j>``,``<C-k>``,``<C-l>``, even within Tmux ([vim-tmux-navigator]https://github.com/christoomey/vim-tmux-navigator))
 * Use [vim-airline statusbar](https://github.com/bling/vim-airline)
 * Add[nerdcommenter](https://github.com/scrooloose/nerdcommenter) for quickly commenting/uncommenting
-* 
 
 [tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
 configuration:
