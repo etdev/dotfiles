@@ -84,7 +84,7 @@ What's included?
 * Use [Vundle](https://github.com/gmarik/Vundle.vim) to manage plugins.
 * Switch between vim/Tmux panes with ``<C-h>``,``<C-j>``,``<C-k>``,``<C-l>``, even within Tmux ([vim-tmux-navigator]https://github.com/christoomey/vim-tmux-navigator))
 * Use [vim-airline statusbar](https://github.com/bling/vim-airline)
-* Add[nerdcommenter](https://github.com/scrooloose/nerdcommenter) for quickly commenting/uncommenting
+* Add [nerdcommenter](https://github.com/scrooloose/nerdcommenter) for quickly commenting/uncommenting
 
 [tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
 configuration:
