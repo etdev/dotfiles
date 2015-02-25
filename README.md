@@ -129,7 +129,6 @@ Shell aliases and scripts:
 * `berspec` for `bundle exec rspec`
 * Automatically run ``ls`` after ``cd``
 * Set sane values for LS_COLORS and zsh completion (for both Linux and OS X)
-* 
 
 Todo
 ---------
