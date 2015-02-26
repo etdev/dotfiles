@@ -37,6 +37,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'danro/rename.vim'
+Plugin 'mtth/scratch.vim'
 
 call vundle#end()
 filetype on

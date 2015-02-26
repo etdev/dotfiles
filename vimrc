@@ -274,3 +274,11 @@ let &t_ti.="\e[?7727h"
 let &t_te.="\e[?7727l"
 noremap <Esc>O[ <Esc>
 noremap! <Esc>O[ <C-c>
+
+" Add syntax coloring for code blocks within markdown
+au BufNewFile,BufReadPost *.md set filetype=markdown
+let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
+
+" Set scratch file type to markdown
+let g:scratch_filetype = 'markdown'
+
