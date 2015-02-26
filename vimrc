@@ -205,7 +205,7 @@ if executable('ag')
 endif
 
 " Fix slow esc + O command
-":set noesckeys
+set noesckeys
 
 " Set scrolloff to 3 lines min
 set scrolloff=5
