@@ -204,9 +204,6 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --color
 endif
 
-" Fix slow esc + O command
-set noesckeys
-
 " Set scrolloff to 3 lines min
 set scrolloff=5
 
@@ -274,6 +271,10 @@ let &t_ti.="\e[?7727h"
 let &t_te.="\e[?7727l"
 noremap <Esc>O[ <Esc>
 noremap! <Esc>O[ <C-c>
+
+" Fix slow esc + O command (experimental)
+set noesckeys
+set timeout timeoutlen=100 ttimeoutlen=50
 
 " Add syntax coloring for code blocks within markdown
 au BufNewFile,BufReadPost *.md set filetype=markdown
