@@ -282,3 +282,5 @@ let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', '
 " Set scratch file type to markdown
 let g:scratch_filetype = 'markdown'
 
+" Allow mousewheel scrolling, don't select line numbers
+set mouse=a
