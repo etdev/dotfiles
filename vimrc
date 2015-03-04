@@ -205,7 +205,7 @@ if executable('ag')
 endif
 
 " Set scrolloff to 3 lines min
-set scrolloff=5
+set scrolloff=3
 
 " Enable use of patched fonts for Airline
 let g:airline_powerline_fonts = 1
