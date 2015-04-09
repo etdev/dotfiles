@@ -269,7 +269,7 @@ nnoremap <silent> <expr> $ ScreenMovement("$")
 
 " Fix slow esc + O command (experimental)
 set noesckeys
-set timeout timeoutlen=100 ttimeoutlen=50
+"set timeout timeoutlen=100 ttimeoutlen=50
 
 " Add syntax coloring for code blocks within markdown
 au BufNewFile,BufReadPost *.md set filetype=markdown
