@@ -118,7 +118,7 @@ nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
 
 " Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<space>
+"nnoremap <Leader>r :RunInInteractiveShell<space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -217,10 +217,10 @@ let g:airline_theme = "solarized"
 nmap <leader>c :%s/^\s*#.*$//g<CR>:%s/\(\n\)\n\+/\1/g<CR>:nohl<CR>gg
 nmap <leader>V :tabe ~/.vimrc.local<CR>
 map <Leader>i mmgg=G`m<CR>
-map <Leader>s :%s/\s\+$//<CR>
+map <Leader>p :%s/\s\+$//<CR>
 
 " Don't append the comment prefix when hitting o/O on a comment line
-set formatoptions-=or
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Tab Completion
 set complete=.,w,t
@@ -265,12 +265,6 @@ nnoremap <silent> <expr> k ScreenMovement("k")
 nnoremap <silent> <expr> 0 ScreenMovement("0")
 nnoremap <silent> <expr> ^ ScreenMovement("^")
 nnoremap <silent> <expr> $ ScreenMovement("$")
-
-" Fix delay when using capital O
-let &t_ti.="\e[?7727h"
-let &t_te.="\e[?7727l"
-noremap <Esc>O[ <Esc>
-noremap! <Esc>O[ <C-c>
 
 " Fix slow esc + O command (experimental)
 set noesckeys
