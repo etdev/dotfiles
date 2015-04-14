@@ -283,3 +283,6 @@ set mouse=a
 
 " Automatically store yanked content to system clipboard
 set clipboard=unnamed
+
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
