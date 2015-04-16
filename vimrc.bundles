@@ -38,6 +38,7 @@ Plugin 'bling/vim-airline'
 Plugin 'danro/rename.vim'
 Plugin 'mtth/scratch.vim'
 Plugin 'ngmy/vim-rubocop'
+Plugin 'gorodinsikiy/vim-coloresque'
 
 call vundle#end()
 filetype on
