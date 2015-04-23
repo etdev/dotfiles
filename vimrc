@@ -26,7 +26,9 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
-filetype plugin indent on
+if has("autocmd")
+  filetype plugin indent on
+endif
 
 augroup vimrcEx
   autocmd!
@@ -284,5 +286,9 @@ set mouse=a
 " Automatically store yanked content to system clipboard
 set clipboard=unnamed
 
+" Manual folding
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
+
+" required to select ruby blocks as text objects
+runtime macros/matchit.vim
