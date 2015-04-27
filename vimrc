@@ -292,3 +292,6 @@ vnoremap <Space> zf
 
 " required to select ruby blocks as text objects
 runtime macros/matchit.vim
+
+" fix 'w' not stopping at periods
+set iskeyword-=.
