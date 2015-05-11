@@ -40,6 +40,7 @@ Plugin 'mtth/scratch.vim'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'etdev/vim-hexcolor'
 Plugin 'etdev/vim-textobject-pack'
+Plugin 'rking/ag.vim'
 
 call vundle#end()
 filetype on
