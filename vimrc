@@ -5,7 +5,6 @@ set nocompatible
 " Leader
 let mapleader = " "
 
-set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
 set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
@@ -47,9 +46,6 @@ augroup vimrcEx
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
-
-  " Automatically wrap at 80 characters for Markdown
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
   " Automatically wrap at 72 characters and spell check git commit messages
   autocmd FileType gitcommit setlocal textwidth=72
@@ -118,9 +114,6 @@ nnoremap <Down> :echoe "Use j"<CR>
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
-
-" Run commands that require an interactive shell
-"nnoremap <Leader>r :RunInInteractiveShell<space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -271,7 +264,6 @@ nnoremap <silent> <expr> $ ScreenMovement("$")
 
 " Fix slow esc + O command (experimental)
 set noesckeys
-"set timeout timeoutlen=100 ttimeoutlen=50
 
 " Add syntax coloring for code blocks within markdown
 au BufNewFile,BufReadPost *.md set filetype=markdown

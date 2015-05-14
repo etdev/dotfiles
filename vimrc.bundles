@@ -10,8 +10,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Define bundles via Github repos
-Plugin 'christoomey/vim-run-interactive'
-Plugin 'croaky/vim-colors-github'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'pbrisbin/vim-mkdir'
@@ -27,7 +25,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'vim-scripts/matchit.zip'
-Plugin 'vim-scripts/tComment'
 Plugin 'takac/vim-hardtime'
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'scrooloose/nerdcommenter'
