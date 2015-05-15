@@ -285,5 +285,6 @@ vnoremap <Space> zf
 " required to select ruby blocks as text objects
 runtime macros/matchit.vim
 
-" fix 'w' not stopping at periods
-set iskeyword-=.
+" Turn off annoying syntastic error in ERB files
+let g:syntastic_eruby_ruby_quiet_messages =
+    \ {'regex': 'possibly useless use of a variable in void context'}
