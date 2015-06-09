@@ -122,10 +122,10 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_us.UTF-8
 
 # rbenv setup
-if [[ -d "${HOME}/.rbenv" ]]; then
-  export RBENV_ROOT=/usr/local/rbenv
-  export PATH="$RBENV_ROOT/bin:$PATH"
-  eval "$(rbenv init - 2>/dev/null)"
+export RBENV_ROOT="${HOME}/.rbenv"
+if [[ -d "${RBENV_ROOT}" ]]; then
+  export PATH="${RBENV_ROOT}/bin:$PATH"
+  eval "$(rbenv init -)"
 fi
 
 # vi mode
