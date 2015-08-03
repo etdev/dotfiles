@@ -133,3 +133,6 @@ bindkey -v
 bindkey '^R' history-incremental-search-backward
 set blink-matching-paren on
 export KEYTIMEOUT=1
+
+# hub
+eval "$(hub alias -s)"
