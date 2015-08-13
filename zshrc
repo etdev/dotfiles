@@ -136,3 +136,11 @@ export KEYTIMEOUT=1
 
 # hub
 eval "$(hub alias -s)"
+
+# check if command exists
+command_exists () {
+    type "$1" &> /dev/null ;
+}
+
+# pyenv
+if command_exists pyenv ; then eval "$(pyenv init -)"; fi

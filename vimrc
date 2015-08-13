@@ -288,6 +288,8 @@ runtime macros/matchit.vim
 " Turn off annoying syntastic error in ERB files
 let g:syntastic_eruby_ruby_quiet_messages =
     \ {'regex': 'possibly useless use of a variable in void context'}
+" Make Syntastic check against rbenv-set ruby
+let g:syntastic_ruby_mri_exec='/Users/eric/.rbenv/shims/ruby'
 
 " Show 80-char limit
 set colorcolumn=80

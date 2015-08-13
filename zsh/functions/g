@@ -2,7 +2,11 @@
 # With arguments: acts like `git`
 g() {
   if [[ $# > 0 ]]; then
-    git $@
+    if command_exists hub ; then
+      hub $@
+    else
+      git $@
+    fi
   else
     git status
   fi
