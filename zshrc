@@ -144,3 +144,8 @@ command_exists () {
 
 # pyenv
 if command_exists pyenv ; then eval "$(pyenv init -)"; fi
+
+# go
+export GOROOT=/usr/local/go
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/git/bin
