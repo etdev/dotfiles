@@ -139,14 +139,19 @@ Todo
 
 Things to install/do on fresh install
 ---------
+* iTerm 2
 * Everything in Thoughtbot/Laptop
 * Patched Airline fonts
+* Load iTerm settings, fix colors etc.
+* Prezto
+* These dotfiles
+* Python
 * BetterTouchTool
 * BetterSnapTool
 * Karabiner
 * Seil
-* iTerm 2
 * Chrome
 * Sip
 * Transmission
+* Speed up keyrepeat
 * 
