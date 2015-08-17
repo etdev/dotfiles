@@ -136,3 +136,17 @@ Todo
 * Automate prezto installation and replacing of prompt setup file
 * Add homebrew scripts for mac osx
 * Add iTerm2 settings, my custom color scheme, non-ugly icon, etc.
+
+Things to install/do on fresh install
+---------
+* Everything in Thoughtbot/Laptop
+* Patched Airline fonts
+* BetterTouchTool
+* BetterSnapTool
+* Karabiner
+* Seil
+* iTerm 2
+* Chrome
+* Sip
+* Transmission
+* 
