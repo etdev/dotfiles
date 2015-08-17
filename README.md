@@ -143,8 +143,9 @@ Things to install/do on fresh install
 * Everything in Thoughtbot/Laptop
 * Patched Airline fonts
 * Load iTerm settings, fix colors etc.
-* Prezto
 * These dotfiles
+* Prezto
+* Move agnoster file
 * Python
 * BetterTouchTool
 * BetterSnapTool
@@ -154,4 +155,10 @@ Things to install/do on fresh install
 * Sip
 * Transmission
 * Speed up keyrepeat
+* Install Dropbox
+* Install Google Drive
+* Install Alfred
+* Import Alfred settings
+* Import Alfred license
+* Replace icons
 * 
