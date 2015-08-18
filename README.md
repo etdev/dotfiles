@@ -161,4 +161,7 @@ Things to install/do on fresh install
 * Import Alfred settings
 * Import Alfred license
 * Replace icons
-* 
+* Change wallpaper and set to dark theme
+* Add home folder etc. to Finder sidebar
+* Login to chrome, add ad-block exceptions, hide buttons etc.
+* Login to lastpass
