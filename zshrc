@@ -149,3 +149,5 @@ if command_exists pyenv ; then eval "$(pyenv init -)"; fi
 export GOROOT=/usr/local/go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/usr/local/git/bin
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -20,6 +20,7 @@
   rename-branch = !sh -c 'old=$(git current-branch) && git branch -m $old $1 && git push origin --set-upstream $1 && git push origin --delete $old' -
   st = status
   up = !git fetch origin && git rebase origin/master
+  updev = !git fetch origin && git rebase origin/develop
   ft = fetch
   br = branch
 
@@ -57,3 +58,5 @@
   tool = vimdiff
 
 
+[pr-release]
+	token = 3b2d914ba71e58fb5bc1c081fb720f428a296d8e

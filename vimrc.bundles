@@ -39,6 +39,7 @@ Plugin 'etdev/vim-hexcolor'
 Plugin 'etdev/vim-textobject-pack'
 Plugin 'rking/ag.vim'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'lyuts/vim-rtags'
 
 call vundle#end()
 filetype on
