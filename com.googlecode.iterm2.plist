@@ -33948,11 +33948,15 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1169 110 445 340 0 0 1680 1027 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>270 109 924 485 0 0 1680 1027 </string>
+	<string>270 109 605 485 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 29 1676 994 0 0 1680 1027 </string>
+	<string>2405 7 955 1012 1680 -30 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>229 95 570 451 0 0 1680 1027 </string>
+	<string>0 564 570 451 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>0 15 1676 1012 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>0 15 836 1012 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -33992,11 +33996,11 @@
 			<key>Ansi 11 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.43850564956665039</real>
+				<real>0.047058824449777603</real>
 				<key>Green Component</key>
-				<real>0.40717673301696777</real>
+				<real>0.047058824449777603</real>
 				<key>Red Component</key>
-				<real>0.32436618208885193</real>
+				<real>0.047058824449777603</real>
 			</dict>
 			<key>Ansi 12 Color</key>
 			<dict>
@@ -34046,11 +34050,11 @@
 			<key>Ansi 3 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.023484811186790466</real>
+				<real>0.11990493535995483</real>
 				<key>Green Component</key>
-				<real>0.46751424670219421</real>
+				<real>0.11990493535995483</real>
 				<key>Red Component</key>
-				<real>0.64746475219726562</real>
+				<real>0.11990493535995483</real>
 			</dict>
 			<key>Ansi 4 Color</key>
 			<dict>
@@ -34187,11 +34191,11 @@
 			<key>Foreground Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.70398104190826416</real>
+				<real>0.6433749794960022</real>
 				<key>Green Component</key>
-				<real>0.70398104190826416</real>
+				<real>0.6433749794960022</real>
 				<key>Red Component</key>
-				<real>0.70398104190826416</real>
+				<real>0.6433749794960022</real>
 			</dict>
 			<key>Guid</key>
 			<string>214C65DD-E3C7-4845-80E4-9843BF913D3F</string>
@@ -34684,7 +34688,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>461651465.54603398</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>461651465.54633498</real>
+	<real>463294315.73278201</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -34751,7 +34755,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-08-19T04:25:00Z</date>
+	<date>2015-09-09T07:19:41Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>

@@ -49,14 +49,10 @@
 [http]
   sslVerify = false
 [user]
-	name = Eric Turner
-	email = ericturnerdev@gmail.com
+  name = Eric Turner
+  email = ericturnerdev@gmail.com
 [branch "master"]
   merge = refs/heads/master
   remote = origin
 [diff]
   tool = vimdiff
-
-
-[pr-release]
-	token = 3b2d914ba71e58fb5bc1c081fb720f428a296d8e

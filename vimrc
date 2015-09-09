@@ -64,16 +64,34 @@ set expandtab
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
+" CtrlP
+"  use mixed mode by default
+let g:ctrlp_cmd = 'CtrlPMixed'
+
+"  auto cache clearing.
+function! SetupCtrlP()
+  if exists("g:loaded_ctrlp") && g:loaded_ctrlp
+    augroup CtrlPExtension
+      autocmd!
+      autocmd FocusGained  * CtrlPClearCache
+      autocmd BufWritePost * CtrlPClearCache
+    augroup END
+  endif
+endfunction
+if has("autocmd")
+  autocmd VimEnter * :call SetupCtrlP()
+endif
+
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  "Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  " let g:ctrlp_use_caching = 0
+   "ag is fast enough that CtrlP doesn't need to cache
+   let g:ctrlp_use_caching = 0
 endif
 
 " Numbers
@@ -151,29 +169,6 @@ set backspace=
 set smartcase
 set ignorecase
 
-" Ctrlp
-  " PyMatcher for CtrlP
-  if !has('python')
-      "echo 'In order to use pymatcher plugin, you need +python compiled vim'
-  else
-      let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-  endif
-
-  " Set delay to prevent extra search
-  let g:ctrlp_lazy_update = 350
-
-  " Do not clear filenames cache, to improve CtrlP startup
-  let g:ctrlp_clear_cache_on_exit = 0
-
-  " Set no file limit, we are building a big project
-  let g:ctrlp_max_files = 0
-
-  " If ag is available use it as filename list generator instead of 'find'
-  if executable("ag")
-      set grepprg=ag\ --nogroup\ --nocolor
-      let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
-  endif
-
 " For tmux-navigator
 let g:tmux_navigator_no_mappings = 1
 
@@ -182,10 +177,6 @@ nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-w> :TmuxNavigatePrevious<cr>
-
-" Closing a buffer won't close the pane if there are other buffers open
-"nmap <leader>d :b#<bar>bd#<CR>
-"nnoremap <C-w>d :bd<cr>
 
 " Switch quickly between buffers (matches tmux window switching)
 map <C-w>n :bnext<cr>
@@ -293,18 +284,11 @@ let g:syntastic_ruby_mri_exec='/Users/eric/.rbenv/shims/ruby'
 
 " Show 80-char limit
 set colorcolumn=80
+highlight ColorColumn ctermbg=235
 
-" CtrlP auto cache clearing.
-" ----------------------------------------------------------------------------
-function! SetupCtrlP()
-  if exists("g:loaded_ctrlp") && g:loaded_ctrlp
-    augroup CtrlPExtension
-      autocmd!
-      autocmd FocusGained  * CtrlPClearCache
-      autocmd BufWritePost * CtrlPClearCache
-    augroup END
-  endif
-endfunction
-if has("autocmd")
-  autocmd VimEnter * :call SetupCtrlP()
-endif
+let g:airline_theme='base16'
+
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
