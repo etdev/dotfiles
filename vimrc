@@ -65,9 +65,6 @@ set expandtab
 set list listchars=tab:»·,trail:·,nbsp:·
 
 " CtrlP
-"  use mixed mode by default
-let g:ctrlp_cmd = 'CtrlPMixed'
-
 "  auto cache clearing.
 function! SetupCtrlP()
   if exists("g:loaded_ctrlp") && g:loaded_ctrlp
@@ -201,7 +198,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = "solarized"
 
 " Leaders
-nmap <leader>c :%s/^\s*#.*$//g<CR>:%s/\(\n\)\n\+/\1/g<CR>:nohl<CR>gg
+"nmap <leader>c :%s/^\s*#.*$//g<CR>:%s/\(\n\)\n\+/\1/g<CR>:nohl<CR>gg
 nmap <leader>V :tabe ~/.vimrc.local<CR>
 map <Leader>i mmgg=G`m<CR>
 map <Leader>p :%s/\s\+$//<CR>
@@ -269,10 +266,6 @@ set mouse=a
 " Automatically store yanked content to system clipboard
 set clipboard=unnamed
 
-" Manual folding
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-vnoremap <Space> zf
-
 " required to select ruby blocks as text objects
 runtime macros/matchit.vim
 
@@ -292,3 +285,8 @@ augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+
+" Nvim
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
