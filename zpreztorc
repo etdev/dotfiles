@@ -10,6 +10,7 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'syntax-highlighting' \
   'prompt'
+zstyle ':prezto:module:editor' keymap 'vi'
 zstyle ':prezto:module:editor' key-bindings 'vi'
 zstyle ':prezto:module:prompt' theme 'agnoster'
 zstyle ':prezto:module:syntax-highlighting' color 'yes'
