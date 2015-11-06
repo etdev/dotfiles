@@ -61,6 +61,9 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
+set sw=2 ts=2 sts=2                             " Defaults: four spaces per tab "
+autocmd FileType java :setlocal sw=4 ts=4 sts=4 " Two spaces for HTML files "
+
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
