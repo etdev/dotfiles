@@ -141,9 +141,11 @@ set splitbelow
 set splitright
 
 " configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
+let g:syntastic_check_on_open=0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_ruby_checkers = ['ruby', 'reek']
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
@@ -295,4 +297,17 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 
 " Search ag.vim with leader + a
-nnoremap <Leader>a :Ag 
+nnoremap <Leader>a :Ag
+
+" Rubocop
+let g:vimrubocop_keymap = 0
+nmap <Leader>ru :RuboCop<CR>
+
+" Insert binding.pry call
+let @p = "Orequire 'pry'; binding.pry; nil.nil?"
+
+" Remove binding pry calls in file
+nmap <Leader>dp :g/binding.pry/d<CR>
+
+" Remove binding pry calls in all open buffers
+nmap <Leader>dpb :bufdo g/binding.pry/d<CR>
