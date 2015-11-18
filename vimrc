@@ -143,6 +143,8 @@ set splitright
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_w = 0
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_ruby_checkers = ['ruby', 'reek']
@@ -302,11 +304,11 @@ nnoremap <Leader>a :Ag
 " Rubocop
 let g:vimrubocop_keymap = 0
 nmap <Leader>ru :RuboCop<CR>
-nmap <Leader>sy :SyntasticCheck<CR>
+nnoremap <Leader>sy :SyntasticCheck<CR>
 
 " Insert binding.pry call
 let @p = "Orequire 'pry'; binding.pry; nil.nil?"
-" Remove binding pry calls in file
+" Delete binding Pry calls in file
 nmap <Leader>dp :g/binding.pry/d<CR>
-" Remove binding pry calls in all open buffers
-nmap <Leader>dpb :bufdo g/binding.pry/d<CR>
+" Delete binding Pry calls in All open buffers
+nmap <Leader>dpa :bufdo g/binding.pry/d<CR>
