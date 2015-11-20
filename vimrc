@@ -299,7 +299,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 
 " Search ag.vim with leader + a
-nnoremap <Leader>a :Ag
+nnoremap <Leader>a :Ag 
 
 " Rubocop
 let g:vimrubocop_keymap = 0
@@ -309,6 +309,6 @@ nnoremap <Leader>sy :SyntasticCheck<CR>
 " Insert binding.pry call
 let @p = "Orequire 'pry'; binding.pry; nil.nil?"
 " Delete binding Pry calls in file
-nmap <Leader>dp :g/binding.pry/d<CR>
+nmap <silent> <Leader>dp :g/binding.pry/d<CR>
 " Delete binding Pry calls in All open buffers
-nmap <Leader>dpa :bufdo g/binding.pry/d<CR>
+nmap <silent> <Leader>dpa :bufdo g/binding.pry/d<CR>
