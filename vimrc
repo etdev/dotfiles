@@ -205,7 +205,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = "solarized"
 
 " Leaders
-"nmap <leader>c :%s/^\s*#.*$//g<CR>:%s/\(\n\)\n\+/\1/g<CR>:nohl<CR>gg
+nmap <leader>c :%s/^\s*#.*$//g<CR>:%s/\(\n\)\n\+/\1/g<CR>:nohl<CR>gg
 nmap <leader>V :tabe ~/.vimrc.local<CR>
 map <Leader>i mmgg=G`m<CR>
 map <Leader>p :%s/\s\+$//<CR>
