@@ -312,4 +312,6 @@ let @p = "Orequire 'pry'; binding.pry; nil.nil?"
 nmap <silent> <Leader>dp :g/binding.pry/d<CR>
 " Delete binding Pry calls in All open buffers
 nmap <silent> <Leader>dpa :bufdo g/binding.pry/d<CR>
-nmap <silent> <Leader>dpa :bufdo g/binding.pry/d<CR>
+
+" Swap (rotate)windows
+nmap <silent> <Leader>sp :wincmd r<CR>
