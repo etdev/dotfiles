@@ -121,13 +121,6 @@ PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_c
 export LC_ALL=en_US.UTF-8
 export LANG=en_us.UTF-8
 
-# rbenv setup
-export RBENV_ROOT="${HOME}/.rbenv"
-if [[ -d "${RBENV_ROOT}" ]]; then
-  export PATH="${RBENV_ROOT}/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
 # vi mode
 bindkey -v
 bindkey '^R' history-incremental-search-backward
@@ -156,4 +149,11 @@ export PATH=$PATH:/usr/local/git/bin
 smartresize() {
    mogrify -path $3 -filter Triangle -define filter:support=2 -thumbnail $2 -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB $1
 }
+
+# rbenv setup
+export RBENV_ROOT="${HOME}/.rbenv"
+if [[ -d "${RBENV_ROOT}" ]]; then
+  export PATH="${RBENV_ROOT}/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
