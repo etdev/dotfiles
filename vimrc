@@ -202,7 +202,12 @@ set scrolloff=2
 let g:airline_powerline_fonts = 1
 
 " Set airline theme
-let g:airline_theme = "solarized"
+let g:airline_theme='base16'
+
+" Don't show git info in statusbar
+let g:airline_section_b=""
+let g:airline_section_y=""
+let g:airline_section_warning=""
 
 " Leaders
 nmap <leader>c :%s/^\s*#.*$//g<CR>:%s/\(\n\)\n\+/\1/g<CR>:nohl<CR>gg
@@ -285,8 +290,6 @@ let g:syntastic_ruby_mri_exec='/Users/eric/.rbenv/shims/ruby'
 " Show 80-char limit
 set colorcolumn=80
 highlight ColorColumn ctermbg=235
-
-let g:airline_theme='base16'
 
 augroup myvimrc
     au!
