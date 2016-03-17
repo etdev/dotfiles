@@ -41,9 +41,12 @@ Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'lyuts/vim-rtags'
 Plugin 'craigemery/vim-autotag'
 Plugin 'troessner/reek'
+" Plugin 'mxw/vim-jsx'
+" Plugin 'pangloss/vim-javascript'
 Plugin 'etdev/vim-hexcolor'
 Plugin 'etdev/vim-textobject-pack'
 Plugin 'etdev/ag.vim'
+
 
 call vundle#end()
 filetype on
