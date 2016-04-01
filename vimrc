@@ -320,4 +320,4 @@ nmap <silent> <Leader>dpa :bufdo g/binding.pry/d<CR>
 nmap <silent> <Leader>sp :wincmd r<CR>
 
 " Like :e but starting in current directory
-:cnoremap z edit <c-r>=expand("%:h")<cr>/
+nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>

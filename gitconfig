@@ -21,6 +21,8 @@
   st = status
   up = !git fetch origin && git rebase origin/master
   updev = !git fetch origin && git rebase origin/develop
+  down = !git fetch origin && git reset --hard origin/master
+  downdev = !git fetch origin && git reset --hard origin/master
   ft = fetch
   br = branch
 
