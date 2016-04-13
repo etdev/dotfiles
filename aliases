@@ -46,3 +46,6 @@ alias s="rspec"
 
 # Pretty print the path
 alias path="echo $PATH | tr -s ':' '\n'"
+
+# Use global agignore
+alias ag='ag --path-to-agignore ~/.agignore'
