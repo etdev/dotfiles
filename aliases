@@ -27,6 +27,8 @@ alias berst="tail -f log/development.log"
 alias berst-t="tail -f log/test.log"
 alias berc="bundle exec rails console"
 alias berspec="bundle exec rspec"
+alias gcb="git branch | grep -v 'master' | xargs git branch -D"
+alias gcbd="git branch | grep -v 'develop' | xargs git branch -D"
 
 # git
 alias gci="git pull --rebase && rake && git push"
