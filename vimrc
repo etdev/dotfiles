@@ -36,9 +36,9 @@ augroup vimrcEx
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
   autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
 
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
@@ -90,8 +90,8 @@ if executable('ag')
   "Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
-   "ag is fast enough that CtrlP doesn't need to cache
-   let g:ctrlp_use_caching = 0
+  "ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
 endif
 
 " Numbers
@@ -103,12 +103,12 @@ set numberwidth=5
 " will use completion if not at beginning
 set wildmode=list:longest,list:full
 function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
 endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <S-Tab> <c-n>
@@ -141,13 +141,14 @@ set splitbelow
 set splitright
 
 " configure syntastic syntax checking to check on open as well as save
- let g:syntastic_check_on_open = 0
- let g:syntastic_check_on_wq = 1
- let g:syntastic_check_on_w = 1
- let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
- let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
- let g:syntastic_javascript_checkers = ['eslint']
- let g:syntastic_ruby_checkers = ['ruby', 'reek']
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_w = 0
+let g:syntastic_scss_checkers = ['scss_lint']
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_ruby_checkers = ['ruby-lint', 'reek', 'rubocop']
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
@@ -214,6 +215,8 @@ nmap <leader>c :%s/^\s*#.*$//g<CR>:%s/\(\n\)\n\+/\1/g<CR>:nohl<CR>gg
 nmap <leader>V :tabe ~/.vimrc.local<CR>
 map <Leader>i mmgg=G`m<CR>
 map <Leader>p :%s/\s\+$//<CR>
+nnoremap <silent> <leader>sc :SyntasticCheck
+nnoremap <silent> <leader>sr :SyntasticCheck
 
 " Don't append the comment prefix when hitting o/O on a comment line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -245,11 +248,11 @@ autocmd VimResized * wincmd =
 
 " mapping to make movements operate on 1 screen line in wrap mode
 function! ScreenMovement(movement)
-   if &wrap
-      return "g" . a:movement
-   else
-      return a:movement
-   endif
+  if &wrap
+    return "g" . a:movement
+  else
+    return a:movement
+  endif
 endfunction
 onoremap <silent> <expr> j ScreenMovement("j")
 onoremap <silent> <expr> k ScreenMovement("k")
@@ -283,7 +286,7 @@ runtime macros/matchit.vim
 
 " Turn off annoying syntastic error in ERB files
 let g:syntastic_eruby_ruby_quiet_messages =
-    \ {'regex': 'possibly useless use of a variable in void context'}
+      \ {'regex': 'possibly useless use of a variable in void context'}
 " Make Syntastic check against rbenv-set ruby
 let g:syntastic_ruby_mri_exec='/Users/eric/.rbenv/shims/ruby'
 
@@ -292,8 +295,8 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=235
 
 augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+  au!
+  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
 " Nvim
