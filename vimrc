@@ -215,8 +215,8 @@ nmap <leader>c :%s/^\s*#.*$//g<CR>:%s/\(\n\)\n\+/\1/g<CR>:nohl<CR>gg
 nmap <leader>V :tabe ~/.vimrc.local<CR>
 map <Leader>i mmgg=G`m<CR>
 map <Leader>p :%s/\s\+$//<CR>
-nnoremap <silent> <leader>sc :SyntasticCheck
-nnoremap <silent> <leader>sr :SyntasticCheck
+nnoremap <silent> <leader>sc :SyntasticCheck<CR>
+nnoremap <silent> <leader>sr :SyntasticReset<CR>
 
 " Don't append the comment prefix when hitting o/O on a comment line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
