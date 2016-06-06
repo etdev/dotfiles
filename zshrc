@@ -136,12 +136,14 @@ command_exists () {
 }
 
 # pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 if command_exists pyenv ; then eval "$(pyenv init -)"; fi
 
 # go
-export GOROOT=$HOME/go
-export PATH=$PATH:$HOME/go/bin
-export PATH=$PATH:/usr/local/git/bin
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
