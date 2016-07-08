@@ -5,8 +5,9 @@
 /tmp/
 /vendor/
 /vendor/bundle
-*.sql
+/node_modules/
 *.js.min
+*.min.js
 *.min.min
 *.css.min
 *.min.css

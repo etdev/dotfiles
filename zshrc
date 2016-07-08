@@ -145,6 +145,7 @@ export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOBIN
+export GOGH=$GOPATH/src/github.com/
 
 # python
 export PYENV_ROOT="$HOME/.pyenv"
