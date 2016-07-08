@@ -33923,6 +33923,8 @@
 	<string></string>
 	<key>NSScrollAnimationEnabled</key>
 	<false/>
+	<key>NSScrollViewShouldScrollUnderTitlebar</key>
+	<false/>
 	<key>NSTableView Columns KeyBingingTable</key>
 	<array>
 		<data>
@@ -33934,7 +33936,7 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>302</string>
+		<string>322</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
@@ -33950,13 +33952,15 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1169 110 445 340 0 0 1680 1027 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>318 425 605 485 0 0 1680 1027 </string>
+	<string>240 368 606 456 0 0 1440 877 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>528 561 384 129 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 568 570 451 0 0 1680 1027 </string>
+	<string>440 12 717 864 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 576 570 451 0 0 1680 1027 </string>
+	<string>0 559 585 452 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 15 1676 1012 0 0 1680 1027 </string>
+	<string>694 653 585 451 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>0 15 1676 1012 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
@@ -34687,10 +34691,20 @@
 			<string>/Users/eric</string>
 		</dict>
 	</array>
+	<key>NoSyncConfirmBeta</key>
+	<true/>
+	<key>NoSyncHaveShownPromoWithId_4</key>
+	<true/>
+	<key>NoSyncInstallationId</key>
+	<string>0450D35A-EACE-4110-8F6C-4B8B10D1FECC</string>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
+	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
+	<real>487842833.60793501</real>
 	<key>NoSyncTimeOfLastPromo</key>
-	<real>461651465.54603398</real>
+	<real>477820931.41437697</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>465206284.95794898</real>
+	<real>487755968.10815299</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -34742,6 +34756,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/eric/dotfiles</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
@@ -34752,12 +34768,14 @@
 	<integer>3</integer>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
+	<key>SUFeedAlternateAppNameKey</key>
+	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>http://iterm2.com/appcasts/testing.xml</string>
+	<string>https://iterm2.com/appcasts/testing.xml?shard=65</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-10-02T06:59:13Z</date>
+	<date>2016-06-22T10:04:05Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -37163,6 +37181,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.1.1</string>
+	<string>3.0.2</string>
 </dict>
 </plist>

@@ -144,6 +144,17 @@ if command_exists pyenv ; then eval "$(pyenv init -)"; fi
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOBIN
+
+# python
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_VERSION="3.5.0"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# pip should only run if there is a virtualenv currently activated
+export PIP_REQUIRE_VIRTUALENV=true
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

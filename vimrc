@@ -330,3 +330,5 @@ nnoremap <Leader>sp :sp <C-R>=expand('%:p:h') . '/'<CR>
 
 " Like :e but starting in current directory
 nnoremap <Leader>vsp :vsp <C-R>=expand('%:p:h') . '/'<CR>
+
+au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
