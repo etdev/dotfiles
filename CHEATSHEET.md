@@ -132,9 +132,89 @@ E.g. print lines 1-5 of test.txt
 ```bash
 sed -n '1,5p' test.txt
 ```
+```bash
+sed -n '1,+4p' test.txt
+```
 
 E.g. print every other line of test.txt
+```bash
 sed '1~2p' test.txt
+```
+
+E.g. **d**elete every other line of test.txt
+```bash
+sed '1~2d' test.txt
+```
+
+* Doesn't affect the actual file
+* You can make it change the source file with the `-i` option though.
+
+E.g. delete every other line of test.txt, actually changing original file
+```bash
+sed -i.bak '1~2d' file.txt
+```
+* The `-i.bak` means it will create a backup file with the extension `.bak`
+
+Given `annoying.txt`:
+```bash
+this is the song that never ends
+yes, it goes on and on, my friend
+some people started singing it
+not knowing what it was
+and they'll continue singing it forever
+just because...
+```
+
+E.g. Substitute `on` with `forward`
+```bash
+sed 's/on/forward' annoying.txt
+```
+
+* Only replaces first match in each line
+* Replaces any instance of `on`, even in the middle of other words
+
+E.g. Substitute all instances of `on` in first 3 lines with `forward`
+```bash
+sed '1,3s/on/forward/g' annoying.txt
+```
+
+E.g. Substitute case-insensitively all instances of `SINGING` with `saying`, and only print changed lines
+```bash
+sed -n 's/SINGING/saying/gip' annoying.txt
+```
+
+E.g. Substitute from beginning of line to last instance of `at` with parenthesized version
+```bash
+sed 's/^.*at/(&)/' annoying.txt
+```
+* The `&` represents the captured text (which is captured despite lack of parentheses in the regex)
+
+E.g. Switch the first two words in each line
+```bash
+sed 's/\([^ ][^ ]*\) \([^ ][^ ]*\)/\2 \1/' annoying.txt
+```
+
+* You can use escaped parentheses for capture groups, which you can then refer to with `\1`, `\2`, ...
+
+E.g. Substitute `it` with `it loudly` but only on lines that match `/singing/`
+```bash
+sed '/singing/s/it/& loudly/' annoying.txt
+```
+
+E.g. Delete all empty lines
+```bash
+sed '/^$/d' annoying.txt
+```
+
+E.g. Delete all lines that AREN'T empty
+```bash
+sed '/^$/!d' annoying.txt
+```
+
+E.g. Delete all lines between lines starting with `START` and `END` (including the start, end lines)
+```bash
+sed '/^START/,/^END/d' test.txt
+```
 
 #### sort
 
@@ -221,4 +301,34 @@ E.g. rename files in current dir with a `2` in their name, to `item_<old_name>`
 for i in $(ls | grep 2); do
 mv $1 item_$1;
 done
+```
+
+More info: http://www.tecmint.com/wc-command-examples/
+
+#### wc
+
+Count **l**ines / **w**ords / **c**haracters in a file or stream
+
+E.g. Show line count, word count, and char count for test.txt
+```bash
+wc test.txt
+# => 15  229 1529 test.txt
+```
+
+E.g. Show line count for test.txt
+```bash
+wc -l test.txt
+# => 15 test.txt
+```
+
+E.g. Show word count for test.txt
+```bash
+wc -w test.txt
+# => 229 test.txt
+```
+
+E.g. Show char count for test.txt
+```bash
+wc -c test.txt
+# => 1529 test.txt
 ```
