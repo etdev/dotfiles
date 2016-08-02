@@ -9,7 +9,7 @@ CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
 
 Grant permissions to user
 ```sql
-GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'loccalhost';
+GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'lccalhost';
 ```
 
 Reload privileges:
@@ -110,6 +110,31 @@ awk 'BEGIN { print "NUM\tFOOD"; } $2 ~ /^(c|w)/ && $1 !~ /1/ { print $1,"\t",$2;
 ```
 
 More info: https://www.digitalocean.com/community/tutorials/how-to-use-the-awk-language-to-manipulate-text-in-linux
+
+#### sed
+
+Sed is a **s**tream **ed**itor.
+
+Basic syntax:
+```bash
+sed [options] commands [file-to-edit]
+```
+
+E.g. print first line of test.txt
+```bash
+sed -n '1p' test.txt
+```
+* The `-n` suppresses the default print each line behavior
+* The `1` tells sed what line(s) to operate on -- line 1
+* The `p` means the `print` command; so `print line 1, suppressing default print`
+
+E.g. print lines 1-5 of test.txt
+```bash
+sed -n '1,5p' test.txt
+```
+
+E.g. print every other line of test.txt
+sed '1~2p' test.txt
 
 #### sort
 
