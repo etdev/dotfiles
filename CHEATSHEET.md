@@ -1,5 +1,6 @@
 # etdev's Useful Command Cheatsheet
- ### MySQL
+
+### MySQL
 
 Create a new user
 ```sql
@@ -85,6 +86,29 @@ awk 'BEGIN { FS=":"; }
 { print $1; }' /etc/passwd
 ```
 
+Given `favorite_foods.txt`:
+```bash
+1 carrot sandy
+2 wasabi luke
+3 sandwich brian
+4 salad ryan
+5 spaghetti jessica
+```
+
+E.g. Match based on regex per-field
+```bash
+awk '/$2 ~ ^sa/' favorite_food.txt
+# => 3 sandwich brian
+# => 4 salad ryan
+```
+
+E.g. combined matching, including `!~` to NOT match a regex per-field, and `&&` to combine conditions
+```bash
+awk 'BEGIN { print "NUM\tFOOD"; } $2 ~ /^(c|w)/ && $1 !~ /1/ { print $1,"\t",$2; }' favorite_foods.txt
+# => NUM   FOOD
+# => 2     wasabi
+```
+
 More info: https://www.digitalocean.com/community/tutorials/how-to-use-the-awk-language-to-manipulate-text-in-linux
 
 #### sort
@@ -113,14 +137,63 @@ echo 'a\na\nb' | uniq
 E.g. show counts
 
 ```bash
-echo 'a\na\nb' | uniq
+echo 'a\na\nb' | uniq -c
 # => 2 a
 # => 1 b
 ```
 
+#### xargs
 
+Get args from standard input and do things with them
 
+E.g. remove files matching `test3`
+```bash
+find . -name "*test3*" | xargs rm
+```
 
+E.g. remove files matching `test3` #2
+```bash
+find . -name "*test3*" | xargs -i rm {}
+```
 
+The `-i` basically replaces `{}` with the current parameter
 
+E.g. Print filenames + 'is a file!' for files matching `/test[1,2]{2}$/`
+```bash
+ag -g 'test[1,2]{2}\.txt$' | xargs -Iresult echo result is a file!
+```
 
+The `-I` lets you refer to the current matched param in the command.
+
+#### shell
+
+Simple for loop
+
+```bash
+for i in 1 2 3 .. N
+do
+<commands>
+done
+```
+
+E.g. create files `test1.txt` through `test5.txt`
+```bash
+for i in 1 2 3 4 5
+do
+touch test$i.txt
+done
+```
+
+E.g. print files in directory, but preceeded by some message
+```bash
+for i in $(ls); do
+echo item: $i;
+done
+```
+
+E.g. rename files in current dir with a `2` in their name, to `item_<old_name>`
+```bash
+for i in $(ls | grep 2); do
+mv $1 item_$1;
+done
+```
