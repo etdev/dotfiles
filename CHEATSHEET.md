@@ -1,21 +1,23 @@
 # etdev's Useful Command Cheatsheet
 
 # Contents
-* <a name="#databases">Databases</a>
-  * <a name="#mysql">MySQL</a>
-* <a name="#command_line">Command line</a>
-  * <a name="#ag">ag</a>
-  * <a name="#awk">awk</a>
-  * <a name="#sed">sed</a>
-  * <a name="#sort">sort</a>
-  * <a name="#uniq">uniq</a>
-  * <a name="#xargs"> xargs</a>
-  * <a name="#wc">wc</a>
-  * <a name="#shell">shell (bash/zsh scripting)</a>
-* <a name="#git">Git</a>
-  * <a name="#gitignore_patterns">Gitignore patterns</a>
+* [Databases](#databases)
+  * [MySQL](#mysql)
+* [Command line](#command-line)
+  * [ag](#ag)
+  * [awk](#awk)
+  * [sed](#sed)
+  * [sort](#sort)
+  * [uniq](#uniq)
+  * [xargs](#xargs)
+  * [wc](#wc)
+  * [shell](#shell) (bash/zsh scripting)
+* [Git](#git)
+  * [Gitignore patterns](#gitignore-patterns)
 
-### MySQL <sup>[[link(#databases)]</sup>
+### <a name="databases">Databases</a>
+
+#### <a name="mysql">MySQL</a>
 
 Create a new user
 ```sql
@@ -70,9 +72,9 @@ Add an index to existing column:
 ALTER TABLE t1 ADD index (d);
 ```
 
-### Command-line
+### <a name="command-line">Command line</a>
 
-#### ag (Silver Searcher)
+#### <a name="ag">ag (Silver Searcher)</a>
 
 Agignore patterns
 
@@ -142,7 +144,7 @@ awk 'BEGIN { print "NUM\tFOOD"; } $2 ~ /^(c|w)/ && $1 !~ /1/ { print $1,"\t",$2;
 
 More info: https://www.digitalocean.com/community/tutorials/how-to-use-the-awk-language-to-manipulate-text-in-linux
 
-#### sed
+#### <a name="sed">sed</a>
 
 Sed is a **s**tream **ed**itor.
 
@@ -247,7 +249,7 @@ E.g. Delete all lines between lines starting with `START` and `END` (including t
 sed '/^START/,/^END/d' test.txt
 ```
 
-#### sort
+#### <a name="sort">sort</a>
 
 Sorts text by line
 ```bash
@@ -259,7 +261,7 @@ echo 'c\nb\na' | sort
 
 More info: http://www.computerhope.com/unix/usort.htm
 
-#### uniq
+#### <a name="uniq">uniq</a>
 
 Get the unique values from some text stream/file
 
@@ -278,7 +280,7 @@ echo 'a\na\nb' | uniq -c
 # => 1 b
 ```
 
-#### xargs
+#### <a name="xargs">"xargs</a>
 
 Get args from standard input and do things with them
 
@@ -301,7 +303,7 @@ ag -g 'test[1,2]{2}\.txt$' | xargs -Iresult echo result is a file!
 
 The `-I` lets you refer to the current matched param in the command.
 
-#### shell
+#### <a name="shell">shell</a>
 
 Simple for loop
 
@@ -336,7 +338,7 @@ done
 
 More info: http://www.tecmint.com/wc-command-examples/
 
-#### wc
+#### <a name="wc">wc</a>
 
 Count **l**ines / **w**ords / **c**haracters in a file or stream
 
@@ -364,9 +366,9 @@ wc -c test.txt
 # => 1529 test.txt
 ```
 
-### Git
+### <a name="git">Git</a>
 
-#### gitignore patterns
+#### <a name="gitignore-patterns">gitignore patterns</a>
 
 E.g. Any file or directory called `doc`, recursive
 ```bash
