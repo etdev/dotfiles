@@ -1,6 +1,6 @@
 # etdev's Useful Command Cheatsheet
 
-# Contents
+### Contents
 * [Databases](#databases)
   * [MySQL](#mysql)
 * [Command line](#command-line)
