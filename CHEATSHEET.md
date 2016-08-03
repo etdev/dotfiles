@@ -332,3 +332,87 @@ E.g. Show char count for test.txt
 wc -c test.txt
 # => 1529 test.txt
 ```
+
+### Git
+
+#### gitignore patterns
+
+E.g. Any file or directory called `doc`, recursive
+```bash
+# .gitignore
+doc
+```
+
+E.g. Any directory called `doc`, recursive
+```bash
+# .gitignore
+doc/
+```
+
+E.g. Any file or directory called `doc`, root dir only
+```bash
+# .gitignore
+/doc
+```
+
+E.g. Directory called `doc`, root dir only
+```bash
+# .gitignore
+/doc/
+```
+
+E.g. Files anywhere ending with `.tmp`
+```bash
+# .gitignore
+*.tmp
+```
+
+E.g. Files under the /doc directory ending with `.tmp`
+```bash
+# .gitignore
+/doc/*.tmp
+# matches /doc/test.tmp, NOT /doc/stuff/test.tmp
+```
+
+E.g. File or directory `bar` whenever its parent directory is `foo`
+```bash
+# .gitignore
+**/foo/bar
+```
+
+E.g. All files and directories inside `foo` directory, anywhere
+```bash
+# .gitignore
+foo/**
+```
+
+E.g. `baz` directory with ancestor directory `foo`
+```bash
+# .gitignore
+foo/**/baz/
+```
+
+E.g. All `.html` files except `index.html`
+```bash
+# .gitignore
+*.html
+!index.html
+```
+
+More info: https://git-scm.com/docs/gitignore
+
+### Ag (Silver Searcher)
+
+#### agignore patterns
+
+* Basically the same as `gitignore` patterns, but has some issues
+* Use the latest version if possible
+
+E.g. Minified css or js files anywhere
+```bash
+# .agignore
+**.min.*
+# matches script.min.js, styles.min.css etc.
+```
+
+More info: https://github.com/ggreer/the_silver_searcher/issues/385
