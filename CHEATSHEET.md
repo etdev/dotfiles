@@ -1,6 +1,21 @@
 # etdev's Useful Command Cheatsheet
 
-### MySQL
+# Contents
+* <a name="#databases">Databases</a>
+  * <a name="#mysql">MySQL</a>
+* <a name="#command_line">Command line</a>
+  * <a name="#ag">ag</a>
+  * <a name="#awk">awk</a>
+  * <a name="#sed">sed</a>
+  * <a name="#sort">sort</a>
+  * <a name="#uniq">uniq</a>
+  * <a name="#xargs"> xargs</a>
+  * <a name="#wc">wc</a>
+  * <a name="#shell">shell (bash/zsh scripting)</a>
+* <a name="#git">Git</a>
+  * <a name="#gitignore_patterns">Gitignore patterns</a>
+
+### MySQL <sup>[[link(#databases)]</sup>
 
 Create a new user
 ```sql
@@ -9,7 +24,7 @@ CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
 
 Grant permissions to user
 ```sql
-GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'lccalhost';
+GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'localhost';
 ```
 
 Reload privileges:
@@ -56,6 +71,22 @@ ALTER TABLE t1 ADD index (d);
 ```
 
 ### Command-line
+
+#### ag (Silver Searcher)
+
+Agignore patterns
+
+* Basically the same as `gitignore` patterns, but has some issues
+* Use the latest version if possible
+
+E.g. Minified css or js files anywhere
+```bash
+# .agignore
+**.min.*
+# matches script.min.js, styles.min.css etc.
+```
+
+More info: https://github.com/ggreer/the_silver_searcher/issues/385
 
 #### awk
 Basic syntax
@@ -400,19 +431,3 @@ E.g. All `.html` files except `index.html`
 ```
 
 More info: https://git-scm.com/docs/gitignore
-
-### Ag (Silver Searcher)
-
-#### agignore patterns
-
-* Basically the same as `gitignore` patterns, but has some issues
-* Use the latest version if possible
-
-E.g. Minified css or js files anywhere
-```bash
-# .agignore
-**.min.*
-# matches script.min.js, styles.min.css etc.
-```
-
-More info: https://github.com/ggreer/the_silver_searcher/issues/385
