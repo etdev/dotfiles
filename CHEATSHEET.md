@@ -3,6 +3,7 @@
 ### Contents
 * [Databases](#databases)
   * [MySQL](#mysql)
+  * [Postgresql](#postgres)
 * [Command line](#command-line)
   * [ag](#ag)
   * [awk](#awk)
@@ -71,6 +72,33 @@ ALTER TABLE t1 MODIFY a TINYINT NOT NULL;
 Add an index to existing column:
 ```sql
 ALTER TABLE t1 ADD index (d);
+```
+
+#### <a name="postgres">Postgresql</a>
+
+Add column to table
+```sql
+ALTER TABLE distributors ADD COLUMN address varchar(30);
+```
+
+Drop a column from table:
+```sql
+ALTER TABLE distributors DROP COLUMN address RESTRICT;
+```
+
+Add a not-null constraint to a column:
+```sql
+ALTER TABLE distributors ALTER COLUMN street SET NOT NULL;
+```
+
+Add a foreign key constraint:
+```sql
+ALTER TABLE distributors ADD CONSTRAINT distfk FOREIGN KEY (address) REFERENCES addresses (address) MATCH FULL;
+```
+
+Add a (multi-column) unique constraint:
+```sql
+ALTER TABLE distributors ADD CONSTRAINT dist_id_zipcode_key UNIQUE (dist_id, zipcode);
 ```
 
 ### <a name="command-line">Command line</a>
