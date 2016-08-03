@@ -14,6 +14,7 @@
   * [shell](#shell) (bash/zsh scripting)
 * [Git](#git)
   * [Gitignore patterns](#gitignore-patterns)
+* [One-liners and Misc.](#one-liners)
 
 ### <a name="databases">Databases</a>
 
@@ -433,3 +434,10 @@ E.g. All `.html` files except `index.html`
 ```
 
 More info: https://git-scm.com/docs/gitignore
+
+### <a name="one-liners">One-liners and miscelanneous</a>
+
+Print the last 100 `id`s of a resource (e.g. posts) from a JSON API with metadata, comma-separated
+```bash
+curl http://localhost:3000/v1/posts\?limit\=100 | jq '.results[] | .id' | awk '{print;}' ORS=', '
+```
