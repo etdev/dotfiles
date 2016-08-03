@@ -281,7 +281,7 @@ echo 'a\na\nb' | uniq -c
 # => 1 b
 ```
 
-#### <a name="xargs">"xargs</a>
+#### <a name="xargs">xargs</a>
 
 Get args from standard input and do things with them
 
@@ -435,7 +435,7 @@ E.g. All `.html` files except `index.html`
 
 More info: https://git-scm.com/docs/gitignore
 
-### <a name="one-liners">One-liners and miscelanneous</a>
+### <a name="one-liners">One-liners and misc.</a>
 
 Print the last 100 `id`s of a resource (e.g. posts) from a JSON API with metadata, comma-separated
 ```bash
