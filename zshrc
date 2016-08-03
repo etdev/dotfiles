@@ -153,7 +153,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PYENV_VERSION="3.5.0"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
-eval "$(pyenv init -)"
 if command_exists virtualenv ; then eval "$(pyenv virtualenv-init -)"; fi
 
 # pip should only run if there is a virtualenv currently activated
