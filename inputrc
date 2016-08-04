@@ -1,8 +1,53 @@
+set convert-meta on
+set completion-ignore-case on
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set mark-symlinked-directories on
+set print-completions-horizontally on
+
+set keymap vi-insert
+set editing-mode vi
+
+# Command Mode
+set keymap vi-command
+v: ""
+Control-a: beginning-of-line
+Control-b: backward-char
+Control-d: delete-char
+Control-e: end-of-line
+Control-f: forward-char
+Control-k: kill-line
+Control-n: next-history
+Control-p: previous-history
+
+# Insert Mode
+set keymap vi-insert
+
+"\C-k": kill-line
+"\C-u": unix-line-discard
+
+"\C-p": previous-history
+"\C-n": next-history
+"\C-a": beginning-of-line
+"\C-e": end-of-line
+"\C-f": forward-char
+"\C-b": backward-char
+
+"\et": transpose-words
+"\ef": forward-word
+"\eb": backward-word
+"\ed": kill-word
+"\C-w": unix-word-rubout
+
+"\C-d": delete-char
+"\C-h": backward-delete-char
+
+"\e.": yank-last-arg
+"\e_": yank-last-arg
+
+"\C-_": undo
+
+# Custom
 "\e[A": history-search-backward
 "\e[B": history-search-forward
-set show-all-if-ambiguous on
-set completion-ignore-case on
 TAB: menu-complete
-set editing-mode vi
-set keymap vi-command
-
