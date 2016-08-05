@@ -1,4 +1,4 @@
-# etdev's Useful Command Cheatsheet
+# Etdev's Useful Command Cheatsheet
 
 ### Contents
 * [Databases](#databases)
@@ -7,12 +7,13 @@
 * [Command line](#command-line)
   * [ag](#ag)
   * [awk](#awk)
+  * [curl](#curl)
   * [sed](#sed)
+  * [shell](#shell) (bash/zsh scripting)
   * [sort](#sort)
   * [uniq](#uniq)
-  * [xargs](#xargs)
   * [wc](#wc)
-  * [shell](#shell) (bash/zsh scripting)
+  * [xargs](#xargs)
 * [Git](#git)
   * [Gitignore patterns](#gitignore-patterns)
 * [One-liners and Misc.](#one-liners)
@@ -173,6 +174,47 @@ awk 'BEGIN { print "NUM\tFOOD"; } $2 ~ /^(c|w)/ && $1 !~ /1/ { print $1,"\t",$2;
 
 More info: https://www.digitalocean.com/community/tutorials/how-to-use-the-awk-language-to-manipulate-text-in-linux
 
+#### <a name="curl">curl</a>
+E.g. Get your current IP
+```bash
+curl icanhazip.com
+```
+
+E.g. Get http headers for URL
+```bash
+curl -I example.com
+```
+
+E.g. Follow redirects
+```bash
+curl -L google.com
+```
+
+E.g. Continue downloading partially-downloaded file
+```bash
+curl -C - example/com/file.zip
+```
+
+E.g. Pass HTTP Basic Auth credentials
+```bash
+curl -u etdev:pass example.com/members
+```
+
+E.g. Download files in range
+```bash
+curl ftp://ftp.uk.debian.org/debian/pool/main/[a-z]/
+```
+
+E.g. POST to a page
+```bash
+curl -d "name=etdev&password=hunter2" www.example.com/process.php
+```
+
+E.g. Set referer
+```bash
+curl -e "http://someReferringSite.com" http://www.example.com
+```
+
 #### <a name="sed">sed</a>
 
 Sed is a **s**tream **ed**itor.
@@ -278,60 +320,6 @@ E.g. Delete all lines between lines starting with `START` and `END` (including t
 sed '/^START/,/^END/d' test.txt
 ```
 
-#### <a name="sort">sort</a>
-
-Sorts text by line
-```bash
-echo 'c\nb\na' | sort
-# => a
-# => b
-# => c
-```
-
-More info: http://www.computerhope.com/unix/usort.htm
-
-#### <a name="uniq">uniq</a>
-
-Get the unique values from some text stream/file
-
-E.g. simply remove duplicates
-```bash
-echo 'a\na\nb' | uniq
-# => a
-# => b
-```
-
-E.g. show counts
-
-```bash
-echo 'a\na\nb' | uniq -c
-# => 2 a
-# => 1 b
-```
-
-#### <a name="xargs">xargs</a>
-
-Get args from standard input and do things with them
-
-E.g. remove files matching `test3`
-```bash
-find . -name "*test3*" | xargs rm
-```
-
-E.g. remove files matching `test3` #2
-```bash
-find . -name "*test3*" | xargs -i rm {}
-```
-
-The `-i` basically replaces `{}` with the current parameter
-
-E.g. Print filenames + 'is a file!' for files matching `/test[1,2]{2}$/`
-```bash
-ag -g 'test[1,2]{2}\.txt$' | xargs -Iresult echo result is a file!
-```
-
-The `-I` lets you refer to the current matched param in the command.
-
 #### <a name="shell">shell</a>
 
 Simple for loop
@@ -367,6 +355,37 @@ done
 
 More info: http://www.tecmint.com/wc-command-examples/
 
+#### <a name="sort">sort</a>
+
+Sorts text by line
+```bash
+echo 'c\nb\na' | sort
+# => a
+# => b
+# => c
+```
+
+More info: http://www.computerhope.com/unix/usort.htm
+
+#### <a name="uniq">uniq</a>
+
+Get the unique values from some text stream/file
+
+E.g. simply remove duplicates
+```bash
+echo 'a\na\nb' | uniq
+# => a
+# => b
+```
+
+E.g. show counts
+
+```bash
+echo 'a\na\nb' | uniq -c
+# => 2 a
+# => 1 b
+```
+
 #### <a name="wc">wc</a>
 
 Count **l**ines / **w**ords / **c**haracters in a file or stream
@@ -393,9 +412,35 @@ E.g. Show char count for test.txt
 ```bash
 wc -c test.txt
 # => 1529 test.txt
+
+
 ```
 
+#### <a name="xargs">xargs</a>
+
+Get args from standard input and do things with them
+
+E.g. remove files matching `test3`
+```bash
+find . -name "*test3*" | xargs rm
+```
+
+E.g. remove files matching `test3` #2
+```bash
+find . -name "*test3*" | xargs -i rm {}
+```
+
+The `-i` basically replaces `{}` with the current parameter
+
+E.g. Print filenames + 'is a file!' for files matching `/test[1,2]{2}$/`
+```bash
+ag -g 'test[1,2]{2}\.txt$' | xargs -Iresult echo result is a file!
+```
+
+The `-I` lets you refer to the current matched param in the command.
+
 ### <a name="git">Git</a>
+
 
 #### <a name="gitignore-patterns">gitignore patterns</a>
 
