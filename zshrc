@@ -135,11 +135,6 @@ command_exists () {
     type "$1" &> /dev/null ;
 }
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command_exists pyenv ; then eval "$(pyenv init -)"; fi
-
 # go
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
@@ -147,16 +142,13 @@ export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOBIN
 export GOGH=$GOPATH/src/github.com/
 
-# python
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-export PYENV_VERSION="3.5.0"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
-if command_exists virtualenv ; then eval "$(pyenv virtualenv-init -)"; fi
-
-# pip should only run if there is a virtualenv currently activated
 export PIP_REQUIRE_VIRTUALENV=true
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+if command_exists pyenv ; then eval "$(pyenv init -)"; fi
+if command_exists virtualenv ; then eval "$(pyenv virtualenv-init -)"; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
