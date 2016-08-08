@@ -172,6 +172,12 @@ awk 'BEGIN { print "NUM\tFOOD"; } $2 ~ /^(c|w)/ && $1 !~ /1/ { print $1,"\t",$2;
 # => 2     wasabi
 ```
 
+E.g. Set ORS (output record separator) var to use e.g. commas instead of newlines
+```bash
+awk 'ORS=", " { print $1; }' favorite_foods.txt
+# => 1, 2, 3, 4, 5, 
+```
+
 More info: https://www.digitalocean.com/community/tutorials/how-to-use-the-awk-language-to-manipulate-text-in-linux
 
 #### <a name="curl">curl</a>
