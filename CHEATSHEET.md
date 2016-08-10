@@ -75,6 +75,11 @@ Add an index to existing column:
 ALTER TABLE t1 ADD index (d);
 ```
 
+View the indexes on a table:
+```sql
+SHOW INDEXES FROM table_name;
+```
+
 #### <a name="postgres">Postgresql</a>
 
 Add column to table
