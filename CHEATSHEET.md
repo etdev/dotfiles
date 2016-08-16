@@ -80,6 +80,11 @@ View the indexes on a table:
 SHOW INDEXES FROM table_name;
 ```
 
+Connect to database from the command line:
+```bash
+mysql -u USERNAME -pPASSWORD -h HOSTNAMEORIP DATABASENAME
+```
+
 #### <a name="postgres">Postgresql</a>
 
 Add column to table
