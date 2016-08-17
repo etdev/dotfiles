@@ -231,6 +231,36 @@ E.g. Set referer
 curl -e "http://someReferringSite.com" http://www.example.com
 ```
 
+E.g. Set request method
+```bash
+curl -X POST quiet-waters-1228.herokuapp.com/echo
+```
+
+E.g. Add parameters to body
+```bash
+curl -X POST -d "fname=Mark&lname=Bates" quiet-waters-1228.herokuapp.com/echo
+```
+
+E.g. Add parameters to body by specifying a file
+```bash
+curl -X POST -d "fname=Mark&lname=Bates" quiet-waters-1228.herokuapp.com/echo
+```
+
+E.g. POST as a form
+```bash
+curl -X POST -F user[fname]=Mark -F user[lname]=Bates -F foo=bar \
+  quiet-waters-1228.herokuapp.com/echo -H "Accept: application/json"
+```
+
+E.g. Set headers
+```bash
+curl -X POST -d @form_data.json quiet-waters-1228.herokuapp.com/echo \
+  -H "Accept: application/json"
+```
+
+Adding the `Accept: application/json` header will return JSON instead of HTML.
+
+
 #### <a name="sed">sed</a>
 
 Sed is a **s**tream **ed**itor.
