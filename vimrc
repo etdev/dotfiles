@@ -43,6 +43,7 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.py set filetype=python
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
