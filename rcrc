@@ -1,2 +1,2 @@
-EXCLUDES="README.md LICENSE"
+EXCLUDES="README.md LICENSE CHEATSHEET.md com.googlecode.iterm2.plist install.sh"
 DOTFILES_DIRS="$HOME/dotfiles-local $HOME/dotfiles"
