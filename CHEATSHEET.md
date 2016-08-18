@@ -85,6 +85,11 @@ Connect to database from the command line:
 mysql -u USERNAME -pPASSWORD -h HOSTNAMEORIP DATABASENAME
 ```
 
+Check currently-connected database:
+```bash
+SELECT DATABASE();
+```
+
 #### <a name="postgres">Postgresql</a>
 
 Add column to table
