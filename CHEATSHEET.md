@@ -371,6 +371,11 @@ E.g. Delete all lines between lines starting with `START` and `END` (including t
 sed '/^START/,/^END/d' test.txt
 ```
 
+E.g. Replace all instances of `routeParams` with `stateParams` (with ag, xargs)
+```bash
+ag 'routeParams' -l | xargs sed -i 's/routeParams/stateParams/' {}
+```
+
 #### <a name="shell">shell</a>
 
 Simple for loop
