@@ -44,6 +44,7 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile *.py set filetype=python
+  autocmd BufRead,BufNewFile *.js set filetype=javascript
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
@@ -333,3 +334,4 @@ nnoremap <Leader>sp :sp <C-R>=expand('%:p:h') . '/'<CR>
 nnoremap <Leader>vsp :vsp <C-R>=expand('%:p:h') . '/'<CR>
 
 au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
+au FileType javascript setl sw=4 sts=4 et
