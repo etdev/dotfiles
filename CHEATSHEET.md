@@ -193,6 +193,18 @@ awk 'ORS=", " { print $1; }' favorite_foods.txt
 # => 1, 2, 3, 4, 5, 
 ```
 
+Built-in variables:
+```bash
+ARGC = input argument count (cols)
+ARGV = array storing the command-line args
+FILENAME = current filename
+FS = input field separator
+NF = number of fields in current record{
+NR = number of current record
+OFS = output field separator (def. space)
+RS = input record separator (def. newline)
+```
+
 More info: https://www.digitalocean.com/community/tutorials/how-to-use-the-awk-language-to-manipulate-text-in-linux
 
 #### <a name="curl">curl</a>
