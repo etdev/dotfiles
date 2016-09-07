@@ -169,9 +169,6 @@ let g:solarized_termcolors = 256
 set background=dark
 colorscheme solarized
 
-" Set strict backspace behavior
-set backspace=
-
 " Case-insensitive search
 set smartcase
 set ignorecase
