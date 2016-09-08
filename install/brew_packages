@@ -1,10 +1,9 @@
-git
-aws-shell
+zsh
+tmux
 autoconf
 automake
 binutils
 brew-cask
-geoip
 brew-rmtree
 ctags
 diffutils
@@ -12,17 +11,19 @@ ed --with-default-names
 ed --with-default-names
 findutils --with-default-names
 gawk
+geoip
+git
 gmp
 gnu-indent --with-default-names
 gnu-sed --with-default-names
 gnu-tar --with-default-names
 gnu-which --with-default-names
 gnutls
-gnutls
 grep --with-default-names
 gzip
 heroku
 heroku-toolbelt
+htop
 hub
 iftop
 imagemagick
@@ -46,19 +47,15 @@ neovim
 nettle
 nginx
 nmap
-speedtest_cli
 nodejs
 oniguruma
 openssl
 pcre
-perl
-phantomjs
 pkg-config
 postgresql
 pyenv
 pyenv-virtualenv
 python
-qt
 rbenv
 rcm
 readline
@@ -67,15 +64,14 @@ redis
 rename
 ruby
 ruby-build
+speedtest_cli
 sqlite
 the_silver_searcher
 tidy-html5
 tmux
 tree
+vim
+vimpager
 watch
 wdiff --with-gettext
 xz
-zsh
-vimpager
-vim
-htop

@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-# switch to zsh
-chsh -s $(which zsh)
-exec zsh
-
 # check platform
 if [ "$(uname)" == "Darwin" ]; then
     # mac
@@ -21,7 +17,12 @@ if [ "$platform" == "mac" ]; then
   sh ./install/brew.sh
 fi
 
+# switch to zsh
+chsh -s $(which zsh)
+exec zsh
+
 # prezto
+echo "Installing prezto"
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 setopt EXTENDED_GLOB
@@ -33,4 +34,10 @@ done
 env RCRC=$HOME/dotfiles/rcrc rcup
 
 # set zsh theme
-/bin/cp zsh/agnoster.zsh-theme ~/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme
+echo "Installing custom zsh prompt"
+/bin/cp zsh/agnoster.zsh-theme $HOME/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme
+
+# powerline fonts
+echo "Installing patched powerline fonts"
+git clone git@github.com:powerline/powerline_fonts.git
+sh powerline_fonts/install.sh
