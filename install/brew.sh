@@ -20,7 +20,7 @@ while read package; do
 done <brew_packages
 
 # install cask packages
-while read application; do
-  echo $application;
+#while read application; do
+  #echo $application;
   #brew cask install $application;
-done <brew_repos
+#done <brew_cask

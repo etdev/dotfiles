@@ -1,0 +1,13 @@
+# print the man explanation of a specific flag for some program
+man_flag() {
+  if [[ $# < 2 ]]; then
+    echo 'please enter a command and a flag'
+  else
+    pattern="/^ *$2/"
+    man "$1" | cat -t | remove_unprintable | awk $pattern RS=
+  fi
+}
+
+remove_unprintable() {
+  sed 's/_\^H//g' | sed 's/-\^H//g' | sed 's/\^H.//g'
+}

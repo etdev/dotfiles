@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# switch to zsh
+chsh -s $(which zsh)
+exec zsh
+
 # check platform
 if [ "$(uname)" == "Darwin" ]; then
     # mac
