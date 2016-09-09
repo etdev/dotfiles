@@ -14,6 +14,7 @@
   * [uniq](#uniq)
   * [wc](#wc)
   * [xargs](#xargs)
+  * [paste](#paste)
 * [Git](#git)
   * [Gitignore patterns](#gitignore-patterns)
 * [One-liners and Misc.](#one-liners)
@@ -506,6 +507,18 @@ ag -g 'test[1,2]{2}\.txt$' | xargs -Iresult echo result is a file!
 ```
 
 The `-I` lets you refer to the current matched param in the command.
+
+#### <a name="paste">MySQL</a>
+
+E.g. List the files in current directory in three columns
+```bash
+ls | paste - - -
+```
+
+E.g. Combine pairs of lines from a file into single lines
+```bash
+paste -s -d '\t\n' - - myfile
+```
 
 ### <a name="git">Git</a>
 
