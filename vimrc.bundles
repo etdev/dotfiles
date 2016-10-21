@@ -45,11 +45,12 @@ Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-ragtag'
 Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'mxw/vim-jsx'
-" Plugin 'pangloss/vim-javascript'
+"Plugin 'vim-scripts/SQLUtilities'
+Plugin 'mpyatishev/vim-sqlformat'
+Plugin 'pangloss/vim-javascript'
 Plugin 'etdev/vim-hexcolor'
 Plugin 'etdev/vim-textobject-pack'
 Plugin 'etdev/ag.vim'
-
 
 call vundle#end()
 filetype on

@@ -9,6 +9,7 @@ vendor/bundle
 *.DS_STORE
 *.sw[nop]
 .bundle
+.git
 .env
 db/*.sqlite3
 tags

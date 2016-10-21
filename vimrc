@@ -143,14 +143,14 @@ set splitbelow
 set splitright
 
 " configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_check_on_w = 0
-let g:syntastic_scss_checkers = ['scss_lint']
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+highlight link SyntasticError SpellBad
+highlight link SyntasticWarning SpellCap
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_ruby_checkers = ['ruby-lint', 'reek', 'rubocop']
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
@@ -311,12 +311,6 @@ let g:vimrubocop_keymap = 0
 nmap <Leader>ru :RuboCop<CR>
 nnoremap <Leader>sy :SyntasticCheck<CR>
 
-" Insert binding.pry call
-let @p = "Orequire 'pry'; binding.pry; nil.nil?"
-" Delete binding Pry calls in file
-nmap <silent> <Leader>dp :g/binding.pry/d<CR>
-" Delete binding Pry calls in All open buffers
-nmap <silent> <Leader>dpa :bufdo g/binding.pry/d<CR>
 
 " Swap (rotate)windows
 nmap <silent> <Leader>sp :wincmd r<CR>
@@ -332,3 +326,14 @@ nnoremap <Leader>vsp :vsp <C-R>=expand('%:p:h') . '/'<CR>
 
 au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
 au FileType javascript setl sw=4 sts=4 et
+
+" prettify json
+nmap =j :%!python -m json.tool<CR>
+" prettify sql
+vmap <silent>sf        <Plug>SQLU_Formatter<CR> 
+nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR> 
+nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR> 
+nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR> 
+nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
+
+set shell=bash
