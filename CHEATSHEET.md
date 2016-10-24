@@ -607,3 +607,19 @@ Usage example:
 ```bash
 smartresize inputfile.png 300 outputdir/
 ```
+
+Pyenv/Virtualenv - create
+```bash
+pyenv virtualenv <python_version> <virtualenv_name>
+```
+
+E.g.
+```bash
+pyenv virtualenv 3.5.1 my_virtualenv
+```
+
+Pyenv/Virtualenv - activate
+```bash
+pyenv activate <virtualenv_name>
+```
+
