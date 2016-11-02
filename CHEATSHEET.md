@@ -17,6 +17,7 @@
   * [paste](#paste)
 * [Git](#git)
   * [Gitignore patterns](#gitignore-patterns)
+* [Javascript](#javascript)
 * [One-liners and Misc.](#one-liners)
 
 ### <a name="databases">Databases</a>
@@ -593,7 +594,7 @@ More info: https://git-scm.com/docs/gitignore
 
 Print the last 100 `id`s of a resource (e.g. posts) from a JSON API with metadata, comma-separated
 ```bash
-curl http://localhost:3000/v1/posts\?limit\=100 | jq '.results[] | .id' | awk '{print;}' ORS=', '
+=
 ```
 
 Smartresize function with imagemagick
@@ -601,7 +602,7 @@ Smartresize function with imagemagick
 smartresize() {
    mogrify -path $3 -filter Triangle -define filter:support=2 -thumbnail $2 -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 -define jpeg:fancy-upsampling=off -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -define png:exclude-chunk=all -interlace none -colorspace sRGB $1
 }
-```
+=
 
 Usage example:
 ```bash
@@ -623,3 +624,36 @@ Pyenv/Virtualenv - activate
 pyenv activate <virtualenv_name>
 ```
 
+### <a name="javascript">Javascript</a>
+
+#### Iteration
+
+**Array** - Select elements from array where condition is true
+
+```js
+arr.filter(element => element.enabled);
+```
+
+**Array** - Get array with 5 added to all elements (non-destructive)
+```js
+arr.map(element => element + 5);
+```
+
+**Object** - Iterate through an Object
+```js
+for (var key in p) {
+  if (p.hasOwnProperty(key)) {
+    console.log(key + " -> " + p[key]);
+  }
+}
+```
+
+**String** - Iterate through string
+```js
+const str = 'myString';
+for ( const chr of str ){
+  do_something(chr);
+}
+```
+
+You can also use the for-of loop for Maps, Sets, and most other iterable objects.
