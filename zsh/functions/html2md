@@ -1,0 +1,21 @@
+html2md() {
+  # exit if no arguments given
+  if [[ -z "$1" ]]; then
+    echo 'Please enter some html or a URL'
+    return -1
+  fi
+
+  # If given URL, use curl to get the raw response first
+  if [[ "$1" =~ ^https? ]]; then
+    if ! [[ -x "$(command -v curl)" ]]; then
+      echo 'Please install curl'
+      return -1
+    fi
+    html="$(curl $1)"
+  else
+    html="$1"
+  fi
+
+  echo $(pandoc -s -r html $html)
+  return 0
+}

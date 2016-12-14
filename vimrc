@@ -338,3 +338,6 @@ nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR>
 nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 
 set shell=bash
+
+" python allow up to 99 characters per line
+let g:syntastic_python_pylint_post_args="--max-line-length=99"

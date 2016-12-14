@@ -6,7 +6,8 @@ git_prompt_info() {
   fi
 }
 setopt promptsubst
-export EDITOR=/usr/local/bin/vim
+export EDITOR=vim
+export VISUAL=vim
 
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)

@@ -21,12 +21,12 @@ alias be= "bundle exec "
 alias berg="bundle exec rails generate"
 alias berd="bundle exec rails db"
 alias bers="bundle exec rails server"
-alias bersb="bundle exec rails server -d"
 alias berdm="bundle exec rake db:migrate"
 alias bersk="kill -9 \$(cat tmp/pids/server.pid)"
 alias berst="tail -f log/development.log"
 alias berst-t="tail -f log/test.log"
 alias berc="bundle exec rails console"
+alias berdb="bundle exec rails dbconsole"
 alias berspec="bundle exec rspec"
 
 # git
