@@ -341,3 +341,5 @@ set shell=bash
 
 " python allow up to 99 characters per line
 let g:syntastic_python_pylint_post_args="--max-line-length=99"
+
+set backspace=2 " make backspace work like most other apps
