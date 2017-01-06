@@ -34,6 +34,9 @@
   l  = log --pretty=format:\"%h %ar\t(%an)\t: %s\" --date=short -20
   lg  = log --pretty=format:\"%h %ar\t(%an)\t: %s\" --date=short -20 --graph
   d = difftool
+
+  # mark a repo as trusted
+  trust = "!mkdir -p .git/safe"
 [core]
   editor = vim
   pager = less -r
