@@ -23,6 +23,7 @@
   updev = !git fetch origin && git rebase origin/develop
   ft = fetch
   br = branch
+  update-subs = submodule update --recursive --remote
 
   #diff
   df = diff
