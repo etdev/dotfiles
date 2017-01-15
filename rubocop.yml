@@ -1,7 +1,32 @@
-StringLiterals:
-    Enabled: false
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'spec/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'Gemfile'
+    - 'Guardfile'
+    - 'Rakefile'
 
-Metrics/LineLength:
-    Max: 99
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
 Documentation:
   Enabled: false
+
+Style/MultilineMethodCallIndentation:
+  Enabled: false
+
+Style/MultilineMethodCallIndentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+

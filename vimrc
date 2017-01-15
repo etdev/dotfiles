@@ -143,14 +143,18 @@ set splitbelow
 set splitright
 
 " configure syntastic syntax checking to check on open as well as save
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 highlight link SyntasticError SpellBad
 highlight link SyntasticWarning SpellCap
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_loc_list_height = 5
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_html_tidy_ignore_errors=["proprietary attribute " ,"trimming empty <", "is not recognized!", "discarding unexpected"]
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
