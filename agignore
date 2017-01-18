@@ -3,7 +3,6 @@ logs/
 images/
 tmp/
 node_modules/
-/build/
 vendor/bundle
 **.min.*
 *.DS_STORE
