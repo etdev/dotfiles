@@ -347,3 +347,13 @@ set shell=bash
 let g:syntastic_python_pylint_post_args="--max-line-length=99"
 
 set backspace=2 " make backspace work like most other apps
+
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabCrMapping                = 0
+let g:UltiSnipsExpandTrigger           = '<tab>'
+let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+
+vnoremap <Leader>rpm :call ExtractPrivateMethod()<CR>
