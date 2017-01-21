@@ -1,6 +1,7 @@
 " Use Vim settings, rather then Vi settings. This setting must be as early as
 " possible, as it has side effects.
 set nocompatible
+set exrc " allow project-specific settings
 "
 " Leader
 let mapleader = " "
@@ -357,3 +358,4 @@ let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
 vnoremap <Leader>rpm :call ExtractPrivateMethod()<CR>
+set secure
