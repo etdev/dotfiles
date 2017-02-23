@@ -331,7 +331,7 @@ nnoremap <Leader>sp :sp <C-R>=expand('%:p:h') . '/'<CR>
 nnoremap <Leader>vsp :vsp <C-R>=expand('%:p:h') . '/'<CR>
 
 au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
-au FileType javascript setl sw=4 sts=4 et
+au FileType javascript setl sw=2 sts=2 et
 
 " prettify json
 nmap =j :%!python -m json.tool<CR>
@@ -345,7 +345,7 @@ nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 set shell=bash
 
 " python allow up to 99 characters per line
-let g:syntastic_python_pylint_post_args="--max-line-length=99"
+" let g:syntastic_python_pylint_post_args="--max-line-length=99"
 
 set backspace=2 " make backspace work like most other apps
 
@@ -359,3 +359,7 @@ let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
 vnoremap <Leader>rpm :call ExtractPrivateMethod()<CR>
 set secure
+
+" Redraw!
+au FocusGained * :redraw!
+nnoremap <Leader>r :redraw!<CR>
