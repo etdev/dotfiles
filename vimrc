@@ -157,6 +157,9 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_html_tidy_ignore_errors=["proprietary attribute " ,"trimming empty <", "is not recognized!", "discarding unexpected"]
+let g:syntastic_mode_map = {
+  \ "mode": "active",
+  \ "passive_filetypes": ["py"] }
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.

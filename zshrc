@@ -160,3 +160,5 @@ if [[ -d "${RBENV_ROOT}" ]]; then
   eval "$(rbenv init -)"
 fi
 
+# tmuxinator
+source ~/.bin/tmuxinator.zsh
