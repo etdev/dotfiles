@@ -5,4 +5,12 @@ touch $HOME/.psqlrc.local
 if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
   git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 fi
-vim -u $HOME/.vimrc.bundles +PluginInstall +PluginClean! +qa
+
+echo "Installing vim bundles..."
+if [ -x "$(command -v nvim)" ]; then
+  nvim -Es -u $HOME/.vimrc.bundles +PluginInstall +PluginClean! +qa
+else
+  vim -es -u $HOME/.vimrc.bundles +PluginInstall +PluginClean! +qa
+fi
+
+echo "Done."

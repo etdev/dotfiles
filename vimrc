@@ -366,3 +366,6 @@ set secure
 " Redraw!
 au FocusGained * :redraw!
 nnoremap <Leader>r :redraw!<CR>
+
+" Fix vue.js
+autocmd BufNewFile,BufRead *.vue set filetype=html
