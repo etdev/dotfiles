@@ -9,6 +9,6 @@ set print-completions-horizontally on
 "\e[B": history-search-forward
 TAB: menu-complete
 set editing-mode vi
-set keymap vi-command
+# set keymap vi-command
 "\e.":yank-last-arg
 "\e_": yank-last-arg
