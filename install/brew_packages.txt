@@ -10,12 +10,10 @@ diffutils
 ed --with-default-names
 ed --with-default-names
 findutils --with-default-names
-gawk
 geoip
 git
 gmp
 gnu-indent --with-default-names
-gnu-sed --with-default-names
 gnu-tar --with-default-names
 gnu-which --with-default-names
 gnutls
@@ -23,7 +21,6 @@ grep --with-default-names
 gzip
 heroku
 heroku-toolbelt
-htop
 hub
 iftop
 imagemagick
