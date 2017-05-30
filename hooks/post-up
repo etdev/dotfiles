@@ -1,16 +1,24 @@
 #!/bin/sh
 
-touch $HOME/.psqlrc.local
+touch "$HOME"/.psqlrc.local
 
-if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
-  git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+if [ ! -e "$HOME"/.vim/autoload/plug.vim ]; then
+  curl -fLo "$HOME"/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+vim -u "$HOME"/.vimrc.bundles +PlugInstall +PlugClean! +qa
 
-echo "Installing vim bundles..."
-if [ -x "$(command -v nvim)" ]; then
-  nvim -Es -u $HOME/.vimrc.bundles +PluginInstall +PluginClean! +qa
-else
-  vim -es -u $HOME/.vimrc.bundles +PluginInstall +PluginClean! +qa
+reset -Q
+
+# detect old OS X broken /etc/zshenv and suggest rename
+if grep -qw path_helper /etc/zshenv 2>/dev/null; then
+  dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
+
+  cat <<MSG >&2
+Warning: \`/etc/zshenv' configuration file on your system may cause unexpected
+PATH changes on subsequent invocations of the zsh shell. The solution is to
+rename the file to \`zprofile':
+  sudo mv /etc/{zshenv,zprofile}
+(called from ${dir}/post-up:${LINENO})
+MSG
 fi
-
-echo "Done."

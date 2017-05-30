@@ -91,7 +91,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   "Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
 
   "ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
@@ -197,12 +197,6 @@ map <C-w>p :bprevious<cr>
 
 " Re-map command to open new horizontal split, which we just overwrote (matches Ctrlp)
 map <C-w>x :new<cr>
-
-" Re-color ag output when using :grep
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --color
-endif
 
 " Set scrolloff to 2 lines
 set scrolloff=2
@@ -313,7 +307,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 
 " Search ag.vim with leader + a
-nnoremap <Leader>a :Ag 
+nnoremap <Leader>a :Ack ''<LEFT>
 
 " Rubocop
 let g:vimrubocop_keymap = 0
@@ -369,3 +363,12 @@ nnoremap <Leader>r :redraw!<CR>
 
 " Fix vue.js
 autocmd BufNewFile,BufRead *.vue set filetype=html
+
+" Livedown
+nmap <Leader>md :LivedownPreview<CR>
+
+" Ack => Ag
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev Ag Ack

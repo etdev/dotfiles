@@ -53,9 +53,11 @@ Plugin 'honza/vim-snippets'
 Plugin 'ecomba/vim-ruby-refactoring'
 Plugin 'geoffharcourt/vim-ruby-private-method-extract'
 Plugin 'JulesWang/css.vim'
+Plugin 'shime/vim-livedown'
+Plugin 'mileszs/ack.vim'
 Plugin 'etdev/vim-hexcolor'
 Plugin 'etdev/vim-textobject-pack'
-Plugin 'etdev/ag.vim'
+" Plugin 'etdev/ag.vim'
 
 call vundle#end()
 filetype on
