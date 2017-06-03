@@ -367,8 +367,4 @@ autocmd BufNewFile,BufRead *.vue set filetype=html
 " Livedown
 nmap <Leader>md :LivedownPreview<CR>
 
-" Ack => Ag
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-cnoreabbrev Ag Ack
+let g:ag_prg = 'ag --vimgrep'
