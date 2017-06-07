@@ -307,7 +307,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 
 " Search ag.vim with leader + a
-nnoremap <Leader>a :Ack ''<LEFT>
+nnoremap <Leader>a :Ag 
 
 " Rubocop
 let g:vimrubocop_keymap = 0
