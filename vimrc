@@ -85,6 +85,10 @@ if has("autocmd")
   autocmd VimEnter * :call SetupCtrlP()
 endif
 
+nnoremap <Leader>pc :CtrlP app/controllers<CR>
+nnoremap <Leader>pm :CtrlP app/models<CR>
+nnoremap <Leader>pv :CtrlP app/views<CR>
+
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
@@ -368,3 +372,7 @@ autocmd BufNewFile,BufRead *.vue set filetype=html
 nmap <Leader>md :LivedownPreview<CR>
 
 let g:ag_prg = 'ag --vimgrep'
+
+" Remove splitbar
+set fillchars+=vert:│
+hi VertSplit ctermbg=NONE guibg=NONE

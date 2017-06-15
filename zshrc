@@ -85,14 +85,13 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
-# Add $HOME/.bin to path
+# Add $HOME/.bin and mac_scripts to path
 export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.mac_scripts:$PATH"
 
 # Source prezto and set to "agnoster" prompt (if installed)
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-  prompt agnoster
-  prompt paradox
   prompt agnoster
 fi
 
@@ -161,4 +160,14 @@ if [[ -d "${RBENV_ROOT}" ]]; then
 fi
 
 # tmuxinator
-source ~/.bin/tmuxinator.zsh
+if [ -e $HOME/.bin/tmuxinator.zsh ]; then
+  source $HOME/.bin/tmuxinator.zsh
+fi
+
+# local zshrc
+if [ -e $HOME/.zshrc.local ]; then
+  source $HOME/.zshrc.local
+fi
+
+# local aliases
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local

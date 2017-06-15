@@ -1,0 +1,4 @@
+tell application "EBMac" to activate
+tell application "System Events"
+  keystroke "L" using command down
+end tell

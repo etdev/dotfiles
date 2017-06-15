@@ -57,3 +57,9 @@ alias ag='ag'
 
 # check public IP
 alias checkmyip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+# Brew
+alias bs='brew services'
+
+# Other
+alias refresh="rcup && exec zsh"
