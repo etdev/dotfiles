@@ -37,8 +37,8 @@ alias gdowndev="git fetch && git reset --hard origin/develop"
 alias gci="git pull --rebase && rake && git push"
 alias gg="git grep";
 
-# Bundler
-alias b="bundle"
+# Homebrew
+alias b="brew"
 
 # Tests and Specs
 alias t="ruby -I test"
@@ -51,9 +51,6 @@ alias s="rspec"
 
 # Pretty print the path
 alias path="echo $PATH | tr -s ':' '\n'"
-
-# Use global agignore
-alias ag='ag'
 
 # check public IP
 alias checkmyip='dig +short myip.opendns.com @resolver1.opendns.com'
