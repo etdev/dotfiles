@@ -6,6 +6,7 @@ alias ...='../..'
 alias -g G='| grep'
 alias -g M='| less'
 alias -g L='| wc -l'
+alias -g P='| pbcopy'
 alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias diff="colordiff";

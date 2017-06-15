@@ -152,6 +152,9 @@ if command_exists virtualenv && [[ -x "virtualenv" ]] ; then eval "$(pyenv virtu
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export GREP_COLOR='34'
+export GREP_COLORS='34'
+
 # rbenv setup
 export RBENV_ROOT="${HOME}/.rbenv"
 if [[ -d "${RBENV_ROOT}" ]]; then
