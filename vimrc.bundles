@@ -78,8 +78,15 @@ Plug 'honza/vim-snippets'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'geoffharcourt/vim-ruby-private-method-extract'
 Plug 'JulesWang/css.vim'
-Plug 'shime/vim-livedown'
-"Plug 'mileszs/ack.vim'
+" mac-specific
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    Plug 'shime/vim-livedown'
+  endif
+endif
+
+" forked
 Plug 'etdev/vim-hexcolor'
 Plug 'etdev/vim-textobject-pack'
 Plug 'etdev/ag.vim'
