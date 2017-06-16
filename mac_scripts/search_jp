@@ -1,4 +1,2 @@
-tell application "EBMac" to activate
-tell application "System Events"
-  keystroke "L" using command down
-end tell
+#!/usr/local/env bash
+open ./jp_search.app

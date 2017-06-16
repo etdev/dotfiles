@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.nginx.plist
