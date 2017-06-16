@@ -174,3 +174,9 @@ fi
 
 # local aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
+
+# Don't do weird underscore autocompletion for stuff that doesn't exist
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+# pasting with tabs doesn't perform completion
+zstyle ':completion:*' insert-tab pending
