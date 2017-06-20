@@ -38,9 +38,6 @@ alias gdowndev="git fetch && git reset --hard origin/develop"
 alias gci="git pull --rebase && rake && git push"
 alias gg="git grep";
 
-# Homebrew
-alias b="brew"
-
 # Tests and Specs
 alias t="ruby -I test"
 
