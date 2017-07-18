@@ -1,3 +1,4 @@
 !bin
 vim/bundle/
 tmuxinator/
+zsh/functions_local/

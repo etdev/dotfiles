@@ -180,3 +180,13 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 
 # pasting with tabs doesn't perform completion
 zstyle ':completion:*' insert-tab pending
+
+# load custom executable local functions
+if [[ -d $HOME/.zsh/functions_local ]]; then
+  for function in ~/.zsh/functions_local/*; do
+    source $function
+  done
+fi
+
+# useful variables
+export df=$HOME/dotfiles

@@ -25,7 +25,7 @@
   rename-branch = !sh -c 'old=$(git current-branch) && git branch -m $old $1 && git push origin --set-upstream $1 && git push origin --delete $old' -
   up = !git fetch origin && git rebase origin/master
   updev = !git fetch origin && git rebase origin/develop
-  push-f = push --force-with-lease
+  push-fl = push --force-with-lease
 
   #diff
   df = diff

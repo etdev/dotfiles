@@ -376,3 +376,8 @@ let g:ag_prg = 'ag --vimgrep'
 " Remove splitbar
 set fillchars+=vert:│
 hi VertSplit ctermbg=NONE guibg=NONE
+
+" Copy current file
+nnoremap <silent> <Leader>cf :let @+ = expand("%:p")<CR>
+nnoremap <silent> <Leader>cp :let @+ = expand("%")<CR>
+nnoremap <silent> <Leader>ct :let @+ = expand("%:t")<CR>

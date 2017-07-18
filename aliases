@@ -58,3 +58,5 @@ alias bs='brew services'
 
 # Other
 alias refresh="rcup && exec zsh"
+alias refr="rcup && exec zsh"
+alias pt=papertrail

@@ -1,0 +1,11 @@
+accesses_only() {
+  while read line; do
+    echo "$line" | grep -E --color=none --line-buffered '(Process|Started)' | sed -l 's/Processing by Api::/  ->/; s/^Started //; s/ as JSON$//; s/ for ::.*$//' | awk '{ if ($1 ~ /(GET|POST|PUT|PATCH|OPTIONS|DELETE)/) print "\n"$0; else print $0; }'
+  done < "${1:-/dev/stdin}"
+}
+
+accesses_tracking_only() {
+  while read line; do
+    echo "$line" | grep -E --color=none --line-buffered '(Process|Started|\[TRACK\])' | sed -l 's/Processing by Api::/  ->/; s/^Started //; s/ as JSON$//; s/ for ::.*$//' | awk '{ if ($1 ~ /(GET|POST|PUT|PATCH|OPTIONS|DELETE)/) print "\n"$0; else print $0; }'
+  done < "${1:-/dev/stdin}"
+}
