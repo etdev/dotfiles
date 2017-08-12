@@ -381,3 +381,4 @@ hi VertSplit ctermbg=NONE guibg=NONE
 nnoremap <silent> <Leader>cf :let @+ = expand("%:p")<CR>
 nnoremap <silent> <Leader>cp :let @+ = expand("%")<CR>
 nnoremap <silent> <Leader>ct :let @+ = expand("%:t")<CR>
+nnoremap <Leader>o :!open %<CR><CR>
