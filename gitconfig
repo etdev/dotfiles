@@ -26,6 +26,7 @@
   up = !git fetch origin && git rebase origin/master
   updev = !git fetch origin && git rebase origin/develop
   push-fl = push --force-with-lease
+  prune-all = !git_prune_all
 
   #diff
   df = diff

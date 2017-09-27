@@ -1,0 +1,9 @@
+# Prune all local git branches besides master and develop
+git_prune_all () {
+  git checkout master
+  git checkout develop
+
+  for branch in $(git branch | grep -v "(develop|master)"); do
+    git branch -D $branch
+  done
+}
