@@ -71,33 +71,23 @@ autocmd FileType java :setlocal sw=4 ts=4 sts=4 " Two spaces for HTML files "
 set list listchars=tab:»·,trail:·,nbsp:·
 
 " CtrlP auto cache clearing.
-function! SetupCtrlP()
-  if exists("g:loaded_ctrlp") && g:loaded_ctrlp
-    augroup CtrlPExtension
-      autocmd!
-      autocmd FocusGained  * CtrlPClearCache
-      autocmd BufWritePost * CtrlPClearCache
-    augroup END
-  endif
-endfunction
+"function! SetupCtrlP()
+  "if exists("g:loaded_ctrlp") && g:loaded_ctrlp
+    "augroup CtrlPExtension
+      "autocmd!
+      "autocmd FocusGained  * CtrlPClearCache
+      "autocmd BufWritePost * CtrlPClearCache
+    "augroup END
+  "endif
+"endfunction
 "if has("autocmd")
   "autocmd VimEnter * :call SetupCtrlP()
 "endif
-
-nnoremap <Leader>pc :CtrlP app/controllers<CR>
-nnoremap <Leader>pm :CtrlP app/models<CR>
-nnoremap <Leader>pv :CtrlP app/views<CR>
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  "Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
-
-  "ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
 endif
 
 " Numbers
@@ -402,10 +392,6 @@ let $VTE_VERSION="100"
 "This unsets the 'last search pattern' register by hitting return
 set nohlsearch
 
-"'ag -Q -l --nocolor --hidden -g "" %s'
-"ag -Q -l --nocolor --hidden -g "" %s
-"command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--skip-vcs-ignores --nogroup --hidden --color-path 33 --color-match "34" --nonumbers --color-line-number "1;33"', {'down': '~40%'})
-"command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--skip-vcs-ignores --nogroup --hidden --color-path 33 --color-match 37 --nonumbers --color-line-number "1;33"', {'down': '~40%'})
 "let g:airline#extensions#branch#enabled = 0
 let g:loaded_python_provider = 1
 let g:loaded_python3_provider = 1
