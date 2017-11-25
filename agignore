@@ -13,3 +13,8 @@ vendor/bundle
 db/*.sqlite3
 tags
 !tags/
+/build
+build
+/git_modules
+/node_modules
+*.log
