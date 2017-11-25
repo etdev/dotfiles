@@ -391,3 +391,9 @@ let g:python3_host_skip_check = 1
 if !empty(matchstr($MY_RUBY_HOME, 'jruby'))
   let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
 endif
+
+"NeoVim handles ESC keys as alt+key, set this to solve the problem
+if has('nvim')
+    set ttimeout
+    set ttimeoutlen=0
+endif
