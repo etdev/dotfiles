@@ -407,3 +407,11 @@ set nohlsearch
 "command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--skip-vcs-ignores --nogroup --hidden --color-path 33 --color-match "34" --nonumbers --color-line-number "1;33"', {'down': '~40%'})
 "command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--skip-vcs-ignores --nogroup --hidden --color-path 33 --color-match 37 --nonumbers --color-line-number "1;33"', {'down': '~40%'})
 "let g:airline#extensions#branch#enabled = 0
+let g:loaded_python_provider = 1
+let g:loaded_python3_provider = 1
+let g:python_host_skip_check = 1
+let g:python3_host_skip_check = 1
+
+if !empty(matchstr($MY_RUBY_HOME, 'jruby'))
+  let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
+endif
