@@ -124,10 +124,14 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" vim-rspec mappings
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
+" vim-rspec
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>ta :call RunAllSpecs()<CR>
+
+let g:rspec_command = "!rspec {spec}"
+let g:rspec_runner = "os_x_iterm"
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -135,25 +139,6 @@ let g:html_indent_tags = 'li\|p'
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
-
-" configure syntastic syntax checking to check on open as well as save
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-" comment out temporarily because it was slowing down my vim
-"highlight link SyntasticError SpellBad
-"highlight link SyntasticWarning SpellCap
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_loc_list_height = 5
-"let g:syntastic_auto_loc_list = 0
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_ruby_checkers = ['rubocop']
-"let g:syntastic_html_tidy_ignore_errors=["proprietary attribute " ,"trimming empty <", "is not recognized!", "discarding unexpected"]
-"let g:syntastic_mode_map = {
-  "\ "mode": "active",
-  "\ "passive_filetypes": ["py"] }
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
@@ -383,9 +368,14 @@ let g:fzf_action = {
 
 nnoremap <c-p> :FZF<cr>
 
-"let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-"let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-let $FZF_DEFAULT_COMMAND = 'rg --files --no-messages'
+" prefer rg for FZF
+if executable('ag')
+  let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+endif
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --no-messages'
+endif
+
 " force the block cursor
 let $VTE_VERSION="100"
 
