@@ -36,7 +36,7 @@ call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
 Plug 'kchmck/vim-coffee-script'
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'scrooloose/syntastic'
 Plug 'slim-template/vim-slim'
@@ -80,6 +80,9 @@ Plug 'geoffharcourt/vim-ruby-private-method-extract'
 Plug 'JulesWang/css.vim'
 Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 " mac-specific
 if has("unix")
   let s:uname = system("uname")

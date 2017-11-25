@@ -1,6 +1,9 @@
 *.DS_Store
 *.sw[nop]
 .bundle
+/build/
+/build
+build
 .env
 db/*.sqlite3
 log/*.log

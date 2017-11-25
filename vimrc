@@ -70,8 +70,7 @@ autocmd FileType java :setlocal sw=4 ts=4 sts=4 " Two spaces for HTML files "
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
-" CtrlP
-"  auto cache clearing.
+" CtrlP auto cache clearing.
 function! SetupCtrlP()
   if exists("g:loaded_ctrlp") && g:loaded_ctrlp
     augroup CtrlPExtension
@@ -148,9 +147,9 @@ set splitbelow
 set splitright
 
 " configure syntastic syntax checking to check on open as well as save
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 highlight link SyntasticError SpellBad
 highlight link SyntasticWarning SpellCap
 let g:syntastic_always_populate_loc_list = 1
@@ -272,7 +271,9 @@ nnoremap <silent> <expr> ^ ScreenMovement("^")
 nnoremap <silent> <expr> $ ScreenMovement("$")
 
 " Fix slow esc + O command (experimental)
-set noesckeys
+if exists(':noesckeys')
+  set noesckeys
+endif
 
 " Add syntax coloring for code blocks within markdown
 au BufNewFile,BufReadPost *.md set filetype=markdown
@@ -382,3 +383,23 @@ nnoremap <silent> <Leader>cf :let @+ = expand("%:p")<CR>
 nnoremap <silent> <Leader>cp :let @+ = expand("%")<CR>
 nnoremap <silent> <Leader>ct :let @+ = expand("%:t")<CR>
 nnoremap <Leader>o :!open %<CR><CR>
+
+" Fuzzy file finder
+let g:fzf_action = {
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+
+nnoremap <c-p> :FZF<cr>
+
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+" force the block cursor
+let $VTE_VERSION="100"
+
+"This unsets the 'last search pattern' register by hitting return
+set nohlsearch
+
+"'ag -Q -l --nocolor --hidden -g "" %s'
+"ag -Q -l --nocolor --hidden -g "" %s
+"command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--skip-vcs-ignores --nogroup --hidden --color-path 33 --color-match "34" --nonumbers --color-line-number "1;33"', {'down': '~40%'})
+"command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--skip-vcs-ignores --nogroup --hidden --color-path 33 --color-match 37 --nonumbers --color-line-number "1;33"', {'down': '~40%'})
