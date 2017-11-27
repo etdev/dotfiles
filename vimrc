@@ -130,7 +130,13 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>ta :call RunAllSpecs()<CR>
 
-let g:rspec_command = "!rspec {spec}"
+if has('nvim')
+  let g:rspec_command = "terminal bundle exec rspec {spec}"
+  "let g:rspec_command = "!rspec --color {spec}"
+else
+  let g:rspec_command = "!rspec {spec}"
+endif
+
 let g:rspec_runner = "os_x_iterm"
 
 " Treat <li> and <p> tags like the block tags they are
@@ -283,7 +289,15 @@ augroup myvimrc
 augroup END
 
 " Nvim
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+"NeoVim handles ESC keys as alt+key, set this to solve the problem
+if has('nvim')
+    set ttimeout
+    set ttimeoutlen=0
+endif
 
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 
@@ -392,11 +406,8 @@ if !empty(matchstr($MY_RUBY_HOME, 'jruby'))
   let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
 endif
 
-"NeoVim handles ESC keys as alt+key, set this to solve the problem
-if has('nvim')
-    set ttimeout
-    set ttimeoutlen=0
-endif
-
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:block-Cursor/lCursor-blinkon0,r-cr:hor20-Cursor/lCursor
 au VimLeave * set guicursor=a:block-blinkon0
+
+" speed up syntax highlighting
+set re=1
