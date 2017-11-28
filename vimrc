@@ -174,7 +174,7 @@ nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-nnoremap <silent> <C-w> :TmuxNavigatePrevious<cr>
+"nnoremap <silent> <C-w> :TmuxNavigatePrevious<cr>
 
 " Switch quickly between buffers (matches tmux window switching)
 map <C-w>n :bnext<cr>
@@ -302,7 +302,7 @@ endif
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 
 " Search ag.vim with leader + a
-nnoremap <Leader>a :Ag 
+nnoremap <Leader>a :Ag
 
 " Rubocop
 let g:vimrubocop_keymap = 0
@@ -328,10 +328,10 @@ au FileType javascript setl sw=2 sts=2 et
 " prettify json
 nmap =j :%!python -m json.tool<CR>
 " prettify sql
-vmap <silent>sf        <Plug>SQLU_Formatter<CR> 
-nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR> 
-nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR> 
-nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR> 
+vmap <silent>sf        <Plug>SQLU_Formatter<CR>
+nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR>
+nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR>
+nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR>
 nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 
 set shell=bash
@@ -340,14 +340,6 @@ set shell=bash
 " let g:syntastic_python_pylint_post_args="--max-line-length=99"
 
 set backspace=2 " make backspace work like most other apps
-
-let g:SuperTabDefaultCompletionType    = '<C-n>'
-let g:SuperTabCrMapping                = 0
-let g:UltiSnipsExpandTrigger           = '<tab>'
-let g:UltiSnipsJumpForwardTrigger      = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
-let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
 vnoremap <Leader>rpm :call ExtractPrivateMethod()<CR>
 set secure
@@ -376,11 +368,31 @@ nnoremap <Leader>o :!open %<CR><CR>
 
 " Fuzzy file finder
 let g:fzf_action = {
-      \ 'ctrl-s': 'split',
-      \ 'ctrl-v': 'vsplit'
-      \ }
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+let g:fzf_colors ={
+  \ 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Statement'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'Normal'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment']
+\ }
+
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 nnoremap <c-p> :FZF<cr>
+nnoremap <leader>h :History<CR>
+nnoremap <leader>b :Buffers<CR>
 
 " prefer rg for FZF
 if executable('ag')
@@ -409,5 +421,22 @@ endif
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:block-Cursor/lCursor-blinkon0,r-cr:hor20-Cursor/lCursor
 au VimLeave * set guicursor=a:block-blinkon0
 
-" speed up syntax highlighting
+" speed up syntax highlighting (IMPORTANT)
 set re=1
+
+" Insert binding.pry calls
+nnoremap <leader>pr obinding.pry<esc>k<CR>
+
+" Insert debugger calls
+nnoremap <leader>db odebugger;<esc>k<CR>
+
+"inoremap <silent> <C-j> <C-r>=LoadUltiSnips()<cr>
+
+  "" This function only runs when UltiSnips is not loaded
+  "function! LoadUltiSnips()
+    "let l:curpos = getcurpos()
+    "execute plug#load('ultisnips')
+    "call cursor(l:curpos[1], l:curpos[2])
+    "call UltiSnips#ExpandSnippet()
+    "return ""
+  "endfunction
