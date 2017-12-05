@@ -31,7 +31,6 @@ alias berc="bundle exec rails console"
 alias berdb="bundle exec rails dbconsole"
 alias berspec="bundle exec rspec"
 alias h='http'
-alias b='brew'
 
 # git
 alias gcb="git branch | grep -v 'master' | xargs git branch -D"

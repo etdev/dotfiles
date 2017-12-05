@@ -130,14 +130,9 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>ta :call RunAllSpecs()<CR>
 
-if has('nvim')
-  let g:rspec_command = "terminal bundle exec rspec {spec}"
-  "let g:rspec_command = "!rspec --color {spec}"
-else
-  let g:rspec_command = "!rspec {spec}"
-endif
-
+"let g:rspec_command = "!rspec {spec}"
 let g:rspec_runner = "os_x_iterm"
+let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec}\n")'
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -430,13 +425,4 @@ nnoremap <leader>pr obinding.pry<esc>k<CR>
 " Insert debugger calls
 nnoremap <leader>db odebugger;<esc>k<CR>
 
-"inoremap <silent> <C-j> <C-r>=LoadUltiSnips()<cr>
-
-  "" This function only runs when UltiSnips is not loaded
-  "function! LoadUltiSnips()
-    "let l:curpos = getcurpos()
-    "execute plug#load('ultisnips')
-    "call cursor(l:curpos[1], l:curpos[2])
-    "call UltiSnips#ExpandSnippet()
-    "return ""
-  "endfunction
+let g:tslime_always_current_session = 1

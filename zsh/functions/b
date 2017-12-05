@@ -1,0 +1,12 @@
+# No arguments: `bundle`
+# With arguments: acts like `brew`
+b() {
+  if [[ $# > 0 ]]; then
+    brew $@
+  else
+    bundle
+  fi
+}
+
+# Complete b like brew
+compdef b=brew

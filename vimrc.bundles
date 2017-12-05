@@ -47,7 +47,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-haml'
 Plug 'vim-ruby/vim-ruby'
-"Plug 'vim-scripts/ctags.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mustache/vim-mustache-handlebars'
@@ -55,22 +54,20 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'lyuts/vim-rtags'
-Plug 'craigemery/vim-autotag'
-Plug 'fatih/vim-go'
-Plug 'tpope/vim-ragtag'
+"Plug 'fatih/vim-go'
+"Plug 'tpope/vim-ragtag'
 Plug 'posva/vim-vue'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'honza/vim-snippets'
-Plug 'ecomba/vim-ruby-refactoring'
-Plug 'geoffharcourt/vim-ruby-private-method-extract'
+"Plug 'ecomba/vim-ruby-refactoring'
+"Plug 'geoffharcourt/vim-ruby-private-method-extract'
 Plug 'JulesWang/css.vim'
-Plug 'scrooloose/vim-slumlord'
-Plug 'aklt/plantuml-syntax'
+"Plug 'scrooloose/vim-slumlord'
+"Plug 'aklt/plantuml-syntax'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'joshdick/onedark.vim'
+Plug 'jeetsukumaran/vim-indentwise'
 
 " mac-specific
 if has("unix")
@@ -82,7 +79,7 @@ endif
 
 " ultisnips
 Plug 'sirver/ultisnips', { 'on': [] } "{{{
-  let g:UltiSnipsSnippetsDir = '~/.vim/plugged/vim-snippets/UltiSnips'
+  let g:UltiSnipsSnippetsDir = "~/.vim/snippets/UltiSnips"
   let g:UltiSnipsExpandTrigger="<c-j>"
   let g:UltiSnipsJumpForwardTrigger="<c-j>"
   let g:UltiSnipsJumpBackwardTrigger="<c-k>"

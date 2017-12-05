@@ -94,6 +94,7 @@ readline
 reattach-to-user-namespace
 redis
 rename
+rg
 ripgrep
 ruby
 ruby-build

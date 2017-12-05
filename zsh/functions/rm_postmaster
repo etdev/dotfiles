@@ -1,0 +1,4 @@
+# remove postmaster.pid file (for when postgres breaks after restart)
+function rm_postmaster() {
+  rm /usr/local/var/postgres/postmaster.pid
+}
