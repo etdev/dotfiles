@@ -68,6 +68,8 @@ Plug 'JulesWang/css.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jeetsukumaran/vim-indentwise'
+Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
 
 " mac-specific
 if has("unix")
