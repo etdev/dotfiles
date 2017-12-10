@@ -14,6 +14,8 @@
   st = status
   ft = fetch
   br = branch
+  po = !sh -c 'git push origin $1' -
+  pom = push origin master
   reset-hard = !sh -c 'git fetch origin && git reset --hard origin/$1' -
   update-subs = submodule update --recursive --remote
   co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
@@ -33,6 +35,8 @@
   dfc = diff --cached
   dfw = diff --color-words
   dfwc = diff --color-words --cached
+  dfom = diff origin/master
+  dfod = diff origin/develop
 
   # log
   l  = log --pretty=format:\"%h %ar\t(%an)\t: %s\" --date=short -20

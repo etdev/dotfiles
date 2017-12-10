@@ -132,7 +132,8 @@ map <Leader>ta :call RunAllSpecs()<CR>
 
 "let g:rspec_command = "!rspec {spec}"
 let g:rspec_runner = "os_x_iterm"
-let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec}\n")'
+"let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec}\n")'
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -277,6 +278,8 @@ let g:syntastic_ruby_mri_exec='/Users/eric/.rbenv/shims/ruby'
 " Show 80-char limit
 set colorcolumn=80
 highlight ColorColumn ctermbg=235
+" Make gutter clear (for syntastic etc)
+highlight clear SignColumn
 
 augroup myvimrc
   au!
@@ -426,3 +429,21 @@ nnoremap <leader>pr obinding.pry<esc>k<CR>
 nnoremap <leader>db odebugger;<esc>k<CR>
 
 let g:tslime_always_current_session = 1
+
+" these depend on the etdev/tslime.vim package
+let g:tslime_window = 2
+let g:tslime_pane = 2
+
+" ale
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'coffee': ['coffeelint'],
+\}
+
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_fix_on_save = 0

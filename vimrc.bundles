@@ -68,8 +68,10 @@ Plug 'JulesWang/css.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jeetsukumaran/vim-indentwise'
-Plug 'morhetz/gruvbox'
-Plug 'joshdick/onedark.vim'
+"Plug 'jgdavey/tslime.vim'
+"Plug 'morhetz/gruvbox'
+"Plug 'joshdick/onedark.vim'
+Plug 'w0rp/ale'
 
 " mac-specific
 if has("unix")
@@ -103,6 +105,7 @@ Plug 'sirver/ultisnips', { 'on': [] } "{{{
 Plug 'etdev/vim-hexcolor'
 Plug 'etdev/vim-textobject-pack'
 Plug 'etdev/ag.vim'
+Plug 'etdev/tslime.vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

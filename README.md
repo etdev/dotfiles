@@ -143,6 +143,7 @@ Things to install/do on fresh install
 * Everything in Thoughtbot/Laptop
 * Patched Airline fonts
 * Load iTerm settings, fix colors etc.
+* Install tmux plugin manager (tpm) and plugins
 * These dotfiles
 * Prezto
 * Move agnoster file
@@ -167,4 +168,3 @@ Things to install/do on fresh install
 * Login to lastpass
 * Enable chrome experiments and install dark devtools theme
 * Fix right-click behavior in *Right Click Opens Link in New Tab* chrome extension (like [this](http://i.imgur.com/uP959Mx.png))
-* 
