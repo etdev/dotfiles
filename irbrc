@@ -1,9 +1,3 @@
-Pry.commands.alias_command 'c', 'continue'
-Pry.commands.alias_command 's', 'step'
-Pry.commands.alias_command 'n', 'next'
-Pry.commands.alias_command 'f', 'finish'
-Pry.commands.alias_command 'd', 'disable-pry'
-
 # use 'xsel' or 'xclip' if you're in a Linux environment 
 def _cp(kopimi = Readline::HISTORY.entries[-2], options = {})
   if kopimi.respond_to?(:join) && !options[:to_a]

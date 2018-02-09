@@ -142,6 +142,9 @@ export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOBIN
 export GOGH=$GOPATH/src/github.com/
 
+# php
+PATH="/usr/local/opt/php72/bin:$PATH"
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"

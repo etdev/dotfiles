@@ -65,7 +65,8 @@ set shiftround
 set expandtab
 
 set sw=2 ts=2 sts=2                             " Defaults: four spaces per tab "
-autocmd FileType java :setlocal sw=4 ts=4 sts=4 " Two spaces for HTML files "
+autocmd FileType java :setlocal sw=4 ts=4 sts=4 " Four spaces for java files "
+autocmd FileType php :setlocal sw=4 ts=4 sts=4 " Four spaces for php files "
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -297,6 +298,8 @@ if has('nvim')
     set ttimeoutlen=0
 endif
 
+set timeout timeoutlen=1000 ttimeoutlen=100
+
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
 
 " Search ag.vim with leader + a
@@ -447,3 +450,20 @@ let g:ale_fixers = {
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_fix_on_save = 0
+
+set spell
+
+" Zoom / Restore window.
+function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+        execute t:zoom_winrestcmd
+        let t:zoomed = 0
+    else
+        let t:zoom_winrestcmd = winrestcmd()
+        resize
+        vertical resize
+        let t:zoomed = 1
+    endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <silent> <C-A> :ZoomToggle<CR>
