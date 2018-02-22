@@ -18,10 +18,10 @@ Style/StringLiterals:
 Documentation:
   Enabled: false
 
-Style/MultilineMethodCallIndentation:
+Style/TrailingCommaInLiteral:
   Enabled: false
 
-Style/MultilineMethodCallIndentation:
+Layout/MultilineMethodCallIndentation:
   Enabled: false
 
 Style/EmptyMethod:

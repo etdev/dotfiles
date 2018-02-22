@@ -193,3 +193,5 @@ fi
 
 # useful variables
 export df=$HOME/dotfiles
+
+unalias b
