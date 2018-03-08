@@ -195,3 +195,4 @@ fi
 export df=$HOME/dotfiles
 
 unalias b
+typeset -U path PATH

@@ -45,6 +45,10 @@
 
   # mark a repo as trusted
   trust = "!mkdir -p .git/safe"
+
+  ign = update-index --assume-unchanged
+  unign = update-index --no-assume-unchanged
+  ignored = !git ls-files -v | grep "^[[:lower:]]"
 [core]
   editor = vim
   pager = less -r
