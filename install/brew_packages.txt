@@ -119,4 +119,4 @@ xvid
 xz
 yarn
 yasm
-zsh
+tldr
