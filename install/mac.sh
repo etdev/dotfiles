@@ -214,9 +214,7 @@ ok
 
 bot "installing hub"
 require_brew hub
-
-bot "installing iterm2"
-require_cask iterm2
+ok
 
 # node version manager
 require_brew nvm
@@ -827,7 +825,4 @@ for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
   killall "${app}" > /dev/null 2>&1
 done
 
-bot "All done! Launching iTerm2..."
-sleep 2
-
-open -a iTerm2
+bot "All done! Kill this terminal and launch iTerm"
