@@ -15,10 +15,10 @@ const installPackages = function(type){
         if(err) console.error(emoji.get('fire'), err)
       })
     },
-    { concurrency: 10 }
+    { concurrency: 5 }
   );
 }
 
 installPackages('brew')
-installPackages('cask')
-installPackages('npm')
+  .then(installPackages('cask'))
+  .then(installPackages('npm'))
