@@ -6,8 +6,8 @@
 ###########################
 
 # include my library helpers for colorized echo and require_brew, etc
-source ./lib_sh/echos.sh
-source ./lib_sh/requirers.sh
+source ./install/lib_sh/echos.sh
+source ./install/lib_sh/requirers.sh
 
 bot "Hi! I'm going to install tooling and tweak your system settings. Here I go..."
 
@@ -183,7 +183,7 @@ if [[ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]]; then
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
   setopt EXTENDED_GLOB
-  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  for rcfile in "${ZDOTDIR:-$HOME}/.zprezto/runcoms/^README.md(.N)"; do
     ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
   done
 fi
