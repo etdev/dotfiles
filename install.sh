@@ -13,7 +13,7 @@ fi
 
 # install mac components
 if [ "$platform" == "mac" ]; then
-  sh ./install/mac.sh
+  sh ./install_mac.sh
 elif [ "$platform" == "linux" ]; then
-  sh ./install/linux.sh
+  sh ./install_linux.sh
 fi

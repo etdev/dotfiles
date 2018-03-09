@@ -6,8 +6,8 @@
 ###########################
 
 # include my library helpers for colorized echo and require_brew, etc
-source ./install/lib_sh/echos.sh
-source ./install/lib_sh/requirers.sh
+source ./lib_sh/echos.sh
+source ./lib_sh/requirers.sh
 
 bot "Hi! I'm going to install tooling and tweak your system settings. Here I go..."
 
