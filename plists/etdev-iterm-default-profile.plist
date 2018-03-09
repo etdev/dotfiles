@@ -375,7 +375,7 @@
     "Green Component" : 0.1098039215686274
   },
   "Blur" : true,
-  "Normal Font" : "MesloLGMForPowerline-Regular 11",
+  "Normal Font" : "Hack-Regular 12",
   "Vertical Spacing" : 1,
   "Disable Printing" : false,
   "Ansi 7 Color" : {
@@ -409,7 +409,7 @@
     "Green Component" : 0.1098039215686274
   },
   "Screen" : -1,
-  "Non Ascii Font" : "MesloLGMForPowerline-Regular 11",
+  "Non Ascii Font" : "RobotoMonoForPowerline-Regular 12",
   "Ansi 13 Color" : {
     "Green Component" : 0.3389629721641541,
     "Red Component" : 0.3479863405227661,

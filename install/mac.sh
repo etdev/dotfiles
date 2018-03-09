@@ -722,12 +722,15 @@ defaults write com.googlecode.iterm2 "Normal Font" -string "Hack-Regular 12";
 defaults write com.googlecode.iterm2 "Non Ascii Font" -string "RobotoMonoForPowerline-Regular 12";
 ok
 
-running "copying iTerm2 profile"
-cp "./plists/etdev-iterm-default-profile.plist" "$HOME/Library/Application Support/iTerm2/DynamicProfiles/"
-
 running "reading iterm settings"
 defaults read -app iTerm > /dev/null 2>&1;
 ok
+
+running "copying iTerm2 profile"
+mkdir -p "$HOME/Library/Application Support/iTerm/DynamicProfiles/"
+cp "./plists/etdev-iterm-default-profile.plist" "$HOME/Library/Application Support/iTerm/DynamicProfiles/"
+mkdir -p "$HOME/Library/Application Support/iTerm2/DynamicProfiles/"
+cp "./plists/etdev-iterm-default-profile.plist" "$HOME/Library/Application Support/iTerm2/DynamicProfiles/"
 
 ###############################################################################
 bot "Time Machine"
