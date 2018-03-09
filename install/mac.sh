@@ -190,7 +190,7 @@ fi
 # install rcm
 bot "installing rcm dotfiles manager..."
 brew tap thoughtbot/formulae
-require_cask rcm
+require_brew rcm
 
 bot "installing dotfiles..."
 env RCRC=$HOME/dotfiles/rcrc rcup
