@@ -42,7 +42,10 @@ inquirer.prompt([{
     })
   }
 
-  installPackages('brew')
-  installPackages('cask')
+  installPackages('brew1')
+  installPackages('brew2')
+  installPackages('brew3')
+  installPackages('cask1')
+  installPackages('cask2')
   installPackages('npm')
 })

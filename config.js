@@ -1,5 +1,5 @@
 module.exports = {
-  brew: [
+  brew1: [
     // http://conqueringthecommandline.com/book/ack_ag
     'ack',
     'ag',
@@ -113,6 +113,8 @@ module.exports = {
     'libxmlsec1',
     'libxslt',
     'libyaml',
+  ],
+  brew2: [
     'libzip',
     'links',
     'llvm',
@@ -170,9 +172,10 @@ module.exports = {
     'sdl2',
     'selenium-server-standalone',
     'speedtest-cli',
-    'speedtest_cli',
     'sqlite',
     'tesseract',
+  ],
+  brew3: [
     'texi2html',
     'texinfo',
     'the_silver_searcher',
@@ -193,7 +196,7 @@ module.exports = {
     'yarn',
     'yasm'
   ],
-  cask: [
+  cask1: [
     //'box-sync',
     //'adium',
     //'amazon-cloud-drive',
@@ -225,6 +228,8 @@ module.exports = {
     'iterm2',
     'karabiner-elements',
     'keycastr',
+  ],
+  cask2: [
     'licecap',
     'little-snitch',
     'micro-snitch',

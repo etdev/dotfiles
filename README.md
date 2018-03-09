@@ -131,51 +131,19 @@ Shell aliases and scripts:
 * Automatically run ``ls`` after ``cd``
 * Set sane values for LS_COLORS and zsh completion (for both Linux and OS X)
 
-Todo
----------
-* Automate prezto installation and replacing of prompt setup file
-* Add homebrew scripts for mac osx
-* Add iTerm2 settings, my custom color scheme, non-ugly icon, etc.
-
-Things to install/do on fresh install
----------
-* iTerm 2
-* Everything in Thoughtbot/Laptop
-* Patched Airline fonts
-* Load iTerm settings, fix colors etc.
-* Install tmux plugin manager (tpm) and plugins
-* These dotfiles
-* Prezto
-* Move agnoster file
-* Python
-* BetterTouchTool
-* BetterSnapTool
-* Karabiner
-* Seil
-* Chrome
-* Sip
-* Transmission
-* Speed up keyrepeat
-* Install Dropbox
-* Install Google Drive
-* Install Alfred
-* Import Alfred settings
-* Import Alfred license
-* Replace icons
-* Change wallpaper and set to dark theme
-* Add home folder etc. to Finder sidebar
-* Login to chrome, add ad-block exceptions, hide buttons etc.
-* Login to lastpass
-* Enable chrome experiments and install dark devtools theme
-* Fix right-click behavior in *Right Click Opens Link in New Tab* chrome extension (like [this](http://i.imgur.com/uP959Mx.png))
-
----
+### Things to install/do on fresh install
 * Source karabiner config file (in dotfiles)
 * Source Alfred config (dropbox)
 * Generate new Github ssh key
+* Change wallpaper and set to dark theme
+* Import Alfred settings (dropbox)
+* Import Alfred license
+* Replace icons
 * Install
   * bettersnaptool
   * coin tick
   * karabiner-eventviewer
   * line
   * jasper
+* Fix right-click behavior in *Right Click Opens Link in New Tab* chrome extension (like [this](http://i.imgur.com/uP959Mx.png))
+* Enable chrome dark devtools theme
