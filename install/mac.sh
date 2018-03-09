@@ -212,6 +212,9 @@ require_cask font-roboto-mono-for-powerline
 require_cask font-source-code-pro
 ok
 
+bot "installing hub"
+require_brew hub
+
 # node version manager
 require_brew nvm
 
@@ -698,7 +701,7 @@ bot "Terminal & iTerm2"
 defaults write com.apple.terminal FocusFollowsMouse -bool true
 #defaults write org.x.X11 wm_ffm -bool true;ok
 running "Installing the Patched Solarized Dark theme for iTerm (opening file)"
-open "../solarized-dark-bg.itermcolors";ok
+open "./configs/solarized-dark-bg.itermcolors";ok
 
 #running "Don’t display the annoying prompt when quitting iTerm"
 #defaults write com.googlecode.iterm2 PromptOnQuit -bool false;ok
@@ -718,6 +721,10 @@ running "setting fonts"
 defaults write com.googlecode.iterm2 "Normal Font" -string "Hack-Regular 12";
 defaults write com.googlecode.iterm2 "Non Ascii Font" -string "RobotoMonoForPowerline-Regular 12";
 ok
+
+running "copying iTerm2 profile"
+cp "./plists/etdev-iterm-default-profile.plist" "$HOME/Library/Application Support/iTerm2/DynamicProfiles/"
+
 running "reading iterm settings"
 defaults read -app iTerm > /dev/null 2>&1;
 ok
@@ -814,4 +821,4 @@ for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
   killall "${app}" > /dev/null 2>&1
 done
 
-bot "Woot! All done. Kill this terminal and launch iTerm"
+bot "All done! Kill this terminal and launch iTerm"
