@@ -215,6 +215,9 @@ ok
 bot "installing hub"
 require_brew hub
 
+bot "installing iterm2"
+require_cask iterm2
+
 # node version manager
 require_brew nvm
 
@@ -726,7 +729,7 @@ running "reading iterm settings"
 defaults read -app iTerm > /dev/null 2>&1;
 ok
 
-running "copying iTerm2 profile"
+running "copying iterm profile"
 mkdir -p "$HOME/Library/Application Support/iTerm/DynamicProfiles/"
 cp "./plists/etdev-iterm-default-profile.plist" "$HOME/Library/Application Support/iTerm/DynamicProfiles/"
 mkdir -p "$HOME/Library/Application Support/iTerm2/DynamicProfiles/"
@@ -824,4 +827,7 @@ for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
   killall "${app}" > /dev/null 2>&1
 done
 
-bot "All done! Kill this terminal and launch iTerm"
+bot "All done! Launching iTerm2..."
+sleep 2
+
+open -a iTerm2
