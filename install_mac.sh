@@ -187,9 +187,24 @@ if [[ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]]; then
   done
 fi
 
+# tap required repos
+bot "tapping required brew repos..."
+brew tap beeftornado/rmtree > /dev/null 2>&1
+brew tap heroku/brew > /dev/null 2>&1
+brew tap homebrew/completions > /dev/null 2>&1
+brew tap homebrew/core > /dev/null 2>&1
+brew tap homebrew/dupes > /dev/null 2>&1
+brew tap homebrew/nginx > /dev/null 2>&1
+brew tap homebrew/php > /dev/null 2>&1
+brew tap homebrew/services > /dev/null 2>&1
+brew tap homebrew/versions > /dev/null 2>&1
+brew tap neovim/neovim > /dev/null 2>&1
+brew tap railwaycat/emacsmacport > /dev/null 2>&1
+brew tap thoughtbot/formulae > /dev/null 2>&1
+ok
+
 # install rcm
 bot "installing rcm dotfiles manager..."
-brew tap thoughtbot/formulae
 require_brew rcm
 
 bot "installing dotfiles..."

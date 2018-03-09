@@ -118,7 +118,7 @@ Shell aliases and scripts:
 * `git-churn` to show churn for the files changed in the branch.
 * `m` for `rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare`.
 * `mcd` to make a directory and change into it.
-* `replace foo bar **/*.rb` to find and replace within a given list of files.
+* `replace foo bar **/*.rb` to find and replace within a given list of files.*
 * `rk` for `rake`.
 * `tat` to attach to tmux session named the same as the current directory.
 * `tls` to view the list of open tmux sessions
@@ -168,3 +168,14 @@ Things to install/do on fresh install
 * Login to lastpass
 * Enable chrome experiments and install dark devtools theme
 * Fix right-click behavior in *Right Click Opens Link in New Tab* chrome extension (like [this](http://i.imgur.com/uP959Mx.png))
+
+---
+* Source karabiner config file (in dotfiles)
+* Source Alfred config (dropbox)
+* Generate new Github ssh key
+* Install
+  * bettersnaptool
+  * coin tick
+  * karabiner-eventviewer
+  * line
+  * jasper
