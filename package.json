@@ -30,7 +30,6 @@
   "homepage": "https://github.com/etdev/dotfiles#readme",
   "dependencies": {
     "inquirer": "1.0.2",
-    "bluebird": "3.5.1",
     "node-emoji": "1.3.0"
   }
 }
