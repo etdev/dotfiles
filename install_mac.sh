@@ -193,7 +193,6 @@ brew tap beeftornado/rmtree > /dev/null 2>&1
 brew tap heroku/brew > /dev/null 2>&1
 brew tap homebrew/completions > /dev/null 2>&1
 brew tap homebrew/core > /dev/null 2>&1
-brew tap homebrew/dupes > /dev/null 2>&1
 brew tap homebrew/nginx > /dev/null 2>&1
 brew tap homebrew/php > /dev/null 2>&1
 brew tap homebrew/services > /dev/null 2>&1

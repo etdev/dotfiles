@@ -17,7 +17,7 @@ module.exports = [
   // so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
   'gnu-sed --with-default-names',
   // better, more recent grep
-  'homebrew/dupes/grep',
+  'grep',
   // https://github.com/jkbrzt/httpie
   'httpie',
   // jq is a sort of JSON grep
@@ -29,7 +29,7 @@ module.exports = [
   'nmap',
   'openconnect',
   'reattach-to-user-namespace',
-  'homebrew/dupes/screen',
+  'screen',
   'tmux',
   'tree',
   'ttyrec',
@@ -50,7 +50,6 @@ module.exports = [
   'dialog',
   'diffutils',
   'dtrx',
-  'eb',
   'ed',
   'emacs-mac',
   'envchain',
