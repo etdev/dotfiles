@@ -194,5 +194,12 @@ fi
 # useful variables
 export df=$HOME/dotfiles
 
+# add coreutils
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+
+# set iTerm profile to etdev-default
+echo -e "\033]50;SetProfile=etdev-default\a"
+
 unalias b
 typeset -U path PATH
+
