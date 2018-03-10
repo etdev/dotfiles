@@ -1,6 +1,6 @@
-var exec = require('child_process').exec;
+var execSync = require('child_process').execSync;
 module.exports = function _command(cmd, dir, cb) {
-  exec(
+  execSync(
     cmd,
     { cwd: dir || __dirname },
     function(err, stdout, stderr) {

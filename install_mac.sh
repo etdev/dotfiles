@@ -114,121 +114,121 @@ if [[ $? = 0 ]]; then
   fi
 fi
 
-#####
-# install homebrew (CLI Packages)
-#####
+######
+## install homebrew (CLI Packages)
+######
 
-running "checking homebrew install"
-brew_bin=$(which brew) 2>&1 > /dev/null
-if [[ $? != 0 ]]; then
-  action "installing homebrew"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    if [[ $? != 0 ]]; then
-      error "unable to install homebrew, script $0 abort!"
-      exit 2
-  fi
-else
-  ok
-  # Make sure we’re using the latest Homebrew
-  running "updating homebrew"
-  brew update
-  ok
-  bot "before installing brew packages, we can upgrade any outdated packages."
-  read -r -p "run brew upgrade? [y|N] " response
-  if [[ $response =~ ^(y|yes|Y) ]];then
-      # Upgrade any already-installed formulae
-      action "upgrade brew packages..."
-      brew upgrade
-      ok "brews updated..."
-  else
-      ok "skipped brew package upgrades.";
-  fi
-fi
+#running "checking homebrew install"
+#brew_bin=$(which brew) 2>&1 > /dev/null
+#if [[ $? != 0 ]]; then
+  #action "installing homebrew"
+    #ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    #if [[ $? != 0 ]]; then
+      #error "unable to install homebrew, script $0 abort!"
+      #exit 2
+  #fi
+#else
+  #ok
+  ## Make sure we’re using the latest Homebrew
+  #running "updating homebrew"
+  #brew update
+  #ok
+  #bot "before installing brew packages, we can upgrade any outdated packages."
+  #read -r -p "run brew upgrade? [y|N] " response
+  #if [[ $response =~ ^(y|yes|Y) ]];then
+      ## Upgrade any already-installed formulae
+      #action "upgrade brew packages..."
+      #brew upgrade
+      #ok "brews updated..."
+  #else
+      #ok "skipped brew package upgrades.";
+  #fi
+#fi
 
-#####
-# install brew cask (UI Packages)
-#####
-running "checking brew-cask install"
-output=$(brew tap | grep cask)
-if [[ $? != 0 ]]; then
-  action "installing brew-cask"
-  require_brew caskroom/cask/brew-cask
-fi
-brew tap caskroom/versions > /dev/null 2>&1
-ok
+######
+## install brew cask (UI Packages)
+######
+#running "checking brew-cask install"
+#output=$(brew tap | grep cask)
+#if [[ $? != 0 ]]; then
+  #action "installing brew-cask"
+  #require_brew caskroom/cask/brew-cask
+#fi
+#brew tap caskroom/versions > /dev/null 2>&1
+#ok
 
-# skip those GUI clients, git command-line all the way
-require_brew git
-# need fontconfig to install/build fonts
-require_brew fontconfig
-# update zsh to latest
-require_brew zsh
-# update ruby to latest
-# use versions of packages installed with homebrew
-RUBY_CONFIGURE_OPTS="--with-openssl-dir=`brew --prefix openssl` --with-readline-dir=`brew --prefix readline` --with-libyaml-dir=`brew --prefix libyaml`"
-require_brew ruby
-# set zsh as the user login shell
-CURRENTSHELL=$(dscl . -read /Users/$USER UserShell | awk '{print $2}')
-if [[ "$CURRENTSHELL" != "/usr/local/bin/zsh" ]]; then
-  bot "setting newer homebrew zsh (/usr/local/bin/zsh) as your shell (password required)"
-  # sudo bash -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
-  # chsh -s /usr/local/bin/zsh
-  sudo dscl . -change /Users/$USER UserShell $SHELL /usr/local/bin/zsh > /dev/null 2>&1
-  ok
-fi
+## skip those GUI clients, git command-line all the way
+#require_brew git
+## need fontconfig to install/build fonts
+#require_brew fontconfig
+## update zsh to latest
+#require_brew zsh
+## update ruby to latest
+## use versions of packages installed with homebrew
+#RUBY_CONFIGURE_OPTS="--with-openssl-dir=`brew --prefix openssl` --with-readline-dir=`brew --prefix readline` --with-libyaml-dir=`brew --prefix libyaml`"
+#require_brew ruby
+## set zsh as the user login shell
+#CURRENTSHELL=$(dscl . -read /Users/$USER UserShell | awk '{print $2}')
+#if [[ "$CURRENTSHELL" != "/usr/local/bin/zsh" ]]; then
+  #bot "setting newer homebrew zsh (/usr/local/bin/zsh) as your shell (password required)"
+  ## sudo bash -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
+  ## chsh -s /usr/local/bin/zsh
+  #sudo dscl . -change /Users/$USER UserShell $SHELL /usr/local/bin/zsh > /dev/null 2>&1
+  #ok
+#fi
 
-# install prezto
-bot "installing prezto for zsh..."
-if [[ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]]; then
-  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+## install prezto
+#bot "installing prezto for zsh..."
+#if [[ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]]; then
+  #git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
-  for rcfile in $(ls "${ZDOTDIR:-$HOME}/.zprezto/runcoms/" | grep -v README.md); do
-    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-  done
-fi
+  #for rcfile in $(ls "${ZDOTDIR:-$HOME}/.zprezto/runcoms/" | grep -v README.md); do
+    #ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  #done
+#fi
 
-# tap required repos
-bot "tapping required brew repos..."
-brew tap beeftornado/rmtree > /dev/null 2>&1
-brew tap heroku/brew > /dev/null 2>&1
-brew tap homebrew/completions > /dev/null 2>&1
-brew tap homebrew/core > /dev/null 2>&1
-brew tap homebrew/nginx > /dev/null 2>&1
-brew tap homebrew/php > /dev/null 2>&1
-brew tap homebrew/services > /dev/null 2>&1
-brew tap homebrew/versions > /dev/null 2>&1
-brew tap neovim/neovim > /dev/null 2>&1
-brew tap railwaycat/emacsmacport > /dev/null 2>&1
-brew tap thoughtbot/formulae > /dev/null 2>&1
-ok
+## tap required repos
+#bot "tapping required brew repos..."
+#brew tap beeftornado/rmtree > /dev/null 2>&1
+#brew tap heroku/brew > /dev/null 2>&1
+#brew tap homebrew/completions > /dev/null 2>&1
+#brew tap homebrew/core > /dev/null 2>&1
+#brew tap homebrew/nginx > /dev/null 2>&1
+#brew tap homebrew/php > /dev/null 2>&1
+#brew tap homebrew/services > /dev/null 2>&1
+#brew tap homebrew/versions > /dev/null 2>&1
+#brew tap neovim/neovim > /dev/null 2>&1
+#brew tap railwaycat/emacsmacport > /dev/null 2>&1
+#brew tap thoughtbot/formulae > /dev/null 2>&1
+#ok
 
-# install rcm
-bot "installing rcm dotfiles manager..."
-require_brew rcm
+## install rcm
+#bot "installing rcm dotfiles manager..."
+#require_brew rcm
 
-bot "installing dotfiles..."
-env RCRC=$HOME/dotfiles/rcrc rcup
+#bot "installing dotfiles..."
+#env RCRC=$HOME/dotfiles/rcrc rcup
 
-bot "setting custom zsh prompt..."
-/bin/cp zsh/agnoster.zsh-theme $HOME/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme
+#bot "setting custom zsh prompt..."
+#/bin/cp zsh/agnoster.zsh-theme $HOME/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme
 
-bot "installing fonts"
-./fonts/install.sh
-brew tap caskroom/fonts
-require_cask font-fontawesome
-require_cask font-awesome-terminal-fonts
-require_cask font-hack
-require_cask font-inconsolata-dz-for-powerline
-require_cask font-inconsolata-g-for-powerline
-require_cask font-inconsolata-for-powerline
-require_cask font-roboto-mono
-require_cask font-roboto-mono-for-powerline
-require_cask font-source-code-pro
-ok
+#bot "installing fonts"
+#./fonts/install.sh
+#brew tap caskroom/fonts
+#require_cask font-fontawesome
+#require_cask font-awesome-terminal-fonts
+#require_cask font-hack
+#require_cask font-inconsolata-dz-for-powerline
+#require_cask font-inconsolata-g-for-powerline
+#require_cask font-inconsolata-for-powerline
+#require_cask font-roboto-mono
+#require_cask font-roboto-mono-for-powerline
+#require_cask font-source-code-pro
+#ok
 
-bot "installing hub"
-require_brew hub
-ok
+#bot "installing hub"
+#require_brew hub
+#ok
 
 # node version manager
 require_brew nvm
@@ -419,8 +419,8 @@ running "Disable press-and-hold for keys in favor of key repeat"
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false;ok
 
 running "Set a blazingly fast keyboard repeat rate"
-defaults write NSGlobalDomain KeyRepeat -int 2
-defaults write NSGlobalDomain InitialKeyRepeat -int 10;ok
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 15;ok
 
 running "Set language and text formats (english/US)"
 defaults write NSGlobalDomain AppleLanguages -array "en"
