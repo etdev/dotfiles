@@ -1,2 +1,2 @@
-EXCLUDES="README.md LICENSE CHEATSHEET.md plists com.googlecode.iterm2.plist install.sh"
+EXCLUDES="README.md LICENSE CHEATSHEET.md plists com.googlecode.iterm2.plist install.sh install_mac.sh install_linux.sh wallpapers screenshots replacement_icons mac_scripts bin configs fonts install .DS_Store POST_INSTALL.md config.js index.js karabiner.json package.json solarized-dark-bg.itermcolors"
 DOTFILES_DIRS="$HOME/dotfiles-local $HOME/dotfiles"
