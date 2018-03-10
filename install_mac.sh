@@ -818,23 +818,29 @@ running "Disable continuous spell checking"
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false;ok
 
 ###############################################################################
-bot "SizeUp.app"
+# My personal additions
 ###############################################################################
 
-running "Start SizeUp at login"
-defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true;ok
+running "Set my personal wallpaper"
+./mac_scripts/set_wallpaper
+ok
 
-running "Don’t show the preferences window on next start"
-defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false;ok
+running "Setting karabiner-elements config"
+mkdir -p $HOME/.config/karabiner/
+cp $HOME/dotfiles/karabiner.json $HOME/.config/karabiner/
+ok
 
-killall cfprefsd
+running "Setting BetterTouchTool config"
+mkdir -p $HOME/Library/Preferences/
+cp $HOME/dotfiles/plists/com.hegenberg.BetterTouchTool.plist $HOME/Library/Preferences/
+ok
 
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 bot "OK. Note that some of these changes require a logout/restart to take effect. Killing affected applications (so they can reboot)...."
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-  "Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
+  "Dock" "Finder" "Mail" "Messages" "Safari""SystemUIServer" \
   "iCal" "Terminal"; do
   killall "${app}" > /dev/null 2>&1
 done

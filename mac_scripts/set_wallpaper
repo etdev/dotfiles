@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '$HOME/code/dotfiles/wallpapers/cenote-wallpaper1080p.jpg'";
+killall Dock;
