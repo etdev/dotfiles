@@ -2,3 +2,5 @@
 vim/bundle/
 tmuxinator/
 zsh/functions_local/
+node_modules
+package-lock.json
