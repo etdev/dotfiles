@@ -10,7 +10,7 @@ const installPackages = function(type){
 
   async.eachLimit(
     config[type],
-    1,
+    20,
     function(item, callback) {
       console.info(type+':', item)
       command('. lib_sh/echos.sh && . lib_sh/requirers.sh && require_'+type+' ' + item, __dirname, function(err, out) {
@@ -21,9 +21,9 @@ const installPackages = function(type){
     },
     function(err) {
       if (err) {
-        console.info('FAILURE')
+        console.info('package download failed')
       } else {
-        console.info('All packages downloaded successfully')
+        console.info('all packages downloaded successfully')
       }
     }
   )
