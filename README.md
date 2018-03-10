@@ -12,6 +12,7 @@ git clone git://github.com/etdev/dotfiles.git
 
 Run the install script:
 ```
+cd ~/dotfiles
 ./install.sh
 ```
 
