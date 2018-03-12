@@ -77497,11 +77497,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>414 617 606 469 0 0 1920 1200 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>602 545 916 485 0 0 1920 1200 </string>
+	<string>602 677 770 429 0 0 1920 1200 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>2150 594 592 584 1920 -240 2560 1418 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>7 711 837 456 0 0 1920 1178 </string>
+	<string>0 4 1920 1174 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>268 109 570 402 0 0 1920 1178 </string>
 	<key>New Bookmarks</key>
@@ -78547,7 +78547,7 @@
 			<key>Hide After Opening</key>
 			<false/>
 			<key>Horizontal Spacing</key>
-			<real>1</real>
+			<integer>1</integer>
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
@@ -78840,7 +78840,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MesloLGSDZForPowerline-Regular 11</string>
+			<string>Hack-Regular 12</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -79014,7 +79014,7 @@
 			<key>Use Tab Color</key>
 			<false/>
 			<key>Vertical Spacing</key>
-			<real>1</real>
+			<integer>1</integer>
 			<key>Visual Bell</key>
 			<false/>
 			<key>Window Type</key>
