@@ -425,11 +425,19 @@ au VimLeave * set guicursor=a:block-blinkon0
 " speed up syntax highlighting (IMPORTANT)
 set re=1
 
-" Insert binding.pry calls
-nnoremap <leader>pr obinding.pry<esc>k<CR>
+" Insert debugger calls based on file type
+autocmd BufRead,BufNewFile *.rb nnoremap <leader>pr obinding.pry<esc>k<CR>
+autocmd BufRead,BufNewFile *.rb nnoremap <leader>dp :g/^ *binding\.pry$/d<CR>
+autocmd BufRead,BufNewFile *.rb nnoremap <leader>dpa :silent bufdo g/^ *binding.pry$/d<CR> :silent bufdo w!<CR>
+autocmd BufRead,BufNewFile *.js, *.jsx , *.ts, *.vue nnoremap <leader>pr odebugger;<esc>k<CR>
+autocmd BufRead,BufNewFile *.js, *.jsx , *.ts, *.vue nnoremap <leader>dp :g/^ *debugger;$/d<CR>
+autocmd BufRead,BufNewFile *.js, *.jsx , *.ts, *.vue nnoremap <leader>dpa :silent bufdo g/^ *debugger;$/d<CR> :silent bufdo w!<CR>
+autocmd BufRead,BufNewFile *.coffee nnoremap <leader>pr odebugger<esc>k<CR>
+autocmd BufRead,BufNewFile *.coffee nnoremap <leader>dp :g/^ *debugger$/d<CR>
+autocmd BufRead,BufNewFile *.coffee nnoremap <leader>dpa :silent bufdo g/^ *debugger$/d<CR> :silent bufdo w!<CR>
 
-" Insert debugger calls
-nnoremap <leader>db odebugger;<esc>k<CR>
+" save all buffers
+nnoremap <leader>sa :silent bufdo w!<CR>
 
 let g:tslime_always_current_session = 1
 
