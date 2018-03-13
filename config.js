@@ -6,5 +6,5 @@ module.exports = {
   brew: brew,
   cask: cask,
   npm: npm,
-  limit: 10
+  limit: 50
 };

@@ -10,7 +10,7 @@ const installPackages = function(type){
 
   async.eachLimit(
     config[type],
-    config['limit'] || 10,
+    config['limit'] || 50,
     (item, callback) => {
       cmd = '. lib_sh/echos.sh && . lib_sh/requirers.sh && require_'+type+' ' + item 
       dir = __dirname
