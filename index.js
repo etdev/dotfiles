@@ -1,24 +1,23 @@
 const emoji = require('node-emoji')
 const fs = require('fs')
 const inquirer = require('inquirer')
-const parallelLimit = require('async/parallelLimit')
+const async = require('async')
 const config = require('./config')
 const command = require('./lib_node/command')
 
 const installPackages = function(type){
   console.info(emoji.get('coffee'), ' installing '+type+' packages')
 
-  const tasks = config[type].map(function(item) {
-    return function(callback) {
-      console.info(type+':', item)
-      command('. lib_sh/echos.sh && . lib_sh/requirers.sh && require_'+type+' ' + item, __dirname, function(err, out) {
-        if(err) console.error(emoji.get('fire'), err)
-      })
-      callback();
+  async.eachLimit(
+    config[type],
+    config['limit'] || 10,
+    (item, callback) => {
+      cmd = '. lib_sh/echos.sh && . lib_sh/requirers.sh && require_'+type+' ' + item 
+      dir = __dirname
+      console.log(`${item}`)
+      command(cmd, __dirname, callback)
     }
-  });
-
-  parallelLimit(tasks, 20, function(){ console.info("completed")})
+  );
 }
 
 installPackages('brew')

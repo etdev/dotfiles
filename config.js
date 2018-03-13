@@ -5,5 +5,6 @@ const npm = require('./lib_node/npm_packages')
 module.exports = {
   brew: brew,
   cask: cask,
-  npm: npm
+  npm: npm,
+  limit: 10
 };
