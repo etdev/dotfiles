@@ -1,10 +1,12 @@
-Etdev's dotfiles
-===================
+```
+ ___ ___  __   ___      .  __      __   __  ___  ___         ___  __  
+|__   |  |  \ |__  \  / ' /__`    |  \ /  \  |  |__  | |    |__  /__` 
+|___  |  |__/ |___  \/    .__/    |__/ \__/  |  |    | |___ |___ .__/ 
+```
 
 ### Install
 
 Clone the repo into your home folder:
-
 ```
 cd ~
 git clone https://github.com/etdev/dotfiles.git
@@ -39,6 +41,6 @@ To extend your `git` hooks, create executable scripts in
 
 ### Thanks
 
-This project is originally forked from the great [Thoughtbot Dotfiles](https://github.com/thoughtbot/dotfiles).
+This project is originally forked from [Thoughtbot Dotfiles](https://github.com/thoughtbot/dotfiles).
 
-The install script is mostly stolen from [Adam Eivy's dotfiles](https://github.com/atomantic/dotfiles).
+The install script is mostly stolen from [Adam Eivy's Dotfiles](https://github.com/atomantic/dotfiles).
