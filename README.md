@@ -14,7 +14,7 @@ git clone https://github.com/etdev/dotfiles.git
 
 Comment out stuff you don't want:
 
-* [mac settings](https://github.com/etdev/dotfiles/blob/master/install_mac.sh#L261-L847)
+* [mac settings](https://github.com/etdev/dotfiles/blob/master/install_mac.sh#L192-L778)
 * [brew packages](https://github.com/etdev/dotfiles/blob/master/lib_node/brew_packages.js)
 * [brew casks](https://github.com/etdev/dotfiles/blob/master/lib_node/brew_casks.js)
 * [npm packages](https://github.com/etdev/dotfiles/blob/master/lib_node/npm_packages.js)
