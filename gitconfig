@@ -5,6 +5,7 @@
 [color]
   ui = auto
 [alias]
+  a = add
   aa = add --all
   ap = add --patch
   ca = commit --amend
@@ -13,7 +14,10 @@
   pr = !gh pull-request
   st = status
   ft = fetch
+  pl = pull
+  cl = clone
   br = branch
+  rst = reset
   po = !sh -c 'git push origin $1' -
   pom = push origin master
   reset-hard = !sh -c 'git fetch origin && git reset --hard origin/$1' -
