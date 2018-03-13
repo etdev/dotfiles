@@ -77495,13 +77495,13 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>650 590 620 392 0 0 1920 1178 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>414 617 606 469 0 0 1920 1200 </string>
+	<string>414 617 606 469 0 0 1920 1178 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>602 677 770 429 0 0 1920 1200 </string>
+	<string>602 705 796 473 0 0 1920 1178 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>2150 594 592 584 1920 -240 2560 1418 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 4 1920 1174 0 0 1920 1178 </string>
+	<string>0 0 1920 1200 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>268 109 570 402 0 0 1920 1178 </string>
 	<key>New Bookmarks</key>
@@ -79129,7 +79129,9 @@
 	<key>SmartPlacement</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.40000000596046448</real>
+	<real>0.35687349759615383</real>
+	<key>StretchTabsToFillBar</key>
+	<false/>
 	<key>SwitchTabModifier</key>
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
