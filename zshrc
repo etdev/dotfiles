@@ -212,6 +212,6 @@ unalias b 2>/dev/null
 typeset -U path PATH
 
 ## antigen
-source $HOME/antigen.zsh
-source $HOME/.zsh/antigen-hs/init.zsh
+. $HOME/.zsh/antigen-hs/init.zsh
 export ANTIGEN_LOG=$HOME/.antigen.log
+

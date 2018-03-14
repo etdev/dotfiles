@@ -755,9 +755,6 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # My personal additions
 ###############################################################################
 
-running "Install antigen-hs"
-antigen-hs-setup
-
 running "Set my personal wallpaper"
 ./mac_scripts/set_wallpaper
 ok

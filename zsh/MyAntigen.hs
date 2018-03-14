@@ -14,18 +14,10 @@ import Antigen (
               )
 
 bundles =
-  [ bundle "Tarrasch/zsh-functional"
-  , bundle "Tarrasch/zsh-bd"
-  , bundle "Tarrasch/zsh-command-not-found"
-  , bundle "Tarrasch/zsh-colors"
+  [ bundle "Tarrasch/zsh-bd"
   , bundle "Tarrasch/zsh-autoenv"
-  , bundle "Tarrasch/zsh-i-know"
-  {-, bundle "Tarrasch/pure"-}
   , bundle "etdev/agnoster-etdev"
-  , bundle "zpm-zsh/colors"
-  , bundle "Tarrasch/zsh-mcd"
   , bundle "zsh-users/zsh-syntax-highlighting"
-  , bundle "zsh-users/zsh-history-substring-search"
   ]
 
   -- If you use a plugin that doesn't have a *.plugin.zsh file. You can set a
