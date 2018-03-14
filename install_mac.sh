@@ -120,18 +120,28 @@ fi
 
 # tap required repos
 bot "tapping required brew repos..."
-brew tap beeftornado/rmtree > /dev/null 2>&1
-brew tap heroku/brew > /dev/null 2>&1
-brew tap homebrew/completions > /dev/null 2>&1
-brew tap homebrew/core > /dev/null 2>&1
-brew tap homebrew/nginx > /dev/null 2>&1
-brew tap homebrew/php > /dev/null 2>&1
-brew tap homebrew/services > /dev/null 2>&1
-brew tap homebrew/versions > /dev/null 2>&1
-brew tap neovim/neovim > /dev/null 2>&1
-brew tap railwaycat/emacsmacport > /dev/null 2>&1
-brew tap thoughtbot/formulae > /dev/null 2>&1
+tap_repos=(
+  "beeftornado/rmtree"
+  "heroku/brew"
+  "homebrew/completions"
+  "homebrew/core"
+  "homebrew/nginx"
+  "homebrew/php"
+  "homebrew/services"
+  "homebrew/versions"
+  "neovim/neovim"
+  "railwaycat/emacsmacport"
+  "thoughtbot/formulae"
+)
 ok
+
+installed_repos=($(HOMEBREW_NO_AUTO_UPDATE=1 brew tap))
+
+# skip ones that are already installed
+for repo in $tap_repos; do
+  bot "$repo..."
+  [[ " ${installed_repos[*]} " == *" $repo "* ]] || HOMEBREW_NO_AUTO_UPDATE=1 brew tap $repo > /dev/null 2>&1;
+done
 
 # install rcm
 bot "installing rcm dotfiles manager..."
@@ -146,15 +156,24 @@ bot "setting custom zsh prompt..."
 bot "installing fonts"
 ./fonts/install.sh
 brew tap caskroom/fonts
-require_cask font-fontawesome
-require_cask font-awesome-terminal-fonts
-require_cask font-hack
-require_cask font-inconsolata-dz-for-powerline
-require_cask font-inconsolata-g-for-powerline
-require_cask font-inconsolata-for-powerline
-require_cask font-roboto-mono
-require_cask font-roboto-mono-for-powerline
-require_cask font-source-code-pro
+# Font Awesome 5 Brands-Regular-400
+[[ $(ls $HOME/Library/Fonts | grep -ie 'font.*awesome.*5') ]] || require_cask font-fontawesome
+# Droid+Sans+Mono+Awesome
+[[ $(ls $HOME/Library/Fonts | grep -ie 'droid.*sans.*mono.*awesome') ]] || require_cask font-awesome-terminal-fonts
+# Hack-Regular
+[[ $(ls $HOME/Library/Fonts | grep -ie 'hack-regular') ]] || require_cask font-hack
+# Inconsolata-dz
+[[ $(ls $HOME/Library/Fonts | grep -ie 'inconsolata-dz') ]] || require_cask font-inconsolata-dz-for-powerline
+# Inconsolata-g
+[[ $(ls $HOME/Library/Fonts | grep -ie 'inconsolata-g') ]] || require_cask font-inconsolata-g-for-powerline
+# Inconsolata for Powerline
+[[ $(ls $HOME/Library/Fonts | grep -ie 'inconsolata.*for.*powerline') ]] || require_cask font-inconsolata-for-powerline
+# RobotoMono-Regular
+[[ $(ls $HOME/Library/Fonts | grep -ie 'robotomono-regular') ]] || require_cask font-roboto-mono
+# Roboto Mono Medium for Powerline
+[[ $(ls $HOME/Library/Fonts | grep -ie 'robot.*mono.*medium.*for.*powerline') ]] || require_cask font-roboto-mono-for-powerline
+# Source Code Pro for Powerline
+[[ $(ls $HOME/Library/Fonts | grep -ie 'source.*code.*pro.*for.*powerline') ]] || require_cask font-source-code-pro
 ok
 
 bot "installing hub"
@@ -663,9 +682,9 @@ defaults write com.googlecode.iterm2 HotkeyChar -int 96;
 defaults write com.googlecode.iterm2 HotkeyCode -int 50;
 defaults write com.googlecode.iterm2 FocusFollowsMouse -int 1;
 defaults write com.googlecode.iterm2 HotkeyModifiers -int 262401;
-running "setting fonts"
-defaults write com.googlecode.iterm2 "Normal Font" -string "Hack-Regular 12";
-defaults write com.googlecode.iterm2 "Non Ascii Font" -string "RobotoMonoForPowerline-Regular 12";
+#running "setting fonts"
+#defaults write com.googlecode.iterm2 "Normal Font" -string "Hack-Regular 12";
+#defaults write com.googlecode.iterm2 "Non Ascii Font" -string "RobotoMonoForPowerline-Regular 12";
 ok
 
 running "reading iterm settings"
