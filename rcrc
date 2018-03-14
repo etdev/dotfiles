@@ -1,2 +1,2 @@
-EXCLUDES=".DS_Store CHEATSHEET.md LICENSE POST_INSTALL.md README.md bin com.googlecode.iterm2.plist config.js configs fonts index.js install install.sh install_linux.sh install_mac.sh karabiner.json mac_scripts package.json node_modules plists replacement_icons screenshots solarized-dark-bg.itermcolors wallpapers package-lock.json"
+EXCLUDES=".DS_Store CHEATSHEET.md LICENSE POST_INSTALL.md README.md bin com.googlecode.iterm2.plist config.js configs fonts index.js install install.sh install_linux.sh install_mac.sh karabiner.json mac_scripts package.json node_modules plists replacement_icons screenshots wallpapers package-lock.json"
 DOTFILES_DIRS="$HOME/dotfiles-local $HOME/dotfiles"
