@@ -1,14 +1,14 @@
 zstyle ':prezto:*:*' color 'yes'
-zstyle ':prezto:load' pmodule \
-  'environment' \
-  'terminal' \
-  'editor' \
-  'history' \
-  'directory' \
-  'spectrum' \
-  'utility' \
-  'completion' \
-  'syntax-highlighting' \
+zstyle ':prezto:load' pmodule \*/
+  'environment' \*/
+  'terminal' \*/
+  'editor' \*/
+  'history' \*/
+  'directory' \*/
+  'spectrum' \*/
+  'utility' \*/
+  'completion' \*/
+  'syntax-highlighting' \*/
   'prompt'
 zstyle ':prezto:module:editor' keymap 'vi'
 zstyle ':prezto:module:editor' key-bindings 'vi'

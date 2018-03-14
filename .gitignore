@@ -4,3 +4,7 @@ tmuxinator/
 zsh/functions_local/
 node_modules
 package-lock.json
+cabal.sandbox.config
+.cabal-sandbox
+.stack-work
+stack.yaml

@@ -27,6 +27,7 @@ module.exports = [
   'google-chrome',
   'google-japanese-ime',
   'gpgtools',
+  'haskell-platform',
   'iterm2',
   'karabiner-elements',
   'keycastr',

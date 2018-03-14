@@ -109,14 +109,14 @@ if [[ "$CURRENTSHELL" != "/usr/local/bin/zsh" ]]; then
 fi
 
 # install prezto
-bot "installing prezto for zsh..."
-if [[ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]]; then
-  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+#bot "installing prezto for zsh..."
+#if [[ ! -d "${ZDOTDIR:-$HOME}/.zprezto" ]]; then
+  #git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
-  for rcfile in $(ls "${ZDOTDIR:-$HOME}/.zprezto/runcoms/" | grep -v README.md); do
-    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-  done
-fi
+  #for rcfile in $(ls "${ZDOTDIR:-$HOME}/.zprezto/runcoms/" | grep -v README.md); do
+    #ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  #done
+#fi
 
 # tap required repos
 bot "tapping required brew repos..."
@@ -137,11 +137,14 @@ ok
 bot "installing rcm dotfiles manager..."
 require_brew rcm
 
+bot "cloning antigen-hs..."
+git clone https://github.com/Tarrasch/antigen-hs.git $HOME/dotfiles/zsh/antigen-hs/
+
 bot "installing dotfiles..."
 env RCRC=$HOME/dotfiles/rcrc rcup
 
-bot "setting custom zsh prompt..."
-/bin/cp zsh/agnoster.zsh-theme $HOME/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme
+#bot "setting custom zsh prompt..."
+#/bin/cp zsh/agnoster.zsh-theme $HOME/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme
 
 bot "installing fonts"
 ./fonts/install.sh
@@ -751,6 +754,9 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 ###############################################################################
 # My personal additions
 ###############################################################################
+
+running "Install antigen-hs"
+antigen-hs-setup
 
 running "Set my personal wallpaper"
 ./mac_scripts/set_wallpaper

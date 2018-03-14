@@ -90,10 +90,15 @@ export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.mac_scripts:$PATH"
 
 # Source prezto and set to "agnoster" prompt (if installed)
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-  prompt agnoster
-fi
+#if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  #source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+  #prompt agnoster
+#fi
+
+# mac
+unset LSCOLORS
+export CLICOLOR=1
+export CLICOLOR_FORCE=1
 
 # Linux-only
   # Set colored output for LS on linux
@@ -105,6 +110,7 @@ case $(uname) in
     export LS_COLORS;
     zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS};;
 esac
+
 
 # Automatically run ls after cd
 function chpwd() {
@@ -204,3 +210,8 @@ echo -e "\033]50;SetProfile=etdev-default\a"
 
 unalias b 2>/dev/null
 typeset -U path PATH
+
+## antigen
+source $HOME/antigen.zsh
+source $HOME/.zsh/antigen-hs/init.zsh
+export ANTIGEN_LOG=$HOME/.antigen.log

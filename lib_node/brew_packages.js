@@ -64,6 +64,7 @@ module.exports = [
   'gdk-pixbuf',
   'geoip',
   'gettext',
+  'ghc',
   'giflossy',
   'glib',
   'gmp',
