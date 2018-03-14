@@ -187,7 +187,9 @@ zstyle ':completion:*' insert-tab pending
 # load custom executable local functions
 if [[ -d $HOME/.zsh/functions_local ]]; then
   for function in ~/.zsh/functions_local/*; do
-    source $function
+    if [[ -e $function ]]; then
+      source $function
+    fi
   done
 fi
 
