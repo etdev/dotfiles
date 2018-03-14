@@ -511,8 +511,8 @@ defaults write com.apple.dock mru-spaces -bool false;ok
 running "Remove the auto-hiding Dock delay"
 defaults write com.apple.dock autohide-delay -float 0;ok
 
-running "Remove the animation when hiding/showing the Dock"
-defaults write com.apple.dock autohide-time-modifier -float 0;ok
+#running "Remove the animation when hiding/showing the Dock"
+#defaults write com.apple.dock autohide-time-modifier -float 0;ok
 
 running "Automatically hide and show the Dock"
 defaults write com.apple.dock autohide -bool true;ok
@@ -568,7 +568,6 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true;ok
 ###############################################################################
 bot "Configuring Mail"
 ###############################################################################
-
 
 running "Disable send and reply animations in Mail.app"
 defaults write com.apple.mail DisableReplyAnimations -bool true

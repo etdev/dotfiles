@@ -30,5 +30,12 @@ cp $HOME/dotfiles/plists/com.hegenberg.BetterSnapTool.plist $HOME/Library/Prefer
 * Import Alfred license
 * Import Alfred settings (dropbox)
 * Import Sip license
-* Fix right-click behavior in *Right Click Opens Link in New Tab* chrome extension (like [this](http://i.imgur.com/uP959Mx.png))
+* Import BetterSnapTool and BetterTouchTool licenses
+* Set computer name to `mbp`
+```
+sudo scutil --set ComputerName mbp
+dscacheutil -flushcache
+<restart>
+```
 * Enable chrome dark devtools theme
+* Fix right-click behavior in *Right Click Opens Link in New Tab* chrome extension (like [this](http://i.imgur.com/uP959Mx.png))
