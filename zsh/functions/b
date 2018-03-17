@@ -9,4 +9,4 @@ b() {
 }
 
 # Complete b like brew
-compdef b=brew
+[[ `uname` == 'Darwin' ]] && compdef b=brew
