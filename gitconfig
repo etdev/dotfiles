@@ -11,7 +11,7 @@
   ca = commit --amend
   ci = commit -v
   co = checkout
-  pr = !gh pull-request
+  pr = !sh -c 'gh pull-request' -
   st = status
   ft = fetch
   pl = pull
@@ -21,6 +21,8 @@
   po = !sh -c 'git push origin $1' -
   pom = push origin master
   reset-hard = !sh -c 'git fetch origin && git reset --hard origin/$1' -
+  rh = !sh -c 'git fetch origin && git reset --hard origin/$1' -
+  rhdev = !sh -c 'git fetch origin && git reset --hard origin/develop' -
   update-subs = submodule update --recursive --remote
   co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
   create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
