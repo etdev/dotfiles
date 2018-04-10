@@ -435,6 +435,7 @@ autocmd BufRead,BufNewFile *.js,*.jsx,*.ts,*.vue nnoremap <leader>dpa :silent bu
 autocmd BufRead,BufNewFile *.coffee nnoremap <leader>pr odebugger<esc>k<CR>:w<CR>
 autocmd BufRead,BufNewFile *.coffee nnoremap <leader>dp :g/^ *debugger$/d<CR>:w<CR>
 autocmd BufRead,BufNewFile *.coffee nnoremap <leader>dpa :silent bufdo g/^ *debugger$/d<CR> :silent bufdo w!<CR>
+nnoremap <leader>jq :%!jq '.' <CR>:w<CR>
 
 " save all buffers
 nnoremap <leader>sa :silent bufdo w!<CR>

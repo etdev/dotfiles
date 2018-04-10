@@ -193,6 +193,16 @@ if [[ -d $HOME/.zsh/functions_local ]]; then
   done
 fi
 
+disable_ruby_warnings() {
+  export RUBYOPT="-W0"
+  echo "RUBYOPT set"
+}
+
+enable_ruby_warnings() {
+  unset RUBYOPT
+  echo "RUBYOPT unset"
+}
+
 # useful variables
 export df=$HOME/dotfiles
 
