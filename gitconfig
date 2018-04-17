@@ -22,7 +22,9 @@
   pom = push origin master
   reset-hard = !sh -c 'git fetch origin && git reset --hard origin/$1' -
   rh = !sh -c 'git fetch origin && git reset --hard origin/$1' -
+  rhm = !sh -c 'git fetch origin && git reset --hard origin/master' -
   rhdev = !sh -c 'git fetch origin && git reset --hard origin/develop' -
+  rhc = "!f() { branch=$(git current-branch) && git reset --hard origin/$branch; }; f"
   update-subs = submodule update --recursive --remote
   co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
   create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
@@ -31,10 +33,17 @@
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
   merge-branch = !git checkout master && git merge @{-1}
   rename-branch = !sh -c 'old=$(git current-branch) && git branch -m $old $1 && git push origin --set-upstream $1 && git push origin --delete $old' -
+  push-fl = push --force-with-lease
+  po = push origin
+  pom = push origin master
+  dfom = git diff origin/master
+  dfoc = "!f() { branch=$(git current-branch) && git diff origin/$branch; }; f"
+  poc = "!f() { branch=$(git current-branch) && if [[ $branch == master || $branch == develop ]]; then echo FAILED $branch && return -1; fi && git push origin $branch; }; f"
+  pfl = push --force-with-lease
+  pflo = push --force-with-lease origin
+  pfloc = "!f() { branch=$(git current-branch) && if [[ $branch == master || $branch == develop ]]; then echo FAILED $branch && return -1; fi && git push --force-with-lease origin $branch; }; f"
   up = !git fetch origin && git rebase origin/master
   updev = !git fetch origin && git rebase origin/develop
-  push-fl = push --force-with-lease
-  prune-all = !git_prune_all
 
   #diff
   df = diff

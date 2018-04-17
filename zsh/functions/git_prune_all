@@ -1,9 +1,20 @@
 # Prune all local git branches besides master and develop
 git_prune_all () {
-  git checkout master
-  git checkout develop
+  # read "yn?Are you sure you want to remove all local branches (besides master and develop) (y/N): "
+  # if [[ ! "$yn" =~ ^[Yy]$ ]]; then return 0; fi
 
-  for branch in $(git branch | grep -v "(develop|master)"); do
+  # Switch to master
+  git checkout master
+  # Or if there's a develop branch, switch to that
+  [[ $(git branch | grep -o "[a-zA-Z_\-]+" | grep "^develop$") ]] && git checkout develop
+
+  # Delete all other local branches
+  for branch in $(git branch | grep -o "[a-zA-Z_\-]+" | grep -v "(develop|master)"); do
     git branch -D $branch
   done
+
+  # Pull
+  git pull
 }
+
+alias gpa=git_prune_all
