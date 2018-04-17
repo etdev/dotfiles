@@ -5,7 +5,9 @@ git_prune_all () {
 
   # Switch to master
   git checkout master
-  # Or if there's a develop branch, switch to that
+  git pull
+
+  # If there's a develop branch, switch to that
   [[ $(git branch | grep -o "[a-zA-Z0-9_\-]+" | grep "^develop$") ]] && git checkout develop
 
   # Delete all other local branches
