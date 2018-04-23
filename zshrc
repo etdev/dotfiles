@@ -136,7 +136,7 @@ command_exists () {
 }
 
 # go
-export GOPATH=$HOME/go
+export GOPATH=$HOME/code/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOBIN

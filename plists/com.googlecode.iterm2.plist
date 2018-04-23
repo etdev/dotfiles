@@ -77489,19 +77489,19 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>680 99 704 250 0 0 1920 1200 </string>
+	<string>680 87 704 218 0 0 1920 1200 </string>
 	<key>NSWindow Frame ProfilesPanel</key>
 	<string>345 736 735 382 0 0 1920 1200 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>650 590 620 392 0 0 1920 1178 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>414 617 606 469 0 0 1920 1178 </string>
+	<string>414 617 606 469 0 0 1920 1200 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>602 705 796 473 0 0 1920 1178 </string>
+	<string>602 633 918 485 0 0 1920 1200 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
-	<string>2150 594 592 584 1920 -240 2560 1418 </string>
+	<string>155 594 592 584 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1920 1200 0 0 1920 1178 </string>
+	<string>0 4 1920 1174 0 0 1920 1200 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>268 109 570 402 0 0 1920 1178 </string>
 	<key>New Bookmarks</key>
@@ -79147,7 +79147,7 @@
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<false/>
 	<key>UKCrashReporterLastCrashReportDate</key>
-	<real>1512460416</real>
+	<real>1523532928</real>
 	<key>URLHandlersByGuid</key>
 	<dict/>
 	<key>UseBorder</key>
@@ -101989,6 +101989,8 @@
 	<string>/-+\~_.</string>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
