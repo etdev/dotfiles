@@ -32,6 +32,8 @@ cp $HOME/dotfiles/plists/com.hegenberg.BetterSnapTool.plist $HOME/Library/Prefer
 * Import Sip license
 * Import BetterSnapTool and BetterTouchTool licenses
 * Set computer name to `mbp`
+* PIA
+* Set display resolution
 ```
 sudo scutil --set ComputerName mbp
 dscacheutil -flushcache

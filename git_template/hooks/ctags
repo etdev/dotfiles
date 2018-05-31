@@ -1,16 +1,10 @@
 #!/bin/sh
+
 set -e
+
 PATH="/usr/local/bin:$PATH"
-dir="`git rev-parse --git-dir`"
-echo "$(which bundle)"
-
-if [ -x "$(command -v rbenv)" ]; then
-  bundle_cmd="/Users/$USER/.rbenv/shims/bundle show --paths"
-else
-  bundle_cmd="bundle show --paths"
-fi
-
+dir="$(git rev-parse --git-dir)"
 trap 'rm -f "$dir/$$.tags"' EXIT
 git ls-files | \
-  ctags --recurse --tag-relative -f"$dir/$$.tags" --languages=-javascript,sql `$bundle_cmd` `git ls-files`
+  "${CTAGS:-ctags}" --tag-relative -L - -f"$dir/$$.tags" --languages=-javascript,sql
 mv "$dir/$$.tags" "$dir/tags"

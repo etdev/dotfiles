@@ -53,6 +53,7 @@ module.exports = [
   'gettext',
   'giflossy',
   'glib',
+  'global',
   'gmp',
   'gnu-indent',
   'gnu-tar',

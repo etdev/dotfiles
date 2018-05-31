@@ -113,9 +113,6 @@ inoremap <S-Tab> <c-n>
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
-
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
@@ -364,7 +361,7 @@ hi VertSplit ctermbg=NONE guibg=NONE
 " Copy current file
 nnoremap <silent> <Leader>cf :let @+ = expand("%:p")<CR>
 nnoremap <silent> <Leader>cp :let @+ = expand("%")<CR>
-nnoremap <silent> <Leader>ct :let @+ = expand("%:t")<CR>
+"nnoremap <silent> <Leader>ct :let @+ = expand("%:t")<CR>
 nnoremap <Leader>o :!open %<CR><CR>
 
 " Fuzzy file finder
@@ -476,3 +473,25 @@ function! s:ZoomToggle() abort
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <C-A> :ZoomToggle<CR>
+
+
+if executable('ag')
+  " Use Ag for gutentags (to ignore gitignore etc)
+  let g:gutentags_file_list_command = 'ag -g .'
+endif
+
+" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
+let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
+
+" Index ctags from any project, including those outside Rails
+function! ReindexCtags()
+  let l:ctags_hook = '$(git rev-parse --show-toplevel)/.git/hooks/ctags'
+
+  if exists(l:ctags_hook)
+    exec '!'. l:ctags_hook
+  else
+    exec "!ctags -R ."
+  endif
+endfunction
+
+nmap <Leader>ct :call ReindexCtags()<CR>
