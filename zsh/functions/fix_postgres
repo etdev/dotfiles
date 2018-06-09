@@ -1,0 +1,4 @@
+# Fix postgres error on hard restart
+fix_postgres() {
+  rm -rf /usr/local/var/postgres/postmaster.pid
+}
