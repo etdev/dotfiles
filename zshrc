@@ -214,3 +214,9 @@ echo -e "\033]50;SetProfile=etdev-default\a"
 
 unalias b 2>/dev/null
 typeset -U path PATH
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/etdev/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/etdev/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/etdev/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/etdev/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

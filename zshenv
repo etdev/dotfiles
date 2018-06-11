@@ -36,3 +36,4 @@ fi
 
 unset RBENV_VERSION
 typeset -U path PATH
+PATH=/usr/local/opt/python/libexec/bin:$PATH
