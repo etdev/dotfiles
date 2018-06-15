@@ -9,6 +9,7 @@
   aa = add --all
   ap = add --patch
   ca = commit --amend
+  cm = commit -m
   ci = commit -v
   co = checkout
   pr = !sh -c 'gh pull-request' -
@@ -18,6 +19,8 @@
   cl = clone
   br = branch
   rst = reset
+  rb = rebase
+  rbo = !sh -c 'git fetch origin && git rebase origin/$1' -
   po = !sh -c 'git push origin $1' -
   pom = push origin master
   reset-hard = !sh -c 'git fetch origin && git reset --hard origin/$1' -

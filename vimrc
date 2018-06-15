@@ -423,16 +423,23 @@ au VimLeave * set guicursor=a:block-blinkon0
 set re=1
 
 " Insert debugger calls based on file type
+" ruby
 autocmd BufRead,BufNewFile *.rb nnoremap <leader>pr obinding.pry<esc>k<CR>:w<CR>
 autocmd BufRead,BufNewFile *.rb nnoremap <leader>dp :g/^ *binding\.pry$/d<CR>:w<CR>
 autocmd BufRead,BufNewFile *.rb nnoremap <leader>dpa :silent bufdo g/^ *binding.pry$/d<CR> :silent bufdo w!<CR>
+" js
 autocmd BufRead,BufNewFile *.js,*.jsx,*.ts,*.vue nnoremap <leader>pr odebugger;<esc>k<CR>:w<CR>
 autocmd BufRead,BufNewFile *.js,*.jsx,*.ts,*.vue nnoremap <leader>dp :g/^ *debugger;$/d<CR>:w<CR>
 autocmd BufRead,BufNewFile *.js,*.jsx,*.ts,*.vue nnoremap <leader>dpa :silent bufdo g/^ *debugger;$/d<CR> :silent bufdo w!<CR>
+" coffeescript
 autocmd BufRead,BufNewFile *.coffee nnoremap <leader>pr odebugger<esc>k<CR>:w<CR>
 autocmd BufRead,BufNewFile *.coffee nnoremap <leader>dp :g/^ *debugger$/d<CR>:w<CR>
 autocmd BufRead,BufNewFile *.coffee nnoremap <leader>dpa :silent bufdo g/^ *debugger$/d<CR> :silent bufdo w!<CR>
 nnoremap <leader>jq :%!jq '.' <CR>:w<CR>
+" go
+autocmd BufRead,BufNewFile *.go nnoremap <leader>pr oruntime.Breakpoint()<esc>k<CR>:w<CR>
+autocmd BufRead,BufNewFile *.go nnoremap <leader>dp :g/^[ »·]*runtime\.Breakpoint\(\)$/d<CR>:w<CR>
+autocmd BufRead,BufNewFile *.go nnoremap <leader>dpa :silent bufdo g/^[»·]*runtime\.Breakpoint\(\)$/d<CR> :silent bufdo w!<CR>
 
 " save all buffers
 nnoremap <leader>sa :silent bufdo w!<CR>
