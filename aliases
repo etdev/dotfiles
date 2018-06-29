@@ -66,3 +66,6 @@ alias refresh="rcup && exec zsh"
 alias refr="rcup && exec zsh"
 alias rfr="rcup && exec zsh"
 alias pt=papertrail
+alias gc="gcloud"
+alias kc="kubectl"
+alias d="docker"

@@ -46,8 +46,6 @@ bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
-# aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
 
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
 # these are loaded first, second, and third, respectively.
@@ -94,6 +92,13 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
   prompt agnoster
 fi
+
+# unalias prezto aliases I don't use
+unalias d 2>/dev/null
+unalias b 2>/dev/null
+
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
 
 # Linux-only
   # Set colored output for LS on linux
@@ -212,7 +217,6 @@ export df=$HOME/dotfiles
 # set iTerm profile to etdev-default
 echo -e "\033]50;SetProfile=etdev-default\a"
 
-unalias b 2>/dev/null
 typeset -U path PATH
 
 # The next line updates PATH for the Google Cloud SDK.
