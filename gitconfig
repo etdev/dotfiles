@@ -27,7 +27,7 @@
   rh = !sh -c 'git fetch origin && git reset --hard origin/$1' -
   rhm = !sh -c 'git fetch origin && git reset --hard origin/master' -
   rhdev = !sh -c 'git fetch origin && git reset --hard origin/develop' -
-  rhc = "!f() { branch=$(git current-branch) && git reset --hard origin/$branch; }; f"
+  rhc = "!f() { branch=$(git current-branch) && git fetch origin && git reset --hard origin/$branch; }; f"
   update-subs = submodule update --recursive --remote
   co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
   create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
