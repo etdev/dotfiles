@@ -100,6 +100,10 @@ unalias b 2>/dev/null
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
+unset LSCOLORS
+export CLICOLOR=1
+export CLICOLOR_FORCE=1
+
 # Linux-only
   # Set colored output for LS on linux
 case $(uname) in
