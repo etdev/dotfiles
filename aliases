@@ -68,4 +68,5 @@ alias rfr="rcup && exec zsh"
 alias pt=papertrail
 alias gc="gcloud"
 alias kc="kubectl"
+alias kctx="kubectx"
 alias d="docker"
