@@ -67,6 +67,22 @@ alias refr="rcup && exec zsh"
 alias rfr="rcup && exec zsh"
 alias pt=papertrail
 alias gc="gcloud"
-alias kc="kubectl"
-alias kctx="kubectx"
 alias d="docker"
+alias y="yarn"
+
+# Go
+alias de="dep ensure"
+
+# Kubernetes
+alias k="kubectl"
+alias kc="kubectx"
+alias kn="kubens"
+alias kctx="kubectx"
+alias kga="kubectl get all"
+alias kging="kubectl get ing"
+alias kgdep="kubectl get deploy"
+alias kgsvc="kubectl get svc"
+alias kgcert="kubectl get cert"
+
+# Other
+alias srczsh="source ~/.zshrc"

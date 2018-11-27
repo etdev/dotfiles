@@ -1,14 +1,13 @@
-{
-    "parser": "babel-eslint",
-    "env": {
-        "browser": true,
-        "node": true
-    },
-    "settings": {
-        "ecmascript": 6,
-    },
-    "rules": {
-        "strict": 0,
-        "quotes": 0,
-    }
-}
+---
+parser: babel-eslint
+env:
+  browser: true
+  node: true
+settings:
+  ecmascript: 6
+rules
+  strict: 0
+  quotes: 0
+extends: airbnb
+plugins:
+- vue

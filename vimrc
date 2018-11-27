@@ -347,7 +347,8 @@ au FocusGained * :redraw!
 nnoremap <Leader>r :redraw!<CR>
 
 " Fix vue.js
-autocmd BufNewFile,BufRead *.vue set filetype=html
+autocmd BufNewFile,BufRead *.vue set filetype=vue.html
+"set filetype=vue.html
 
 " Livedown
 nmap <Leader>md :LivedownPreview<CR>
@@ -360,8 +361,8 @@ hi VertSplit ctermbg=NONE guibg=NONE
 
 " Copy current file
 nnoremap <silent> <Leader>cf :let @+ = expand("%:p")<CR>
-nnoremap <silent> <Leader>cp :let @+ = expand("%")<CR>
-"nnoremap <silent> <Leader>ct :let @+ = expand("%:t")<CR>
+" nnoremap <silent> <Leader>cp :let @+ = expand("%")<CR>
+nnoremap <silent> <Leader>cp :let @+ = expand("%:t")<CR>
 nnoremap <Leader>o :!open %<CR><CR>
 
 " Fuzzy file finder
@@ -454,7 +455,15 @@ let g:tslime_pane = 2
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'coffee': ['coffeelint'],
+\   'css': ['stylelint'],
+\   'vue': ['eslint'],
+\   'html': []
 \}
+
+"let g:ale_linters = {
+      "\ 'javascript': ['eslint'],
+      "\ }
+let g:ale_linter_aliases = {'vue': 'css'}
 
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
@@ -480,7 +489,6 @@ function! s:ZoomToggle() abort
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <C-A> :ZoomToggle<CR>
-
 
 if executable('ag')
   " Use Ag for gutentags (to ignore gitignore etc)

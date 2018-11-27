@@ -1,7 +1,8 @@
 {
     "parser": "babel-eslint",
     "rules": {
-      "strict": 1
+      "strict": 1,
+      "function-paren-newline": ["error", "consistent"]
     },
     "requireCurlyBraces": [
         "if",

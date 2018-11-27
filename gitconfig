@@ -77,8 +77,6 @@
   template = ~/.gitmessage
 [fetch]
   prune = true
-[include]
-  path = ~/.gitconfig.local
 [http]
   sslVerify = false
 [branch "master"]

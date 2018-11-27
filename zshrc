@@ -99,6 +99,8 @@ unalias b 2>/dev/null
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+[[ -f ~/.aliases.kubernetes ]] && source ~/.aliases.kubernetes
+
 
 unset LSCOLORS
 export CLICOLOR=1
@@ -157,7 +159,7 @@ PATH="/usr/local/opt/php72/bin:$PATH"
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-export PIP_REQUIRE_VIRTUALENV=true
+#export PIP_REQUIRE_VIRTUALENV=true
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if command_exists pyenv ; then eval "$(pyenv init -)"; fi
 if command_exists virtualenv && [[ -x "virtualenv" ]] ; then eval "$(pyenv virtualenv-init -)"; fi
@@ -228,3 +230,8 @@ if [ -f '/Users/etdev/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/etdev/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/etdev/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Python
+PATH=/usr/local/opt/python/libexec/bin:$PATH
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
