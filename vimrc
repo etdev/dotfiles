@@ -543,3 +543,6 @@ augroup vimrcQfClose
     autocmd!
     autocmd FileType qf if mapcheck('<esc>', 'n') ==# '' | nnoremap <buffer><silent> <esc> :cclose<bar>lclose<CR> | endif
 augroup END
+
+set tags+=.tags
+nnoremap <leader>ta :silent ! ctags -R --languages=ruby --exclude=.git --exclude=log -f .tags<cr>

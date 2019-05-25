@@ -44,7 +44,7 @@ alias gci="git pull --rebase && rake && git push"
 alias gg="git grep";
 
 # Tests and Specs
-alias t="ruby -I test"
+# alias t="ruby -I test"
 
 # Rails
 alias migrate="rake db:migrate db:rollback && rake db:migrate"
@@ -83,6 +83,14 @@ alias kging="kubectl get ing"
 alias kgdep="kubectl get deploy"
 alias kgsvc="kubectl get svc"
 alias kgcert="kubectl get cert"
+alias kt="stern --color always --exclude-container '(istio-proxy|oauth2-proxy)'"
+alias kts="stern --color always --exclude-container '(istio-proxy|oauth2-proxy)' --since=1s"
+alias ktj="stern --color always --exclude-container '(istio-proxy|oauth2-proxy)' -ojson"
+alias ktsj="stern --color always --exclude-container '(istio-proxy|oauth2-proxy)' -ojson --since=1s"
 
 # Other
 alias srczsh="source ~/.zshrc"
+alias ip_in="ipconfig getifaddr en0"
+alias lcd="leetcode"
+
+alias watch="watch "

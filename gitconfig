@@ -12,7 +12,7 @@
   cm = commit -m
   ci = commit -v
   co = checkout
-  pr = !sh -c 'gh pull-request' -
+  prq = !sh -c 'hub pull-request'
   st = status
   ft = fetch
   pl = pull
@@ -21,6 +21,9 @@
   rst = reset
   rb = rebase
   rbo = !sh -c 'git fetch origin && git rebase origin/$1' -
+  rbio = !sh -c 'git fetch origin && git rebase -i origin/$1' -
+  rbm = !sh -c 'git fetch origin && git rebase origin/master' -
+  rbiom = !sh -c 'git fetch origin && git rebase -i origin/master' -
   po = !sh -c 'git push origin $1' -
   pom = push origin master
   reset-hard = !sh -c 'git fetch origin && git reset --hard origin/$1' -
@@ -67,6 +70,7 @@
   ign = update-index --assume-unchanged
   unign = update-index --no-assume-unchanged
   ignored = !git ls-files -v | grep "^[[:lower:]]"
+  kill = !sh -c 'git add --all && git stash && git stash drop' -
 [core]
   editor = vim
   pager = less -r
