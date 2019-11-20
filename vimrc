@@ -360,7 +360,8 @@ set fillchars+=vert:│
 hi VertSplit ctermbg=NONE guibg=NONE
 
 " Copy current file
-nnoremap <silent> <Leader>cf :let @+ = expand("%:p")<CR>
+" nnoremap <silent> <Leader>cf :let @+ = expand("%:p")<CR>
+nnoremap <silent> <Leader>cf :let @+ = expand("%")<CR>
 " nnoremap <silent> <Leader>cp :let @+ = expand("%")<CR>
 nnoremap <silent> <Leader>cp :let @+ = expand("%:t")<CR>
 nnoremap <Leader>o :!open %<CR><CR>
@@ -520,7 +521,8 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "gofmt"
+" let g:go_goimports_bin = "goimports -tabs=false -tabwidth=4"
 let g:go_auto_type_info = 1
 let g:go_addtags_transform = "snakecase"
 
@@ -546,3 +548,7 @@ augroup END
 
 set tags+=.tags
 nnoremap <leader>ta :silent ! ctags -R --languages=ruby --exclude=.git --exclude=log -f .tags<cr>
+
+noremap <leader>sql :Autoformat<CR>
+let g:formatdef_sql = '"sqlformat --reindent --keywords upper - identifiers lower -"'
+let g:formatters_sql = ['sql']

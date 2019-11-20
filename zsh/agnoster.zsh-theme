@@ -73,7 +73,16 @@ prompt_context() {
 
   if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
     prompt_segment $PRIMARY_FG default " %(?::%F{red}✘ )%(!:%F{yellow}⚡ :)%(1j:%F{cyan}⚙ :)%F{blue}%n%F{red}@%F{green}%m%f "
+  fi
+}
 
+# Kube Context
+prompt_kube() {
+  # Get current context
+  CONTEXT=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")`whoami`
+
+  if [ -n "$CONTEXT" ]; then
+      print -n "(k:${CONTEXT})"
   fi
 }
 
@@ -126,7 +135,8 @@ prompt_agnoster_main() {
   RETVAL=$?
   CURRENT_BG='NONE'
   prompt_status
-  prompt_context
+  # prompt_context
+  # prompt_kube
   prompt_dir
   prompt_git
   prompt_end

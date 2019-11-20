@@ -227,6 +227,7 @@ typeset -U path PATH
 
 # Python
 PATH=/usr/local/opt/python/libexec/bin:$PATH
+PATH=$HOME/miniconda3/bin:$PATH
 # export PATH="$HOME/.anyenv/bin:$PATH"
 # eval "$(anyenv init -)"
 
@@ -236,12 +237,13 @@ function agr { ag -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's
 function json_diff { diff <(cat "$1" | jq '.') <(cat "$2" | jq '.') }
 source <(stern --completion=zsh)
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/etdev/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/etdev/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/etdev/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/etdev/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 function current_timestamp() {
   date -u +"%Y-%m-%d-%H%M"
 }
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/etdev/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/etdev/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/etdev/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/etdev/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+

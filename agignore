@@ -18,3 +18,6 @@ build
 /git_modules
 /node_modules
 *.log
+/client/build_dev/
+/client/build_prod/
+/client/build/
