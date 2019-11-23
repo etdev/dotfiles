@@ -247,3 +247,13 @@ if [ -f '/Users/etdev/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/etdev/Dow
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/etdev/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/etdev/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
+# Python
+# PATH=/usr/local/opt/python/libexec/bin:$PATH
+# export PATH="$HOME/.anyenv/bin:$PATH"
+# eval "$(anyenv init -)"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# linkerd
+export PATH=$PATH:$HOME/.linkerd2/bin
+export PATH=$PATH:/usr/local/Cellar/node/12.3.1/bin/

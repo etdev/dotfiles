@@ -510,8 +510,6 @@ function! ReindexCtags()
   endif
 endfunction
 
-nmap <Leader>ct :call ReindexCtags()<CR>
-
 "vim-go
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -548,7 +546,12 @@ augroup END
 
 set tags+=.tags
 nnoremap <leader>ta :silent ! ctags -R --languages=ruby --exclude=.git --exclude=log -f .tags<cr>
-
 noremap <leader>sql :Autoformat<CR>
 let g:formatdef_sql = '"sqlformat --reindent --keywords upper - identifiers lower -"'
 let g:formatters_sql = ['sql']
+
+" Rust
+let g:rustfmt_autosave = 1
+nmap <Leader>cr :Tmux cargo run<CR>
+nmap <Leader>ct :Tmux cargo test<CR>
+nmap <Leader>ta :call ReindexCtags()<CR>

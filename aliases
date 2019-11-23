@@ -95,3 +95,10 @@ alias lcd="leetcode"
 
 alias watch="watch "
 alias gcl="grpcurl"
+alias kt="stern --color always --exclude-container '(istio-proxy|oauth2-proxy)'"
+
+alias ld=linkerd
+# alias jqi=jq -R -r \'. as $line | try fromjson catch $line\'
+
+alias c=cargo
+alias rne='ruby -n -e'
