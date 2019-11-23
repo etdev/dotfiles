@@ -102,3 +102,4 @@ alias ld=linkerd
 
 alias c=cargo
 alias rne='ruby -n -e'
+alias rpe='ruby -p -e'
