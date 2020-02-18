@@ -103,3 +103,7 @@ alias ld=linkerd
 alias c=cargo
 alias rne='ruby -n -e'
 alias rpe='ruby -p -e'
+
+alias rb='ruby'
+
+alias krmponow='kubectl delete pods --grace-period=0 --force'

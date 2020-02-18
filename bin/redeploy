@@ -1,0 +1,2 @@
+DEPLOYMENT_NAME=$1
+kubectl patch deployment "$DEPLOYMENT_NAME" -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"

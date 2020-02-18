@@ -519,10 +519,11 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
-let g:go_fmt_command = "gofmt"
-" let g:go_goimports_bin = "goimports -tabs=false -tabwidth=4"
+"let g:go_goimports_bin = "goimports -tabs=false -tabwidth=4"
+let g:go_fmt_options = "-tabs=false -tabwidth=4"
 let g:go_auto_type_info = 1
 let g:go_addtags_transform = "snakecase"
+let g:go_fmt_command = "goimports"
 
 " Error and warning signs.
 let g:ale_sign_error = '⤫'
@@ -555,3 +556,5 @@ let g:rustfmt_autosave = 1
 nmap <Leader>cr :Tmux cargo run<CR>
 nmap <Leader>ct :Tmux cargo test<CR>
 nmap <Leader>ta :call ReindexCtags()<CR>
+
+nnoremap confr :source $MYVIMRC<CR>
