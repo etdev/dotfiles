@@ -458,6 +458,7 @@ let g:ale_linters = {
 \   'coffee': ['coffeelint'],
 \   'css': ['stylelint'],
 \   'vue': ['eslint'],
+\   'go': ['gometalinter', 'gofmt'],
 \   'html': []
 \}
 

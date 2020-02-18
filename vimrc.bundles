@@ -81,6 +81,7 @@ Plug 'uarun/vim-protobuf'
 Plug 'w0rp/ale'
 Plug 'junegunn/goyo.vim'
 "Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'keith/swift.vim'
 
 " mac-specific
 if has("unix")

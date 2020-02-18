@@ -227,7 +227,6 @@ typeset -U path PATH
 
 # Python
 PATH=/usr/local/opt/python/libexec/bin:$PATH
-PATH=$HOME/miniconda3/bin:$PATH
 # export PATH="$HOME/.anyenv/bin:$PATH"
 # eval "$(anyenv init -)"
 
@@ -242,11 +241,9 @@ function current_timestamp() {
 }
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/etdev/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/etdev/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/etdev/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/etdev/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/etdev/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/etdev/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 # Python
 # PATH=/usr/local/opt/python/libexec/bin:$PATH
 # export PATH="$HOME/.anyenv/bin:$PATH"
@@ -257,3 +254,63 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # linkerd
 export PATH=$PATH:$HOME/.linkerd2/bin
 export PATH=$PATH:/usr/local/Cellar/node/12.3.1/bin/
+
+if [ -f '/Users/etdev/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/etdev/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/lib/ssl"
+
+
+# got
+# -> runs for all packages and prints a summary of what happened
+# got ./handler
+# -> runs for this package and prints a summary
+# got ./handler NewPromote
+# -> runs for this package and prints a summary
+# got ./handler -v
+# -> runs and doesn't change the output of `go test`
+# got ./handler NewPromote -v
+# -> runs and doesn't change the output of `go test`
+function got {
+    if [[ "$2" == "-v" ]]; then
+        go_test "$1" ""
+    elif [[ "$3" == "-v" ]]; then
+        go_test "$1" "$2"
+    else
+        TEST_OUTPUT=`go_test "$1" "$2" | ag "^---"`
+
+        FAILED=`echo "$TEST_OUTPUT" | ag "FAIL"`
+        FAILED_COUNT=0
+
+        if [[ "$FAILED" != "" ]]; then
+            FAILED_COUNT=`echo "$FAILED" | wc -l`
+        fi
+
+        PASSED=`echo "$TEST_OUTPUT" | ag "PASS"`
+        PASSED_COUNT=0
+
+        if [[ "$PASSED" != "" ]]; then
+            PASSED_COUNT=`echo "$PASSED" | wc -l`
+        fi
+
+        SKIPED=`echo "$TEST_OUTPUT" | ag "SKIP"`
+        SKIPED_COUNT=0
+
+        if [[ "$SKIPED" != "" ]]; then
+            SKIPED_COUNT=`echo "$SKIPED" | wc -l`
+        fi
+
+        if [[ $FAILED_COUNT -eq 0 ]]; then
+            echo "ALL $PASSED_COUNT PASSED";
+        else
+            echo "$FAILED" | colorize_go_tests
+            echo
+            echo "$FAILED_COUNT FAILED; $PASSED_COUNT PASSED; $SKIPPED_COUNT SKIPPED"
+            echo
+        fi
+    fi
+}
