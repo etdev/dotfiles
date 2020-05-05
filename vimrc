@@ -559,3 +559,5 @@ nmap <Leader>ct :Tmux cargo test<CR>
 nmap <Leader>ta :call ReindexCtags()<CR>
 
 nnoremap confr :source $MYVIMRC<CR>
+
+highlight Normal ctermbg=black
