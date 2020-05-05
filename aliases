@@ -106,8 +106,10 @@ alias rpe='ruby -p -e'
 
 alias rb='ruby'
 
-alias krmponow='kubectl delete pods --grace-period=0 --force'
+# alias krmponow='kubectl delete pods --grace-period=0 --force'
 
 alias rb="ruby"
 
 alias lsl="ls | paste -v"
+alias cci="circle"
+alias tn="terminal-notifier"
