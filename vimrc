@@ -116,6 +116,9 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
+" Run macro with norm
+map <Leader>q :norm @q<CR>
+
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
@@ -541,6 +544,8 @@ au FileType go nmap <leader>gt :GoTest -short<cr>
 au FileType go nmap <leader>gr :GoRename <cr>
 au FileType go nmap <silent> <C-f> :GoDeclsDir<cr>
 
+set mmp=5000
+
 augroup vimrcQfClose
     autocmd!
     autocmd FileType qf if mapcheck('<esc>', 'n') ==# '' | nnoremap <buffer><silent> <esc> :cclose<bar>lclose<CR> | endif
@@ -561,3 +566,7 @@ nmap <Leader>ta :call ReindexCtags()<CR>
 nnoremap confr :source $MYVIMRC<CR>
 
 highlight Normal ctermbg=black
+
+" For en/em dashes, respectively
+autocmd FileType markdown imap -- –
+autocmd FileType markdown imap --- —

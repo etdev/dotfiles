@@ -113,3 +113,5 @@ alias rb="ruby"
 alias lsl="ls | paste -v"
 alias cci="circle"
 alias tn="terminal-notifier"
+
+alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'

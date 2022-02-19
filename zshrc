@@ -315,3 +315,12 @@ function got {
 }
 
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+run_python_server() {
+  python -m http.server $1
+}
+
+# Use `jq` with both JSON and non-JSON lines.
+function jjq {
+    jq -R -r "${1:-.} as \$line | try fromjson catch \$line"
+}

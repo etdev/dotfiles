@@ -6,10 +6,11 @@ set show-all-if-unmodified on
 set mark-symlinked-directories on
 set print-completions-horizontally on
 
-"\e[A": history-search-backward
-"\e[B": history-search-forward
+# "\e[A": history-search-backward
+# "\e[B": history-search-forward
 TAB: menu-complete
 set editing-mode vi
+
 # set keymap vi-command
-"\e.":yank-last-arg
-"\e_": yank-last-arg
+# "\e.":yank-last-arg
+# "\e_": yank-last-arg
