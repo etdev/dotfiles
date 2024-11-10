@@ -1,3 +1,7 @@
+# usr-local
+export PATH=$PATH:/usr/local/
+export PATH=$PATH:/opt/
+
 # modify the prompt to contain git branch name if applicable
 git_prompt_info() {
   current_branch=$(git current-branch 2> /dev/null)
@@ -84,6 +88,7 @@ _load_settings() {
 _load_settings "$HOME/.zsh/configs"
 
 # Add $HOME/.bin and mac_scripts to path
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.mac_scripts:$PATH"
 
@@ -105,6 +110,7 @@ unalias b 2>/dev/null
 unset LSCOLORS
 export CLICOLOR=1
 export CLICOLOR_FORCE=1
+export TERM=xterm-256color
 
 # Linux-only
   # Set colored output for LS on linux
@@ -230,6 +236,9 @@ PATH=/usr/local/opt/python/libexec/bin:$PATH
 # export PATH="$HOME/.anyenv/bin:$PATH"
 # eval "$(anyenv init -)"
 
+# Apple Silicon
+PATH=/opt/homebrew/opt/python/libexec/bin:$PATH
+
 # Replace with ag
 function agr { ag -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
 
@@ -254,15 +263,37 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # linkerd
 export PATH=$PATH:$HOME/.linkerd2/bin
 export PATH=$PATH:/usr/local/Cellar/node/12.3.1/bin/
+export PATH=$PATH:/opt/homebrew/Cellar/node/12.3.1/bin/
 
 if [ -f '/Users/etdev/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/etdev/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
-export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
 
+# Intel Silicon
+# export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+# export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
+# Apple Silicon
+export optflags="-Wno-error=implicit-function-declaration"
+export LDFLAGS="-L/opt/homebrew/opt/libffi/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libffi/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
+
+# export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
+# export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
+
+# If you need to have openssl@3 first in your PATH, run:
+echo 'export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"' >> ~/.zshrc
+# 
+# For compilers to find openssl@3 you may need to set:
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
+# 
+# For pkg-config to find openssl@3 you may need to set:
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"
 
 # got
 # -> runs for all packages and prints a summary of what happened
@@ -324,3 +355,18 @@ run_python_server() {
 function jjq {
     jq -R -r "${1:-.} as \$line | try fromjson catch \$line"
 }
+
+# pnpm
+export PNPM_HOME="/Users/eric/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# bun completions
+[ -s "/Users/eric/.bun/_bun" ] && source "/Users/eric/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"

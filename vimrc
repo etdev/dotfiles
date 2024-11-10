@@ -46,6 +46,7 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile *.py set filetype=python
   autocmd BufRead,BufNewFile *.js set filetype=javascript
+  autocmd BufRead,BufNewFile *.ts set filetype=javascript
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
@@ -278,7 +279,7 @@ let g:syntastic_ruby_mri_exec='/Users/eric/.rbenv/shims/ruby'
 
 " Show 80-char limit
 set colorcolumn=80
-highlight ColorColumn ctermbg=235
+highlight ColorColumn ctermbg=233
 " Make gutter clear (for syntastic etc)
 highlight clear SignColumn
 
@@ -433,9 +434,9 @@ autocmd BufRead,BufNewFile *.rb nnoremap <leader>pr obinding.pry<esc>k<CR>:w<CR>
 autocmd BufRead,BufNewFile *.rb nnoremap <leader>dp :g/^ *binding\.pry$/d<CR>:w<CR>
 autocmd BufRead,BufNewFile *.rb nnoremap <leader>dpa :silent bufdo g/^ *binding.pry$/d<CR> :silent bufdo w!<CR>
 " js
-autocmd BufRead,BufNewFile *.js,*.jsx,*.ts,*.vue nnoremap <leader>pr odebugger;<esc>k<CR>:w<CR>
-autocmd BufRead,BufNewFile *.js,*.jsx,*.ts,*.vue nnoremap <leader>dp :g/^ *debugger;$/d<CR>:w<CR>
-autocmd BufRead,BufNewFile *.js,*.jsx,*.ts,*.vue nnoremap <leader>dpa :silent bufdo g/^ *debugger;$/d<CR> :silent bufdo w!<CR>
+autocmd BufRead,BufNewFile *.js,*.jsx,*.vue nnoremap <leader>pr odebugger;<esc>k<CR>:w<CR>
+autocmd BufRead,BufNewFile *.js,*.jsx,*.vue nnoremap <leader>dp :g/^ *debugger;$/d<CR>:w<CR>
+autocmd BufRead,BufNewFile *.js,*.jsx,*.vue nnoremap <leader>dpa :silent bufdo g/^ *debugger;$/d<CR> :silent bufdo w!<CR>
 " coffeescript
 autocmd BufRead,BufNewFile *.coffee nnoremap <leader>pr odebugger<esc>k<CR>:w<CR>
 autocmd BufRead,BufNewFile *.coffee nnoremap <leader>dp :g/^ *debugger$/d<CR>:w<CR>
@@ -568,5 +569,5 @@ nnoremap confr :source $MYVIMRC<CR>
 highlight Normal ctermbg=black
 
 " For en/em dashes, respectively
-autocmd FileType markdown imap -- –
-autocmd FileType markdown imap --- —
+" autocmd FileType markdown imap -- –
+" autocmd FileType markdown imap --- —

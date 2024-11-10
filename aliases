@@ -34,6 +34,7 @@ alias berc="bundle exec rails console"
 alias berdb="bundle exec rails dbconsole"
 alias berspec="bundle exec rspec"
 alias h='http'
+alias less='less -R'
 
 # git
 alias gcb="git branch | grep -v 'master' | xargs git branch -D"
@@ -115,3 +116,5 @@ alias cci="circle"
 alias tn="terminal-notifier"
 
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+
+alias wr="wrangler"
