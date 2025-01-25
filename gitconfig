@@ -1,10 +1,16 @@
 [init]
 	templatedir = ~/.git_template
+  # defaultBranch = master
 [push]
   default = current
 [color]
   ui = auto
 [alias]
+  # main-branch = "!git rev-parse --abbrev-ref origin/HEAD | cut -c8-"
+  # main-branch = "!git remote show origin | grep 'HEAD branch' | awk '{print $NF}'"
+
+  main-branch = "!branch=$(git rev-parse --abbrev-ref origin/HEAD 2>/dev/null | cut -c8-); if [ \"$branch\" = \"master\" ]; then echo master; else echo main; fi"
+
   a = add
   aa = add --all
   ap = add --patch
@@ -20,15 +26,19 @@
   br = branch
   rst = reset
   rb = rebase
-  rbo = !sh -c 'git fetch origin && git rebase origin/$1' -
-  rbio = !sh -c 'git fetch origin && git rebase -i origin/$1' -
-  rbm = !sh -c 'git fetch origin && git rebase origin/master' -
-  rbiom = !sh -c 'git fetch origin && git rebase -i origin/master' -
+  rbo = "!sh -c 'git fetch origin && git rebase origin/$(git main-branch)' -"
+  rbio = "!sh -c 'git fetch origin && git rebase -i origin/$(git main-branch)' -"
+  rbm = "!sh -c 'git fetch origin && git rebase origin/$(git main-branch)' -"
+  rbiom = "!sh -c 'git fetch origin && git rebase -i origin/$(git main-branch)' -"
+  pom = "!sh -c 'git push origin $(git main-branch)' -"
+  rhm = "!sh -c 'git fetch origin && git reset --hard origin/$(git main-branch)' -"
+  dfom = "!sh -c 'git diff origin/$(git main-branch)' -"
+  poc = "!f() { branch=$(git current-branch) && if [[ $branch == $(git main-branch) || $branch == develop ]]; then echo FAILED $branch && return -1; fi && git push origin $branch; }; f"
+  up = "!git fetch origin && git rebase origin/$(git main-branch)"
+
   po = !sh -c 'git push origin $1' -
-  pom = push origin master
   reset-hard = !sh -c 'git fetch origin && git reset --hard origin/$1' -
   rh = !sh -c 'git fetch origin && git reset --hard origin/$1' -
-  rhm = !sh -c 'git fetch origin && git reset --hard origin/master' -
   rhdev = !sh -c 'git fetch origin && git reset --hard origin/develop' -
   rhc = "!f() { branch=$(git current-branch) && git fetch origin && git reset --hard origin/$branch; }; f"
   update-subs = submodule update --recursive --remote
@@ -37,18 +47,15 @@
   ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
   current-branch = !sh -c 'git rev-parse --abbrev-ref HEAD' -
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
-  merge-branch = !git checkout master && git merge @{-1}
+  merge-branch = "!git checkout $(git main-branch) && git merge @{-1}"
   rename-branch = !sh -c 'old=$(git current-branch) && git branch -m $old $1 && git push origin --set-upstream $1 && git push origin --delete $old' -
   push-fl = push --force-with-lease
   po = push origin
-  pom = push origin master
-  dfom = git diff origin/master
   dfoc = "!f() { branch=$(git current-branch) && git diff origin/$branch; }; f"
-  poc = "!f() { branch=$(git current-branch) && if [[ $branch == master || $branch == develop ]]; then echo FAILED $branch && return -1; fi && git push origin $branch; }; f"
+  poc = "!f() { branch=$(git current-branch) && if [[ $branch == master || $branch == develop || $branch == main ]]; then echo FAILED $branch && return -1; fi && git push origin $branch; }; f"
   pfl = push --force-with-lease
   pflo = push --force-with-lease origin
-  pfloc = "!f() { branch=$(git current-branch) && if [[ $branch == master || $branch == develop ]]; then echo FAILED $branch && return -1; fi && git push --force-with-lease origin $branch; }; f"
-  up = !git fetch origin && git rebase origin/master
+  pfloc = "!f() { branch=$(git current-branch) && if [[ $branch == master || $branch == develop || $branch == main ]]; then echo FAILED $branch && return -1; fi && git push --force-with-lease origin $branch; }; f"
   updev = !git fetch origin && git rebase origin/develop
 
   #diff
@@ -56,7 +63,6 @@
   dfc = diff --cached
   dfw = diff --color-words
   dfwc = diff --color-words --cached
-  dfom = diff origin/master
   dfod = diff origin/develop
 
   # log
@@ -83,9 +89,9 @@
   prune = true
 [http]
   sslVerify = false
-[branch "master"]
-  merge = refs/heads/master
-  remote = origin
+# [branch "master"]
+#   merge = refs/heads/master
+#   remote = origin
 [diff]
   tool = vimdiff
 [include]

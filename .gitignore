@@ -6,3 +6,4 @@ node_modules
 package-lock.json
 cabal.sandbox.config
 zsh/antigen-hs
+id_rsa_gitlab

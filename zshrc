@@ -286,7 +286,8 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig"
 # export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
 
 # If you need to have openssl@3 first in your PATH, run:
-echo 'export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"' >> ~/.zshrc
+# echo 'export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"' >> ~/.zshrc
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 # 
 # For compilers to find openssl@3 you may need to set:
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
@@ -369,4 +370,3 @@ esac
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
