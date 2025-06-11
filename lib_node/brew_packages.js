@@ -177,4 +177,5 @@ module.exports = [
   'xz',
   'yarn',
   'yasm',
+  'coreutils',
 ];

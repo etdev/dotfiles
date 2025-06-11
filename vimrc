@@ -168,11 +168,13 @@ set ignorecase
 " For tmux-navigator
 let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-"nnoremap <silent> <C-w> :TmuxNavigatePrevious<cr>
+if !exists('g:vscode')
+  nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+  nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+  nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+  nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+  "nnoremap <silent> <C-w> :TmuxNavigatePrevious<cr>
+endif
 
 " Switch quickly between buffers (matches tmux window switching)
 map <C-w>n :bnext<cr>
@@ -257,7 +259,7 @@ endif
 
 " Add syntax coloring for code blocks within markdown
 au BufNewFile,BufReadPost *.md set filetype=markdown
-let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'java']
+let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
 
 " Set scratch file type to markdown
 let g:scratch_filetype = 'markdown'
@@ -356,6 +358,8 @@ autocmd BufNewFile,BufRead *.vue set filetype=vue.html
 
 " Livedown
 nmap <Leader>md :LivedownPreview<CR>
+let g:livedown_open = 1
+let g:livedown_port = 1337
 
 let g:ag_prg = 'ag --vimgrep'
 
@@ -478,6 +482,11 @@ let g:ale_fixers = {
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_fix_on_save = 0
+let g:ale_virtualtext_cursor=0
+
+" Error and warning signs.
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
 
 set spell
 
@@ -529,10 +538,6 @@ let g:go_fmt_options = "-tabs=false -tabwidth=4"
 let g:go_auto_type_info = 1
 let g:go_addtags_transform = "snakecase"
 let g:go_fmt_command = "goimports"
-
-" Error and warning signs.
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
 
@@ -571,3 +576,8 @@ highlight Normal ctermbg=black
 " For en/em dashes, respectively
 " autocmd FileType markdown imap -- –
 " autocmd FileType markdown imap --- —
+
+let g:syntax_maxlines = 5000
+
+set maxmempattern=2000
+"let g:markdown_fenced_languages = []

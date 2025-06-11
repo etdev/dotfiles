@@ -112,6 +112,10 @@ export CLICOLOR=1
 export CLICOLOR_FORCE=1
 export TERM=xterm-256color
 
+
+# Use gls
+alias ls='gls --color=auto'
+
 # Linux-only
   # Set colored output for LS on linux
 case $(uname) in
@@ -128,6 +132,8 @@ function chpwd() {
     emulate -L zsh
             ls
 }
+
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30:fi=0'
 
 # Fix colors
 autoload -U colors && colors
@@ -231,13 +237,15 @@ echo -e "\033]50;SetProfile=etdev-default\a"
 
 typeset -U path PATH
 
+
+
 # Python
-PATH=/usr/local/opt/python/libexec/bin:$PATH
+# PATH=/usr/local/opt/python/libexec/bin:$PATH
 # export PATH="$HOME/.anyenv/bin:$PATH"
 # eval "$(anyenv init -)"
 
 # Apple Silicon
-PATH=/opt/homebrew/opt/python/libexec/bin:$PATH
+# PATH=/opt/homebrew/opt/python/libexec/bin:$PATH
 
 # Replace with ag
 function agr { ag -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
@@ -370,3 +378,10 @@ esac
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
