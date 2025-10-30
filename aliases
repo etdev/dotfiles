@@ -118,3 +118,6 @@ alias tn="terminal-notifier"
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
 alias wr="wrangler"
+# copy last command to clipboard
+alias cl="fc -ln -1 | pbcopy"
+

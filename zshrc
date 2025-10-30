@@ -13,6 +13,9 @@ setopt promptsubst
 export EDITOR=vim
 export VISUAL=vim
 
+# vi mode
+bindkey -v
+
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
 
@@ -26,10 +29,18 @@ for function in ~/.zsh/functions/*; do
 done
 
 # history settings
-setopt hist_ignore_all_dups inc_append_history
+# setopt hist_ignore_all_dups inc_append_history
+setopt HIST_IGNORE_ALL_DUPS
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FCNTL_LOCK
 HISTFILE=~/.zhistory
-HISTSIZE=4096
-SAVEHIST=4096
+# HISTSIZE=4096
+# SAVEHIST=4096
+HISTSIZE=100000
+SAVEHIST=100000
 
 # awesome cd movements from zshkit
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
@@ -40,16 +51,6 @@ setopt extendedglob
 
 # Allow [ or ] whereever you want
 unsetopt nomatch
-
-# handy keybindings
-bindkey "^A" beginning-of-line
-bindkey "^E" end-of-line
-bindkey "^R" history-incremental-search-backward
-bindkey "^P" history-search-backward
-bindkey "^Y" accept-and-hold
-bindkey "^N" insert-last-word
-bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
-
 
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
 # these are loaded first, second, and third, respectively.
@@ -144,9 +145,16 @@ PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_c
 export LC_ALL=en_US.UTF-8
 export LANG=en_us.UTF-8
 
-# vi mode
-bindkey -v
 bindkey '^R' history-incremental-search-backward
+# handy keybindings
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^R" history-incremental-search-backward
+bindkey "^P" history-search-backward
+bindkey "^Y" accept-and-hold
+bindkey "^N" insert-last-word
+bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
+
 set blink-matching-paren on
 export KEYTIMEOUT=1
 
@@ -385,3 +393,4 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
+source $HOME/.local/bin/env
