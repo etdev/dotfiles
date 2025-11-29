@@ -96,3 +96,5 @@
   tool = vimdiff
 [include]
   path = ~/.gitconfig.local
+[git-extras]
+	default-branch = master

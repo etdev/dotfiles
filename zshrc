@@ -42,6 +42,9 @@ HISTFILE=~/.zhistory
 HISTSIZE=100000
 SAVEHIST=100000
 
+setopt PROMPT_SP
+setopt PROMPT_CR
+
 # awesome cd movements from zshkit
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
 DIRSTACKSIZE=5
@@ -51,6 +54,7 @@ setopt extendedglob
 
 # Allow [ or ] whereever you want
 unsetopt nomatch
+
 
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
 # these are loaded first, second, and third, respectively.
@@ -109,6 +113,7 @@ unalias b 2>/dev/null
 
 
 unset LSCOLORS
+export COLORTERM=256color
 export CLICOLOR=1
 export CLICOLOR_FORCE=1
 export TERM=xterm-256color

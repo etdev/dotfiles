@@ -45,7 +45,8 @@ prompt_segment() {
   [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
   [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
   if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
-    print -n "%{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%}"
+    # print -n "%{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%}"
+    print -n "%K{$1}%F{$CURRENT_BG}$SEGMENT_SEPARATOR%f"
   else
     print -n "%{$bg%}%{$fg%}"
   fi
@@ -73,7 +74,7 @@ prompt_context() {
 
   if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
     # prompt_segment $PRIMARY_FG default " %(?::%F{red}✘ )%(!:%F{yellow}⚡ :)%(1j:%F{cyan}⚙ :)%F{blue}%n%F{red}@%F{green}%m%f "
-    prompt_segment none default " %(?::%F{red}✘ )%(!:%F{yellow}⚡ :)%(1j:%F{cyan}⚙ :)%F{blue}%n%F{red}@%F{green}%m%f "
+    prompt_segment 0 default " %(?::%F{red}✘ )%(!:%F{yellow}⚡ :)%(1j:%F{cyan}⚙ :)%F{blue}%n%F{red}@%F{green}%m%f "
   fi
 }
 
@@ -107,14 +108,14 @@ prompt_git() {
     else
       ref="$DETACHED ${ref/.../}"
     fi
-    prompt_segment $color $PRIMARY_FG
-    print -Pn " $ref"
+
+    prompt_segment $color default " %b%F{0}${ref}"
   fi
 }
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment blue $PRIMARY_FG ' %1d '
+  prompt_segment blue default '%b%F{0} %1d '
 }
 
 # Status:
@@ -136,7 +137,7 @@ prompt_agnoster_main() {
   RETVAL=$?
   CURRENT_BG='NONE'
   prompt_status
-  # prompt_context
+  prompt_context
   # prompt_kube
   prompt_dir
   prompt_git
@@ -146,7 +147,7 @@ prompt_agnoster_main() {
 prompt_agnoster_precmd() {
   vcs_info
   PROMPT='
-%{%f%b%k%}$(prompt_agnoster_main) 
+%{%f%b%k%}$(prompt_agnoster_main)
  ❯ '
 }
 

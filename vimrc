@@ -15,6 +15,8 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
+set shell=bash
+
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -338,8 +340,6 @@ nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR>
 nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR>
 nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 
-set shell=bash
-
 " python allow up to 99 characters per line
 " let g:syntastic_python_pylint_post_args="--max-line-length=99"
 
@@ -581,3 +581,20 @@ let g:syntax_maxlines = 5000
 
 set maxmempattern=2000
 "let g:markdown_fenced_languages = []
+
+function! s:OpenLinksRange(first, last) abort
+  " Get lines in the given range
+  let l:lines = getline(a:first, a:last)
+  " Keep only lines that look like URLs (optional but nice)
+  let l:urls = filter(l:lines, 'v:val =~# "^https\\?://"')
+
+  if empty(l:urls)
+    echo "No URLs found in range"
+    return
+  endif
+
+  " Join them with newlines and feed to xargs
+  call system('xargs -n1 open -a "Google Chrome"', join(l:urls, "\n"))
+endfunction
+
+command! -range OpenLinks call s:OpenLinksRange(<line1>, <line2>)

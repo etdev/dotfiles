@@ -1,8 +1,19 @@
 #!/bin/sh
 #
-# Attach or create tmux session named the same as current directory.
+# Attach or create tmux session.
+# If an argument is given, use it as the session name.
+# Otherwise, use the current directory name.
 
-session_name="$(basename "$PWD" | tr . -)"
+if [ -n "$1" ]; then
+  # Use the first argument as the session name
+  session_name="$1"
+else
+  # Use the current directory name as the session name
+  session_name="$(basename "$PWD")"
+fi
+
+# Sanitize the name (applies to both cases)
+session_name="$(echo "$session_name" | tr . -)"
 
 not_in_tmux() {
   [ -z "$TMUX" ]
