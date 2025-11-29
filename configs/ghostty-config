@@ -1,0 +1,35 @@
+command = /opt/homebrew/bin/zsh
+# Font setup (Match your iTerm font)
+# font-family = "MesloLGS NF"
+# font-family = "FiraCode Nerd Font"
+# font-family = "Hack Nerd Font"
+font-family = "JetBrains Mono Nerd Font"
+font-size = 12
+
+# Theme (Ghostty has a picker, press Ctrl+Shift+J inside Ghostty to preview them)
+theme = solarized_dark_custom
+
+# Keybinding tweaks (MacOS native behavior)
+macos-option-as-alt = true
+
+# Tmux compatibility (Ensures colors work correctly)
+term = xterm-256color
+
+# This blends the tab bar with your theme background
+macos-titlebar-style = transparent
+
+# Ensure the window theme matches your color scheme (dark/light)
+# so the text in the tabs is readable.
+window-theme = dark
+
+bell-features = no-system
+
+keybind = cmd+shift+bracket_left=ignore
+keybind = cmd+shift+backslash=next_tab
+keybind = cmd+shift+bracket_right=previous_tab
+
+macos-icon = custom
+
+confirm-close-surface = true
+
+working-directory = home
