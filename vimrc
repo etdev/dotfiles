@@ -1,3 +1,8 @@
+if !has('nvim')
+  source ~/.vimrc.bundles
+endif
+
+
 " Use Vim settings, rather then Vi settings. This setting must be as early as
 " possible, as it has side effects.
 set nocompatible
@@ -17,15 +22,10 @@ set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set shell=bash
 
-
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
-endif
-
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
 endif
 
 if has("autocmd")
@@ -73,20 +73,6 @@ autocmd FileType php :setlocal sw=4 ts=4 sts=4 " Four spaces for php files "
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
-
-" CtrlP auto cache clearing.
-"function! SetupCtrlP()
-  "if exists("g:loaded_ctrlp") && g:loaded_ctrlp
-    "augroup CtrlPExtension
-      "autocmd!
-      "autocmd FocusGained  * CtrlPClearCache
-      "autocmd BufWritePost * CtrlPClearCache
-    "augroup END
-  "endif
-"endfunction
-"if has("autocmd")
-  "autocmd VimEnter * :call SetupCtrlP()
-"endif
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -159,9 +145,12 @@ if filereadable($HOME . "/.vimrc.local")
 endif
 
 " Set colorscheme
-let g:solarized_termcolors = 256
-set background=dark
-colorscheme solarized
+if !has('nvim')
+  let g:solarized_termcolors = 256
+  " let g:solarized_termcolors = 16
+  set background=dark
+  colorscheme solarized
+endif
 
 " Case-insensitive search
 set smartcase
@@ -204,8 +193,8 @@ nmap <leader>c :%s/^\s*#.*$//g<CR>:%s/\(\n\)\n\+/\1/g<CR>:nohl<CR>gg
 nmap <leader>V :tabe ~/.vimrc.local<CR>
 map <Leader>i mmgg=G`m<CR>
 map <Leader>p :%s/\s\+$//<CR>
-nnoremap <silent> <leader>sc :w<CR>:SyntasticCheck<CR>
-nnoremap <silent> <leader>sr :w<CR>:SyntasticReset<CR>
+" nnoremap <silent> <leader>sc :w<CR>:SyntasticCheck<CR>
+" nnoremap <silent> <leader>sr :w<CR>:SyntasticReset<CR>
 
 " Don't append the comment prefix when hitting o/O on a comment line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -223,9 +212,19 @@ endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
 " Persisted undo
-if v:version > 702
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
+if has('persistent_undo')
+  if has('nvim')
+    " Neovim-specific undo directory
+    let target_path = expand('~/.config/nvim/undo')
+    if !isdirectory(target_path)
+      call system('mkdir -p ' . target_path)
+    endif
+    let &undodir = target_path
+  else
+    " Standard Vim undo directory (Legacy)
+    silent !mkdir ~/.vim/backups > /dev/null 2>&1
+    set undodir=~/.vim/backups
+  endif
   set undofile
 endif
 
@@ -261,7 +260,7 @@ endif
 
 " Add syntax coloring for code blocks within markdown
 au BufNewFile,BufReadPost *.md set filetype=markdown
-let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
+let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
 
 " Set scratch file type to markdown
 let g:scratch_filetype = 'markdown'
@@ -276,32 +275,26 @@ set clipboard=unnamed
 runtime macros/matchit.vim
 
 " Turn off annoying syntastic error in ERB files
-let g:syntastic_eruby_ruby_quiet_messages =
-      \ {'regex': 'possibly useless use of a variable in void context'}
+" let g:syntastic_eruby_ruby_quiet_messages =
+"       \ {'regex': 'possibly useless use of a variable in void context'}
 " Make Syntastic check against rbenv-set ruby
-let g:syntastic_ruby_mri_exec='/Users/eric/.rbenv/shims/ruby'
+" let g:syntastic_ruby_mri_exec='/Users/eric/.rbenv/shims/ruby'
 
 " Show 80-char limit
 set colorcolumn=80
+
+" Custom color replacements for solarized theme
 highlight ColorColumn ctermbg=233
-" Make gutter clear (for syntastic etc)
+highlight LineNr ctermbg=233
+" Make gutter clear 
 highlight clear SignColumn
 
 augroup myvimrc
   au!
-  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+  if !has('nvim')
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+  endif
 augroup END
-
-" Nvim
-if has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-
-"NeoVim handles ESC keys as alt+key, set this to solve the problem
-if has('nvim')
-    set ttimeout
-    set ttimeoutlen=0
-endif
 
 set timeout timeoutlen=1000 ttimeoutlen=100
 
@@ -313,7 +306,7 @@ nnoremap <Leader>a :Ag
 " Rubocop
 let g:vimrubocop_keymap = 0
 nmap <Leader>ru :RuboCop<CR>
-nnoremap <Leader>sy :SyntasticCheck<CR>
+"nnoremap <Leader>sy :SyntasticCheck<CR>
 
 
 " Swap (rotate)windows
@@ -352,9 +345,6 @@ set secure
 au FocusGained * :redraw!
 nnoremap <Leader>r :redraw!<CR>
 
-" Fix vue.js
-autocmd BufNewFile,BufRead *.vue set filetype=vue.html
-"set filetype=vue.html
 
 " Livedown
 nmap <Leader>md :LivedownPreview<CR>
@@ -430,7 +420,19 @@ set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:block-Cursor/lCursor-blin
 au VimLeave * set guicursor=a:block-blinkon0
 
 " speed up syntax highlighting (IMPORTANT)
-set re=1
+" set re=1
+" set re=0
+
+" vue optimizations
+autocmd FileType vue syntax sync minlines=200 maxlines=512
+autocmd FileType vue setlocal regexpengine=1
+autocmd FileType vue setlocal synmaxcol=200
+" autocmd FileType vue let b:match_ignorecase = 1 | let b:match_words = ""
+" autocmd BufNewFile,BufRead *.vue set filetype=vue.html
+let g:vue_pre_processors = ['scss']
+"set filetype=vue.html
+let g:matchparen_timeout = 20
+let g:matchparen_insert_timeout = 5
 
 " Insert debugger calls based on file type
 " ruby
@@ -461,32 +463,32 @@ let g:tslime_window = 2
 let g:tslime_pane = 2
 
 " ale
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'coffee': ['coffeelint'],
-\   'css': ['stylelint'],
-\   'vue': ['eslint'],
-\   'go': ['gometalinter', 'gofmt'],
-\   'html': []
-\}
+" let g:ale_linters = {
+" \   'javascript': ['eslint'],
+" \   'coffee': ['coffeelint'],
+" \   'css': ['stylelint'],
+" \   'vue': ['eslint'],
+" \   'go': ['gometalinter', 'gofmt'],
+" \   'html': []
+" \}
 
 "let g:ale_linters = {
       "\ 'javascript': ['eslint'],
       "\ }
-let g:ale_linter_aliases = {'vue': 'css'}
+" let g:ale_linter_aliases = {'vue': 'css'}
 
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\}
-
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_fix_on_save = 0
-let g:ale_virtualtext_cursor=0
-
-" Error and warning signs.
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
+" let g:ale_fixers = {
+" \   'javascript': ['eslint'],
+" \}
+"
+" let g:ale_lint_on_save = 1
+" let g:ale_lint_on_text_changed = 0
+" let g:ale_fix_on_save = 0
+" let g:ale_virtualtext_cursor=0
+"
+" " Error and warning signs.
+" let g:ale_sign_error = '⤫'
+" let g:ale_sign_warning = '⚠'
 
 set spell
 
@@ -577,9 +579,9 @@ highlight Normal ctermbg=black
 " autocmd FileType markdown imap -- –
 " autocmd FileType markdown imap --- —
 
-let g:syntax_maxlines = 5000
+let g:syntax_maxlines = 1000
 
-set maxmempattern=2000
+set maxmempattern=20000
 "let g:markdown_fenced_languages = []
 
 function! s:OpenLinksRange(first, last) abort
@@ -598,3 +600,13 @@ function! s:OpenLinksRange(first, last) abort
 endfunction
 
 command! -range OpenLinks call s:OpenLinksRange(<line1>, <line2>)
+
+" --- Neovim Specific Overrides ---
+if has('nvim')
+  " set termguicolors
+  " set background=dark
+  lua require('config.lazy')
+  " autocmd BufWritePost lazy.lua luafile %
+endif
+
+
