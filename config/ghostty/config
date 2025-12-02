@@ -33,3 +33,9 @@ macos-icon = custom
 confirm-close-surface = true
 
 working-directory = home
+
+# Force Option+¥ to send a backslash
+# (We use 'text:\\' because the backslash must be escaped)
+keybind = alt+¥=text:\\
+
+font-feature = -calt,-liga,-dlig
