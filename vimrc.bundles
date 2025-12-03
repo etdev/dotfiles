@@ -71,6 +71,7 @@ Plug 'junegunn/goyo.vim'
 
 " mac-specific
 if has("unix")
+  set shell=/bin/zsh
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
     Plug 'shime/vim-livedown'

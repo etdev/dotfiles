@@ -35,6 +35,27 @@ require("lazy").setup({
     end
   },
 
+  -- New for nvim
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require('lualine').setup({
+        options = { theme = 'solarized_dark' }
+      })
+    end
+  },
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require('Comment').setup({
+        toggler = {
+          line = '<leader>c<space>',
+        }
+      })
+    end,
+  },
+
   -- Converted from vim-plug
   { "pbrisbin/vim-mkdir" },
   { "tpope/vim-endwise" },
@@ -42,31 +63,31 @@ require("lazy").setup({
   { "tpope/vim-fugitive" },
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
-  { "vim-ruby/vim-ruby" },
-  { "vim-scripts/matchit.zip" },
+  -- { "vim-ruby/vim-ruby" },
+  -- { "vim-scripts/matchit.zip" },
   { "scrooloose/nerdcommenter" },
   { "christoomey/vim-tmux-navigator" },
-  { "vim-airline/vim-airline" },
-  { "vim-airline/vim-airline-themes" },
-  { "fatih/vim-go" },
+  -- { "vim-airline/vim-airline" },
+  -- { "vim-airline/vim-airline-themes" },
+  -- { "fatih/vim-go" },
   { "posva/vim-vue" },
-  { "othree/html5.vim" },
-  { "pangloss/vim-javascript" },
+  -- { "othree/html5.vim" },
+  -- { "pangloss/vim-javascript" },
   { "honza/vim-snippets" },
   { "universal-ctags/ctags" },
   { "Chiel92/vim-autoformat" },
-  { "rust-lang/rust.vim" },
-  { "JulesWang/css.vim" },
-  { "scrooloose/vim-slumlord" },
-  { "aklt/plantuml-syntax" },
-  {
-    "junegunn/fzf",
-    dir = "~/.fzf",
-    build = "./install --all"
-  },
-  { "junegunn/fzf.vim" },
+  -- { "rust-lang/rust.vim" },
+  -- { "JulesWang/css.vim" },
+  -- { "scrooloose/vim-slumlord" },
+  -- { "aklt/plantuml-syntax" },
+  -- {
+  --   "junegunn/fzf",
+  --   dir = "~/.fzf",
+  --   build = "./install --all"
+  -- },
+  -- { "junegunn/fzf.vim" },
   { "jeetsukumaran/vim-indentwise" },
-  { "uarun/vim-protobuf" },
+  -- { "uarun/vim-protobuf" },
   { "junegunn/goyo.vim" },
 
   -- Mac-specific
@@ -199,5 +220,121 @@ require("lazy").setup({
         highlight! @variable.parameter.scss guibg=NONE ctermbg=NONE
       ]]
     end,
+  },
+  -- LSP Configuration
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
+    config = function()
+      -- Setup mason first
+      require("mason").setup()
+
+      -- LSP keybindings
+      vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(args)
+          local opts = { buffer = args.buf, noremap = true, silent = true }
+          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+          vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+          vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+          vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, opts)
+        end,
+      })
+
+      -- Setup servers with handlers (fixes dependency issues)
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          -- "ruby_lsp",
+          "ts_ls",
+          -- "vue_ls",
+          "html",
+          "cssls",
+        },
+        automatic_installation = true,
+        handlers = {
+          function(server_name)
+            vim.lsp.enable(server_name)
+          end,
+        },
+      })
+    end
+  },
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
+
+  -- Autocomplete
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",     -- LSP completion source
+      "hrsh7th/cmp-buffer",        -- Buffer completion source
+      "hrsh7th/cmp-path",          -- Path completion source
+      "L3MON4D3/LuaSnip",          -- Snippet engine
+      "saadparwaiz1/cmp_luasnip",  -- Snippet completion source
+    },
+    config = function()
+      local cmp = require('cmp')
+      local luasnip = require('luasnip')
+
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        mapping = cmp.mapping.preset.insert({
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+        }),
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+        }, {
+          { name = 'buffer' },
+          { name = 'path' },
+        })
+      })
+    end
+  },
+
+  -- Telescope (replaces fzf/ctrlp)
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require('telescope').setup({
+        defaults = {
+          file_ignore_patterns = { "node_modules", ".git/" },
+        }
+      })
+
+      -- Ctrl+P for file finder (like ctrlp)
+      vim.keymap.set('n', '<C-p>', '<cmd>Telescope find_files<cr>')
+
+      -- Set darker highlights to match solarized
+      local colors = vim.api.nvim_get_hl(0, { name = 'Normal' })
+      vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = colors.bg })
+      vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = colors.bg, fg = colors.bg })
+
+      -- Optional: other useful mappings
+      vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')  -- grep in files
+      vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')    -- list buffers
+    end
   },
 })

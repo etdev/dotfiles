@@ -388,7 +388,10 @@ let g:fzf_colors ={
 
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
-nnoremap <c-p> :FZF<cr>
+if !has('nvim')
+  nnoremap <c-p> :FZF<cr>
+endif
+
 nnoremap <leader>h :History<CR>
 nnoremap <leader>b :Buffers<CR>
 
