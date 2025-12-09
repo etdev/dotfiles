@@ -27,6 +27,7 @@ bell-features = no-system
 keybind = cmd+shift+bracket_left=ignore
 keybind = cmd+shift+backslash=next_tab
 keybind = cmd+shift+bracket_right=previous_tab
+keybind = ¥=text:\\
 
 macos-icon = custom
 
@@ -39,3 +40,4 @@ working-directory = home
 keybind = alt+¥=text:\\
 
 font-feature = -calt,-liga,-dlig
+font-style = no-strikethrough

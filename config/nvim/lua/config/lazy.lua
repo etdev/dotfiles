@@ -16,14 +16,24 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   -- TREESITTER (The Syntax Engine)
+  --
+  { import = "plugins" },
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+    build = function()
+      -- Run this when installing/updating the plugin
+      require("nvim-treesitter.install").update({ with_sync = true })()
+    end,
     config = function()
-      require("nvim-treesitter.configs").setup({
+      local ok, configs = pcall(require, "nvim-treesitter.configs")
+      if not ok then
+        return
+      end
+
+      configs.setup({
         ensure_installed = {
           "ruby", "javascript", "go", "json", "html", "css",
-          "scss", "vue", "markdown", "markdown_inline", "vim", "lua"
+          "scss", "vue", "markdown", "markdown_inline", "vim", "lua",
         },
         sync_install = false,
         auto_install = true,
@@ -32,7 +42,7 @@ require("lazy").setup({
           additional_vim_regex_highlighting = false,
         },
       })
-    end
+    end,
   },
 
   -- New for nvim
@@ -221,120 +231,71 @@ require("lazy").setup({
       ]]
     end,
   },
-  -- LSP Configuration
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    },
-    config = function()
-      -- Setup mason first
-      require("mason").setup()
-
-      -- LSP keybindings
-      vim.api.nvim_create_autocmd('LspAttach', {
-        callback = function(args)
-          local opts = { buffer = args.buf, noremap = true, silent = true }
-          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-          vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-          vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-          vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, opts)
-        end,
-      })
-
-      -- Setup servers with handlers (fixes dependency issues)
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          -- "ruby_lsp",
-          "ts_ls",
-          -- "vue_ls",
-          "html",
-          "cssls",
-        },
-        automatic_installation = true,
-        handlers = {
-          function(server_name)
-            vim.lsp.enable(server_name)
-          end,
-        },
-      })
-    end
-  },
-  { "williamboman/mason.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
-
-  -- Autocomplete
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",     -- LSP completion source
-      "hrsh7th/cmp-buffer",        -- Buffer completion source
-      "hrsh7th/cmp-path",          -- Path completion source
-      "L3MON4D3/LuaSnip",          -- Snippet engine
-      "saadparwaiz1/cmp_luasnip",  -- Snippet completion source
-    },
-    config = function()
-      local cmp = require('cmp')
-      local luasnip = require('luasnip')
-
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }),
-          ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-        }),
-        sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-        }, {
-          { name = 'buffer' },
-          { name = 'path' },
-        })
-      })
-    end
-  },
-
   -- Telescope (replaces fzf/ctrlp)
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+  },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require('telescope').setup({
+      local telescope = require("telescope")
+      local actions = require("telescope.actions")
+
+      telescope.setup({
         defaults = {
           file_ignore_patterns = { "node_modules", ".git/" },
-        }
+          mappings = {
+            i = {
+              ["<esc>"] = actions.close,  -- one press closes picker in insert mode
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+            },
+            n = {
+              ["<esc>"] = actions.close,  -- and in normal mode
+            },
+          },
+        },
       })
+
+      -- Enable fzf-native if you want it
+      pcall(telescope.load_extension, "fzf")
 
       -- Ctrl+P for file finder (like ctrlp)
       vim.keymap.set('n', '<C-p>', '<cmd>Telescope find_files<cr>')
-
-      -- Set darker highlights to match solarized
-      local colors = vim.api.nvim_get_hl(0, { name = 'Normal' })
-      vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = colors.bg })
-      vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = colors.bg, fg = colors.bg })
+      vim.keymap.set('n', '<C-j>', '<cmd>Telescope live_grep<cr>')
+      vim.keymap.set('n', '<C-k>', '<cmd>Telescope grep_string<cr>')
 
       -- Optional: other useful mappings
-      vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')  -- grep in files
-      vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')    -- list buffers
-    end
+      vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+      vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+      vim.keymap.set('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>')
+      vim.keymap.set('n', '<leader>fc', '<cmd>Telescope command_history<cr>')
+
+      -- Your highlight tweak (kept as-is)
+      local colors = vim.api.nvim_get_hl(0, { name = 'Normal' })
+      if colors and colors.bg then
+        vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = colors.bg })
+      end
+    end,
+  },
+  {
+      "nvzone/typr",
+      dependencies = "nvzone/volt",
+      opts = {},
+      cmd = { "Typr", "TyprStats" },
   },
 })
+
+-- Globally remove any strikethrough from all highlight groups
+local function remove_all_strikethrough()
+  local groups = vim.fn.getcompletion("", "highlight")
+  for _, group in ipairs(groups) do
+    local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = group, link = false })
+    if ok and hl.strikethrough then
+      hl.strikethrough = false
+      vim.api.nvim_set_hl(0, group, hl)
+    end
+  end
+end
